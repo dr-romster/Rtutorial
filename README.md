@@ -1,8 +1,7 @@
 # `R` Tutorial
 
 `R` Introduction Workshop for Cambridge SMART Course
-
-
+---
 ---
 
 There are two components to this tuorial
@@ -13,13 +12,16 @@ Files:
 
         Basic_intro.R
         Basic_intro.html
-        [ Basic_intro.Rmd ]
+        data.csv
+        demographics.csv
 
+Note that all of these files contain synthetic data. 
+  
 - Practical usage of `R` in clinical settings
 
-Based on the **QI Charts 2** package which can create Run Charts, statistical process control (SPC) and other QI-related methods to track outcomes in time series data.
+Based on the **QI Charts 2** package which can create Run Charts, Statistical Process Control (SPC) and employ other QI-related methods to track outcomes in time series data.
 
-This is provided as an open source tutorial from the QIcharts2 package vignette which is available on [CRAN].(https://cran.r-project.org/web/packages/qicharts2/index.html).   This package has a GPL-3 License. 
+This is provided as an open source tutorial from the QIcharts2 package vignette which is available on [CRAN].(https://cran.r-project.org/web/packages/qicharts2/index.html). The qicharts2 package has a [GPL-3 License](https://www.r-project.org/Licenses/GPL-3). 
 
 The qicharts2 package and tutorial is written by Prof Jacob Anhoej. [Package Github Link](https://github.com/anhoej/qicharts2)
 
