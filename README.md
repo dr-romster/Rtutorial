@@ -17,11 +17,11 @@ Files:
 
 - Practical usage of `R` in clinical settings
 
-Based on the **QI Charts 2** package which uses statistical process control and QI-based methods to track outcomes in time series data.
+Based on the **QI Charts 2** package which can create Run Charts, statistical process control (SPC) and other QI-related methods to track outcomes in time series data.
 
-This is provided as an open source tutorial from the QIcharts2 package vignette which is available on CRAN.   
+This is provided as an open source tutorial from the QIcharts2 package vignette which is available on [CRAN].(https://cran.r-project.org/web/packages/qicharts2/index.html).   This package has a GPL-3 License. 
 
-The qicharts2 package and tutorial is written by Prof Jacob Anhoej 
+The qicharts2 package and tutorial is written by Prof Jacob Anhoej. [Package Github Link](https://github.com/anhoej/qicharts2)
 
 Files:
 
