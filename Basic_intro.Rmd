@@ -2,7 +2,11 @@
 title: "R Workshop"
 author: "R Samanta"
 date: "22nd November 2018"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
 ---
 
 Welcome to the `R` Workshop
@@ -20,7 +24,7 @@ To download __R Studio__ go to <http://www.rstudio.com>. You also need to downlo
   
 To dowload `R` go to <http://www.r-project.org>
 
-### Exercise 1
+### Exercise 1: Create Variables
   
 * Create a variable `a` consisting of text strings: John, Paul, George, Ringo
   
@@ -75,7 +79,7 @@ e[,2] <- e[,2] / 2
 e
 ```
 
-###Exercise 3
+###Exercise 3: Plot Data
 
 Create a variable `x` which contains the values 0 - 50 in intevals of 5
 
@@ -402,6 +406,8 @@ __Books__
   
 - _Statistics: An Introduction using R 2nd Edition_ Michael J Crawley (Wiley 2015)
 ISBN 978-1-118-94109-6
+
+- [Hands-On Programming with R](https://rstudio-education.github.io/hopr/) Garrett Grolemund. [Free R bookdown (eBook)]
   
 __Websites__
   
@@ -410,7 +416,7 @@ __Websites__
   
 ***
     
-###Good luck!  
+**Good luck!**
 
 `(c) R Samanta 2018`  :    Cambridge SMaRT Course  
   

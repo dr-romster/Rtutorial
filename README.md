@@ -12,6 +12,7 @@ Files:
 
         Basic_intro.R
         Basic_intro.html
+        Basic_intro.Rmd
         data.csv
         demographics.csv
 
@@ -28,10 +29,12 @@ The qicharts2 package and tutorial is written by Prof Jacob Anhoej. [Package Git
 Files:
 
         qicharts2_wrkshp.Rdata  
-        qichart2_wrkshp_probs.R  
-        qichart2_wrkshp_solns.R  
+        qichart2_problems.R  
+        qichart2_solutions.R  
 
 ___
 *R Samanta, November 2018*  
+*University of Cambridge*  
+
 
 https://github.com/dr-romster/Rtutorial
