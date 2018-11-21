@@ -74,4 +74,34 @@
 # [Hint: you may need to re-call the plot function to add points to it]
 
 
+# Exercise 4
 
+#[ see the seperate R file : `qicharts2_problems.R` ]
+
+# Exercise 5
+
+# Set the location of your data files using the function `setwd ( )`
+
+
+# Import the two .CSV files in this directory, one to a variable called `vent.data`,
+# the other to a variable called `demographics`. Use the `header = TRUE` argument.
+
+
+# View the summaries of each data frame
+
+
+# What are the column names of each data frame? [Hint use the `colnames ( )` function ]
+
+
+# create a new, merged data frame (called all.vent.data), using the  `merge ( )` function, and the
+# the argument `by = ` to join the two data frames on the appropriate column.
+
+
+# Change the sex columin the joined data frame into a categorical one using the `factor ()` function 
+
+
+# Create a box plot (using the `boxplot ()` function) of the Plateau Pressure and differentiate the groups by Sex. 
+
+
+# Use the 'col' argument to colour the box and whisker plot, 
+# add a title using the 'main = ' argument and add y-axis labels using the 'ylab = ' argument.

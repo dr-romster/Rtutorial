@@ -205,11 +205,13 @@ colnames(vent.data)[1] <- 'Hospital_No'
 
 head(vent.data)
 # remember to store your merged data in a new variable / data frame
-all.vent.data <- merge(vent.data, demographics, by.demographcs='Hospital_No')
+all.vent.data <- merge(vent.data, 
+                       demographics, 
+                       by ='Hospital_No')
 head(all.vent.data)
 
 ```
- 
+
 Notice something odd?
 
 The table has been reordered numerically by Hospital Number by R automatically. 
@@ -229,7 +231,7 @@ head(vent.data)
 tail(vent.data)
 
 # looks good, so remerge like we did before
-all.vent.data <- merge(vent.data, demographics, by.demographcs='Hospital_No')
+all.vent.data <- merge(vent.data, demographics, by ='Hospital_No')
 head(all.vent.data)
 # and now reorder using the order () function
 all.vent.data <- all.vent.data[order(all.vent.data$index),]
@@ -240,6 +242,21 @@ head(all.vent.data)
 Creating indexes is helpful with patient data as it avoids having to type out hospital numbers / unique identifiers repeatedly. 
 
 Caution is advised however, as if you remove patients with ongoing cleaning then you may have a gap in your index. The patients can be reodered/indexed again and they'll all be pretty much the same number, only if you have seperate data frames the indexes will no longer match. Very messy work.
+
+### Categorical data
+
+Not all text is of equal standing. R does not know how to differentiate text that represents categories from just standard text terms. 
+
+We can covert data (text or numerical) to categeroies using the `factor()` function. This function can also take the argument `levels =` where you provide a list of categories that you wish to assign, in the the order that you want. 
+
+If you stipulate a level that a term that the text or numerical data does not correspond to then that data point will be attributed a missing value `NA`. 
+
+Changing the sex column to a factor (categorical data type):
+
+```{r}
+all.vent.data$Sex <- factor(all.vent.data$Sex, 
+                            levels = c("Female", "Male"))
+```
 
 
 ### Visualising Data
