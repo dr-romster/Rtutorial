@@ -7,6 +7,7 @@ output:
     toc: true
     toc_depth: 3
     toc_float: true
+    df_print: paged
 ---
 
 Welcome to the `R` Workshop
@@ -249,9 +250,9 @@ Not all text is of equal standing. R does not know how to differentiate text tha
 
 We can covert data (text or numerical) to categeroies using the `factor()` function. This function can also take the argument `levels =` where you provide a list of categories that you wish to assign, in the the order that you want. 
 
-If you stipulate a level that a term that the text or numerical data does not correspond to then that data point will be attributed a missing value `NA`. 
+If you stipulate a level term that the text or numerical data does not correspond to, then that data point will be attributed a missing value `NA`. 
 
-Changing the sex column to a factor (categorical data type):
+Changing the sex column to a factor (categorical data type) is done by assinging the 'factored' variable back onto its own (or a new) column:
 
 ```{r}
 all.vent.data$Sex <- factor(all.vent.data$Sex, 
@@ -283,7 +284,7 @@ If we want to look at individual patient data we can use a function called `subs
   
 ```{R}
 x <- subset(all.vent.data$Ventilator.hour, all.vent.data$index==85)
-y <- subset(all.vent.data$PlateauPress.cmH20, all.vent.data$index==85)
+y <- subset(all.vent.data$PlateauPress, all.vent.data$index==85)
 
 plot(y ~ x) # or you can use plot(x, y)  the ~ identifies dependant and independant variables  
 
@@ -309,7 +310,8 @@ If you want it too look a bit nicer you can use an package called `ggplot2`. Pac
 library(ggplot2)
 
 ggplot(data.frame(x, y), aes(x = x, y= y)) +
-  labs(x= 'Ventilation Duration (hours)', y = 'Plateau Pressure (cmH20)', title = 'Plateau Pressures Over Time for Patient Index 1')+
+  labs(x= 'Ventilation Duration (hours)', y = 'Plateau Pressure (cmH20)', 
+       title = 'Plateau Pressures Over Time for Patient Index 1') +
   geom_jitter(color = 'red3', alpha = 0.6) + 
   geom_smooth(method = 'lm', colour = 'red3', alpha = 0.3) +
   theme_light()
@@ -327,10 +329,13 @@ Let's use the formula for static pulmonary compliance on our data set.
 
 ```{r}
 attach(all.vent.data)
-all.vent.data$Cstat <- TidalVol.ml / (PlateauPress.cmH20 - PEEP.cmH20)
+
+all.vent.data$Cstat <- TidalVol.ml / (PlateauPress - PEEP.cmH20)
+
 detach(all.vent.data)
 # don't forget to check that all looks ok
 head(all.vent.data)
+
 summary(all.vent.data)
 
 ```
@@ -354,7 +359,6 @@ We can zoom in on this by dictating the scale:
   
 ```{r}
 hist(all.vent.data$Cstat, breaks= 100, xlim = c(-500, 1000), ylim = c(0,10000))
-
 ```
   * Interpret  
  
@@ -363,7 +367,6 @@ Let us find which values are responsible and put them in a new variable. This is
 ```{r}  
 bad_data <- which(all.vent.data$Cstat < 0)
 head (all.vent.data[bad_data, ], 15) #look at the top 15 'bad' rows
-
 ```
   
   * Clean  

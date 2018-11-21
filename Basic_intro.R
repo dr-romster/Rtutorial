@@ -31,6 +31,8 @@
 # Create a variable that consisting of  the numbers: 200, 515, 180, 160
 
 
+# Divide every value of your numeric variable by 2, updating your original variable with the new values.
+
 
 # Exericse 2.
 
