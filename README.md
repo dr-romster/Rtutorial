@@ -22,7 +22,7 @@ Note that all of these files contain synthetic data.
 
 Based on the **QI Charts 2** package which can create Run Charts, Statistical Process Control (SPC) and employ other QI-related methods to track outcomes in time series data.
 
-This is provided as an open source tutorial from the QIcharts2 package vignette which is available on [CRAN](https://cran.r-project.org/web/packages/qicharts2/index.html). The qicharts2 package has a [GPL-3 License](https://www.r-project.org/Licenses/GPL-3). 
+This is provided as an open source tutorial from the `qicharts2` package vignette which is available on [CRAN](https://cran.r-project.org/web/packages/qicharts2/index.html). This package has a [GPL-3 License](https://www.r-project.org/Licenses/GPL-3) and Creative Commons Licence [link]. 
 
 The qicharts2 package and tutorial is written by Prof Jacob Anhoej. [Package Github Link](https://github.com/anhoej/qicharts2)
 
