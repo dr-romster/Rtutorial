@@ -16,6 +16,7 @@
 ######################################################
 
 load('qicharts2_wrkshp.RData')
+install.packages("qicharts2")
 library(qicharts2)
 
 # HELP! ----
@@ -25,11 +26,11 @@ vignette('qicharts2')
 # Basic qic() syntax ----
 
 ## Run chart from 24 random normal numbers
-y <- rnorm(24)
-qic(y)
+x<- rnorm(24)
+qic(x)
 
 ## ... add chart title and axis labels
-qic(y, title = 'first run chart', ylab= 'sample', xlab = 'time')
+qic(x, title = 'first run chart', ylab= 'sample', xlab = 'time')
 # Using qic() with data frames ----
 
 ## Run chart of daily systolic blood pressure from blood_pressure dataset
@@ -37,15 +38,15 @@ qic(x = ,
 	y =, 
 	data = , 
     title = "SBP over time Run chart", 
-    xlab = 'Date', 
-    ylab = "SBP (mmHg)")
+    xlab = , 
+    ylab =   )
     
 ## Run chart of monthly proportion of harmed patients from patient_harm dataset
 qic(x = , 
 	y = , 
 	n= , 
 	data = , 
-	decimals = 2)
+	decimals = )
 
 ## ... use unnamed arguments for x, y, and n [ x , y, and denominator ]
 
@@ -56,7 +57,7 @@ qic(x = ,
 	y = , 
 	n= , 
 	data = ,
-	y.percent = TRUE)
+			)
 	
 ## ... show percentage
 
@@ -76,7 +77,7 @@ qic( x = ,
 qic( x = , 
 	y = , 
 	n = , 
-	facets = , 
+	facets = ~ , 
 	data = )
 	
 ## ... release axis scales
@@ -144,6 +145,13 @@ qic ( x = ,
 	exclude = 35)
 
 # Case 1: Post operative mortality ----
+
+qic( x = , 
+	y = ,
+	n = ,
+	data = postop_mortality,
+	chart = 'p',
+	part = )
 
 ## Monthly percentage of post operative mortality from postop_mortality dataset
 
