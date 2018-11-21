@@ -1,0 +1,432 @@
+---
+title: "R Workshop"
+author: "R Samanta"
+date: "22nd November 2018"
+output: html_document
+---
+
+Welcome to the `R` Workshop
+
+##Session objectives
+
+* __Give you a taster of R__
+* __Learn how to import and manipulate data__
+* __Appreciate the data cycle__
+* __Where to go for help__
+
+***  
+  
+To download __R Studio__ go to <http://www.rstudio.com>. You also need to download the R program as R studio is a platform that 'sits on top of' the `R` program.
+  
+To dowload `R` go to <http://www.r-project.org>
+
+### Exercise 1
+  
+* Create a variable `a` consisting of text strings: John, Paul, George, Ringo
+  
+* Create a vector `b` consisting of:  200, 515, 180, 160
+  
+* Divide every component of `b` by 5
+  
+
+```{r }
+a <- c('John', 'Paul', 'George', 'Ringo')
+a
+b <- c(200, 515, 180, 160)
+
+b / 2
+b
+b <- b / 2
+b
+```
+
+###Exercise 2: Create a data frame
+
+* Combine the elements `a` and `b` into a data frame called `d` using the `data.frame ( )` function
+
+Notice the difference between the following
+```{r }
+e <- c(a, b)
+e
+e <- data.frame(a, b)
+e
+```
+
+`data.frame` is a function that tells R to make a data table. The inputs of each 'cell' can be variables, strings, mathematical models or even lists of lists. It can all become _very_ complicated quite quickly.
+  
+```{r}
+colnames(e) <- c('Beatle', 'Net_Worth')
+e
+```
+The Data Frame is the basic unit of storing R that you will be using when importing data from external data sources. 
+
+Selecting subsets of data from data frames to allow manipulation is what you will spend most of your time doing in _R_.
+
+You can manipulate data within the data frames.
+
+```{r}
+e$Net_Worth <- e$Net_Worth / 2
+
+e
+
+# or 
+e[,2] <- e[,2] / 2
+
+e
+```
+
+###Exercise 3
+
+Create a variable `x` which contains the values 0 - 50 in intevals of 5
+
+Create a variable `y` which contains the values 0 - 200 in intevals of 20
+
+```{r}
+x <- seq(0, 50, 5)
+y <- seq(0 , 200, 20)
+```
+
+Plot x vs y, labelling the x-axis 'Time'
+
+```{r}
+plot(x, y, xlab = 'Time')
+```
+
+Create a new variable `y2` which contains the values 0 - 100 in intervals of 10
+
+```{r}
+y2 <- seq(0, 100, 10)
+```
+
+Use the `points( )` function to add y2 vs x points to the plot above, colour these points red using the the `col=` argument.
+
+```{r}
+plot(x, y, xlab = 'Time')
+points(x, y2, col = 'red')
+```
+
+
+
+###Importing Data
+  
+The _comma seperated values_ (CSV) file is the easiest way for _R_ to interact with your trial / study data. CSV files are unformatted raw data which can be generated from spreadsheet worksheets (MS Excel, Numbers), databases (MS Access, SQL) or from other programming languages (Linux, Python)
+
+Once data is imported it is essential that you spend some time getting to know it _before_ manipulating it or else much angst is liable to ensue.
+
+The data analyst's maxim should be 'visualise / clean / model / interpret ' 
+
+
+Import the data using the `read.csv()` function into a variable which R will automatically interpret as a data frame.
+
+Before we do this we need to tell R where our data is on our computer.
+
+This uses the `setwd()` [set working directory command] or you can
+  
+* Use the files tab to the right to navigate to the location of your files, click on the 'cog wheel More arrow' and select 'Set as Working Directory'
+  
+* Use the menu at the top 'Session -> Set Working Directory -> Choose Directory...
+  
+  
+There are two .CSV files: Data.csv and Demographics.CSV
+
+Import them to the variables 'data' and 'demographics', using `read.csv()`  
+
+```{r}
+vent.data <- read.csv("data.csv", header=TRUE)
+demographics <- read.csv("demographics.csv", header = TRUE)
+```
+
+If you type in the name of the variable that you have saved each bit of data to `R` will try and call the entire contents of that variable. `vent.data` or `demographics`
+
+The functions `head()` and `tail()` look at the top / bottom 5 rows, or you can ask for more with a nummeric argument. `head(data, 10)` or `tail(data, 15)`. This lets you have a peek without filling your screen and keeps the header rows visible.
+
+A quick way to get some useful metrics about a data frame is to use the `summary ()` function. This will provide information of range, median, IQR and means for numerical variables. It also gives a useful indication of the number of `NA`s which points you in the direction of where cleaning might be needed.
+
+```{r}
+summary(vent.data)
+summary(demographics)
+```
+
+Often, like in this example you get data in different 'bits' and they don't always marry up terribly well. Resolving this issue is fairly straightforward in `R`. This can be done in Excel, but it becomes quite computationally slow if you use the 'vlookup' and 'hlookup' commands many times, especially if you are referring to external files.
+
+
+Notice something odd about the size of demographics and data?
+
+Let's see how many unique patients there are in each data set using the `unique()` function:
+
+```{r}
+unique(vent.data[,1])
+unique(demographics[,1])
+```
+  
+Not obvious? We can combine functions to make things easier for us:
+  
+```{r}
+length(unique(vent.data[,1]))
+length(unique(demographics[,1]))
+```
+  
+So we have more patient id's than ventilator data and we have to selectively merge them.
+
+Merging two databases is called joining (that is all you want / need to know aboout databases for now).
+
+There are lots and lots of ways to do this. 
+
+Let's see which are the common hospital numbers using the `which()` function and a really useful logical operater called `%in%` - which basically means 'find the common elements of.'
+
+
+`which(demographics$Hospital_No %in% vent.data$Hosp_no)`
+Store these as good_pats
+  
+`good_pats <- which(demographics$Hospital_No %in% vent.data$Hosp_no)`
+  
+`good_pats` is only a list of numbers
+  
+`good_pats`  
+  
+We need to tell R to select these rows from the demographics and bin the rest
+  
+`good_demogs <- demographics[good_pats, ]`  
+  
+`head(good_deogs)`
+  
+`dim(good_demogs)`
+  
+In computing there is always a better way of doing this, `R` will merge two databases using headers title names but in our case the headers are not the same. 
+  
+We can use the `colnames()` function to change the header name of our column we want to and then use the `merge ()` function.
+  
+```{r}
+colnames(vent.data)[1] <- 'Hospital_No'
+
+head(vent.data)
+# remember to store your merged data in a new variable / data frame
+all.vent.data <- merge(vent.data, demographics, by.demographcs='Hospital_No')
+head(all.vent.data)
+
+```
+ 
+Notice something odd?
+
+The table has been reordered numerically by Hospital Number by R automatically. 
+This is ok in our case but it might have cause some distress. 
+
+We probably haven't lost any data though as the `dim(vent.data)` tells us we have the smae number of rows and columns as before. [30000 x 4]
+
+The way round this to create an index in the original data frame and keep that index throughout as a form of tracking variable. 
+
+Note that this is not always necessary
+
+```{r}
+# going back to the original data frame 'vent.data '
+
+vent.data$index <- as.integer(factor(vent.data$Hospital_No, levels= unique(vent.data$Hospital_No)))
+head(vent.data)
+tail(vent.data)
+
+# looks good, so remerge like we did before
+all.vent.data <- merge(vent.data, demographics, by.demographcs='Hospital_No')
+head(all.vent.data)
+# and now reorder using the order () function
+all.vent.data <- all.vent.data[order(all.vent.data$index),]
+head(all.vent.data)
+
+```
+
+Creating indexes is helpful with patient data as it avoids having to type out hospital numbers / unique identifiers repeatedly. 
+
+Caution is advised however, as if you remove patients with ongoing cleaning then you may have a gap in your index. The patients can be reodered/indexed again and they'll all be pretty much the same number, only if you have seperate data frames the indexes will no longer match. Very messy work.
+
+
+### Visualising Data
+
+'Factors' is the `R` way of interpreting text strings as categorical data. This is really useful for splitting or analysing data by sex / age group etc. 
+
+Using the factors allows R to quickly seperate data so it can be visualised easily
+A basic boxplot for example:
+```{r}
+boxplot(all.vent.data$PlateauPress ~ all.vent.data$Sex)
+```
+
+We can make our plots a little prettier using some arguements
+  
+```{r}
+boxplot(all.vent.data$PlateauPress ~ all.vent.data$Sex, col = c(2,3), main = 'Distribution of Plateau Pressures by Sex', ylab = 'Plateau Pressure (cmH2O)', las = 1)
+```
+
+If we want to look at individual patient data we can use a function called `subset` which uses logical arguments to slice through data frames.
+
+      
+      subset ( < column wanted >, < logical condition to be met > )
+
+  
+```{R}
+x <- subset(all.vent.data$Ventilator.hour, all.vent.data$index==85)
+y <- subset(all.vent.data$PlateauPress.cmH20, all.vent.data$index==85)
+
+plot(y ~ x) # or you can use plot(x, y)  the ~ identifies dependant and independant variables  
+
+```
+  
+.        
+    
+  We can make that a little prettier using some arguements:
+
+```{r}
+plot(y ~ x, xlab= 'Ventilation Duration (hours)', ylab = 'Peak pressure (cmH20)', main = 'Plateau pressures Over Time for Patient Index 1', pch= 19, cex = 0.7, las = 1, col = 'red3')
+```
+
+If you want it too look a bit nicer you can use an package called `ggplot2`. Packages are libraries containing lots of functions that allow you to do lots more interesting things. They can relate to any aspect of the programming itself or be specific to certain types of analysis or data (DNA, kaplan-meier, mathematical tools). They are all stored in an online repository called CRAN. 
+
+
+
+```{r echo = FALSE}
+#print (install.packages("ggplot2"))
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(data.frame(x, y), aes(x = x, y= y)) +
+  labs(x= 'Ventilation Duration (hours)', y = 'Plateau Pressure (cmH20)', title = 'Plateau Pressures Over Time for Patient Index 1')+
+  geom_jitter(color = 'red3', alpha = 0.6) + 
+  geom_smooth(method = 'lm', colour = 'red3', alpha = 0.3) +
+  theme_light()
+
+```
+  
+***  
+  
+### Exploratory Analysis
+If you are given data without a research question then you may have to scratch around to see if something fits.
+
+Let's use the formula for static pulmonary compliance on our data set.
+
+ $$\ C _{stat} = \frac{V_t}{P _{plateau} - PEEP} $$
+
+```{r}
+attach(all.vent.data)
+all.vent.data$Cstat <- TidalVol.ml / (PlateauPress.cmH20 - PEEP.cmH20)
+detach(all.vent.data)
+# don't forget to check that all looks ok
+head(all.vent.data)
+summary(all.vent.data)
+
+```
+
+Oh dear we have negative Cstat values. This is embarassing and no longer worthy of publication. 
+
+This requires cleaning
+  
+  * Find the bad values and remove them
+  
+Or we can try and figure our why it happened
+
+  * Visualise
+  
+We can do this with a histogram. This is done with the `hist ()` function. The `breaks` argument indicates how many bins you want. (The more you have the narrower your bars are)
+```{r}
+hist(all.vent.data$Cstat, breaks  = 100)
+```
+  
+We can zoom in on this by dictating the scale:
+  
+```{r}
+hist(all.vent.data$Cstat, breaks= 100, xlim = c(-500, 1000), ylim = c(0,10000))
+
+```
+  * Interpret  
+ 
+Let us find which values are responsible and put them in a new variable. This is done with the `which` function which takes a logical argument and return the rows of a data frame which satisfy the conditions. 
+  
+```{r}  
+bad_data <- which(all.vent.data$Cstat < 0)
+head (all.vent.data[bad_data, ], 15) #look at the top 15 'bad' rows
+
+```
+  
+  * Clean  
+  
+What do you think are the causes of these issues?
+
+This is unique to the data set that is being studied. [ We will not cover this today ]
+
+***  
+  
+### Annotation and Version Control
+If you are working on a project for a while your engagement with it will wax and wane as priorities come and go.
+  
+After a lull there is nothing more frustrating than trying to figure out what you did in the past just by staring at line upon line of impenetrable code that you cobbled together with brute force and Google searches.
+  
+The `#` marker allows for free text around the code which the `R` console ignores.
+  
+Another issue is version control - keeping track of changes, especially if you are collaborating, is a nightmare in any document write up. 
+  
+The best way around this is to use __GitHub__. This is a whole other topic. 
+
+My favourite way is to use a document called a _Markdown_ file.
+
+Markdown files allow you to annotate around your `R` code allowing you to explain your work and incoporate snippets of code. You can dictate what the reader sees (so it's not all code). It generates workflow which can be re-applied to other data.
+
+This was written in Markdown.
+  
+***
+  
+##Summary
+
+__You can now__
+  
+* __Manipulate variables in `R`__
+* __Import data into data frames from CSV files__
+* __Join different data frames using a common element__
+* __Index your data frame to keep track of groups__
+* __Slice elements of your data__  
+  
+***  
+  
+##Resources and References
+
+__Courses__  
+ 
+- Cambridge Bioinformatics Training via [Cambridge Training](training.cam.ac.uk) 
+
+__Online courses__
+  
+- [Code School](https://www.codeschool.com/courses/try-r)  - Free (for now)
+  
+- [Coursera](www.coursera.com) (££££)
+  
+- [EdX](https://www.edx.org/course/introduction-r-data-science-microsoft-dat204x-2) (£)
+
+__Books__
+  
+- _Statistics: An Introduction using R 2nd Edition_ Michael J Crawley (Wiley 2015)
+ISBN 978-1-118-94109-6
+  
+__Websites__
+  
+- [StackOverflow](www.stackoverflow.com)  
+- You Tube (search for Hadley Wickham)
+  
+***
+    
+###Good luck!  
+
+`(c) R Samanta 2018`  :    Cambridge SMaRT Course  
+  
+***  
+  
+```{r include = FALSE, eval=FALSE}
+# changes to be made  - too much to cram in
+# load the material on to laptops first - send it ahead of time - 
+# should have done it last night
+# or use the Menu options for SetWd instead of the command line
+# keep it simple
+# variable, functions, data frame, import, merge leave it that
+# 
+# write the code in a script and keep that to hand instead of referring to the markdown
+# let them know about the markdown html first
+# avoid too many arguments - complexity = errors
+# size of the presentation - use cmd + so that everyone can read what you are writing as you type
+# Cut some more bits out. Maybe include a video after the Terry bit.
+```

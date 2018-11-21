@@ -48,7 +48,11 @@
 # Call the first column of the first row of your data frame
 
 
-# Rename your data frame columns as 'Beatle' and 'Worth'
+# Rename your data frame columns as 'Beatle' and 'Net_Worth'
+
+
+# Halve the values in the Net Worth column, call  new data frame with the updated values.
+#[Hint don't forget to assign your calculations back into the original data frame]
 
 
 # Exercise 3.
@@ -59,12 +63,15 @@
 # Creata a variable y using the seq( ) function which contains the values 0 - 200 in steps of 20
 
 
-# Use the plot( ) function to plot x and y, label the x axis: "Time"
+# Use the plot( ) function to plot x and y, label the x axis as "Time"
 
 
-# Create a new variable, y2 which contains the values 0 - 100 in intervals of 10.
-# [hint use seq( ) ]
+# Create a new variable, y2, which contains the values 0 - 100 in intervals of 10.
+# [Hint use seq( ) ]
 
 
 # Use the points( ) function to add y2 by x to your plot, using the argument 'col = red' to colour these extra points.
 # [Hint: you may need to re-call the plot function to add points to it]
+
+
+
