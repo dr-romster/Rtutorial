@@ -1,4 +1,4 @@
-# SMART Course intro to the R Language
+# SMART Course intro to the R Programming Language
 
 # 1. Assignment
 
@@ -93,6 +93,10 @@
 
 
 # What are the column names of each data frame? [Hint use the `colnames ( )` function ]
+
+
+# Using the `colnames ( )` function, reassign the first column of `vent.data` so that it matches the
+# first `demographics` column.
 
 
 # create a new, merged data frame (called all.vent.data), using the  `merge ( )` function, and the

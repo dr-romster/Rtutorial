@@ -218,7 +218,7 @@ Notice something odd?
 The table has been reordered numerically by Hospital Number by R automatically. 
 This is ok in our case but it might have cause some distress. 
 
-We probably haven't lost any data though as the `dim(vent.data)` tells us we have the smae number of rows and columns as before. [30000 x 4]
+We probably haven't lost any data though as the `dim(vent.data)` tells us we have the same number of rows and columns as before. [30000 x 4]
 
 The way round this to create an index in the original data frame and keep that index throughout as a form of tracking variable. 
 
@@ -242,13 +242,13 @@ head(all.vent.data)
 
 Creating indexes is helpful with patient data as it avoids having to type out hospital numbers / unique identifiers repeatedly. 
 
-Caution is advised however, as if you remove patients with ongoing cleaning then you may have a gap in your index. The patients can be reodered/indexed again and they'll all be pretty much the same number, only if you have seperate data frames the indexes will no longer match. Very messy work.
+Caution is advised however, as if you remove patients from your data frame during squential cleaning steps then you may have a gap in your index. The patients can be reodered/indexed again and they'll all be pretty much the same number, only if you have seperate data frames the indexes will no longer match. Very messy work.
 
 ### Categorical data
 
-Not all text is of equal standing. R does not know how to differentiate text that represents categories from just standard text terms. 
+Not all text is of equal standing. R does not inherently know how to differentiate text that represents categories from just standard text terms. 
 
-We can covert data (text or numerical) to categeroies using the `factor()` function. This function can also take the argument `levels =` where you provide a list of categories that you wish to assign, in the the order that you want. 
+We can covert data (text or numerical) to categories using the `factor()` function. This function can also take the argument `levels =` where you provide a list of categories that you wish to assign, in the the order that you want. 
 
 If you stipulate a level term that the text or numerical data does not correspond to, then that data point will be attributed a missing value `NA`. 
 
@@ -262,18 +262,19 @@ all.vent.data$Sex <- factor(all.vent.data$Sex,
 
 ### Visualising Data
 
-'Factors' is the `R` way of interpreting text strings as categorical data. This is really useful for splitting or analysing data by sex / age group etc. 
+Afer assigning 'Factors' is the `R` we can split or analyse data by sex / age group etc. and visualise it in more meaningful way.
 
-Using the factors allows R to quickly seperate data so it can be visualised easily
 A basic boxplot for example:
 ```{r}
 boxplot(all.vent.data$PlateauPress ~ all.vent.data$Sex)
 ```
 
-We can make our plots a little prettier using some arguements
+We can make our plots a little more interesting using some arguments
   
 ```{r}
-boxplot(all.vent.data$PlateauPress ~ all.vent.data$Sex, col = c(2,3), main = 'Distribution of Plateau Pressures by Sex', ylab = 'Plateau Pressure (cmH2O)', las = 1)
+boxplot(all.vent.data$PlateauPress ~ all.vent.data$Sex, col = c(8,13), 
+        main = 'Distribution of Plateau Pressures by Sex', 
+        ylab = expression('Plateau Pressure (cmH'[2]*'O)'))
 ```
 
 If we want to look at individual patient data we can use a function called `subset` which uses logical arguments to slice through data frames.
@@ -289,13 +290,16 @@ y <- subset(all.vent.data$PlateauPress, all.vent.data$index==85)
 plot(y ~ x) # or you can use plot(x, y)  the ~ identifies dependant and independant variables  
 
 ```
-  
-.        
+
     
-  We can make that a little prettier using some arguements:
+  We can make that a little prettier using some extra arguments:
 
 ```{r}
-plot(y ~ x, xlab= 'Ventilation Duration (hours)', ylab = 'Peak pressure (cmH20)', main = 'Plateau pressures Over Time for Patient Index 1', pch= 19, cex = 0.7, las = 1, col = 'red3')
+plot(y ~ x, 
+     xlab= 'Ventilation Duration (hours)', 
+     ylab = 'Peak pressure (cmH20)', 
+     main = 'Plateau pressures Over Time for Patient Index 1', 
+     pch= 19, cex = 0.7, las = 1, col = 'red3')
 ```
 
 If you want it too look a bit nicer you can use an package called `ggplot2`. Packages are libraries containing lots of functions that allow you to do lots more interesting things. They can relate to any aspect of the programming itself or be specific to certain types of analysis or data (DNA, kaplan-meier, mathematical tools). They are all stored in an online repository called CRAN. 
@@ -358,7 +362,10 @@ hist(all.vent.data$Cstat, breaks  = 100)
 We can zoom in on this by dictating the scale:
   
 ```{r}
-hist(all.vent.data$Cstat, breaks= 100, xlim = c(-500, 1000), ylim = c(0,10000))
+hist(all.vent.data$Cstat, 
+     breaks= 100, 
+     xlim = c(-500, 1000), 
+     ylim = c(0,10000))
 ```
   * Interpret  
  
@@ -380,19 +387,21 @@ This is unique to the data set that is being studied. [ We will not cover this t
 ### Annotation and Version Control
 If you are working on a project for a while your engagement with it will wax and wane as priorities come and go.
   
-After a lull there is nothing more frustrating than trying to figure out what you did in the past just by staring at line upon line of impenetrable code that you cobbled together with brute force and Google searches.
+After a lull there is nothing more frustrating than trying to figure out what you did in the past, just by staring at line upon line of impenetrable code that you cobbled together with sheer will and endless Google searches.
   
-The `#` marker allows for free text around the code which the `R` console ignores.
+The `#` marker allows for free text around the code which the `R` console ignores. This let's you annotate your code with comments to explain to your future self (and others, if you collaborate) your thinking and processes . 
   
 Another issue is version control - keeping track of changes, especially if you are collaborating, is a nightmare in any document write up. 
   
 The best way around this is to use __GitHub__. This is a whole other topic. 
 
-My favourite way is to use a document called a _Markdown_ file.
+Another useful way is to use a document called a _Markdown_ file.
 
-Markdown files allow you to annotate around your `R` code allowing you to explain your work and incoporate snippets of code. You can dictate what the reader sees (so it's not all code). It generates workflow which can be re-applied to other data.
+Markdown files allow you to annotate free text around your `R` code allowing you to explain your work and incorporate snippets of code. You can dictate what the reader sees (so it's not all code) and *format* **it** so it [looks tidy](https://google.com), and include figures. There is very little extra code to learn with R-markdown. 
 
-This was written in Markdown.
+It generates workflow which can be re-applied to new data if you collect/receive another tranche of data, and so you can update your analysis and conclusions easily.
+
+This document was written in R-Markdown.
   
 ***
   
@@ -422,6 +431,8 @@ __Online courses__
   
 - [EdX](https://www.edx.org/course/introduction-r-data-science-microsoft-dat204x-2) (£)
 
+- [Udemy](https://www.udemy.com) (£)
+
 __Books__
   
 - _Statistics: An Introduction using R 2nd Edition_ Michael J Crawley (Wiley 2015)
@@ -432,13 +443,19 @@ ISBN 978-1-118-94109-6
 __Websites__
   
 - [StackOverflow](www.stackoverflow.com)  
-- You Tube (search for Hadley Wickham)
+  
+- YouTube (search for Hadley Wickham)
+  
+- Twitter *@JennyBryan* `#rstats`
+  
   
 ***
     
 **Good luck!**
 
-`(c) R Samanta 2018`  :    Cambridge SMaRT Course  
+`R Samanta 2018`  :    Cambridge SMaRT Course   
+
+*License: Creative Commons*
   
 ***  
   
