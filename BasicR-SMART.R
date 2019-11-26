@@ -1,6 +1,5 @@
 library(dplyr)
 library(ggplot2)
-library(ggpubr)
 
 # Exercise 1
 
@@ -46,84 +45,48 @@ y <- seq(0, 200, 20)
 y2 <- seq(0 ,100, 10)
 
 
-# volcano plot
-
-library(ggplot2)
-library(ggpubr)
-data(diff_express)
-
-class(diff_express)
-dim(diff_express)
-head(diff_express)
-summary(diff_express)
-str(diff_express)
-
-ggplot(data = diff_express, 
-       aes(x = log2FoldChange, 
-           y = (-1*(log10(padj))))) +
-  geom_point()
-
-diff_express$significant_FC <- ifelse(abs(diff_express$log2FoldChange) >= 1.5, 1L, 0L )
-diff_express$q_value <- (-1* log10(diff_express$padj))
-diff_express$significant_q <- ifelse(diff_express$q_value >= 1.301, 1, 0 )
-
-library(dplyr)
-diff_express <- mutate(diff_express, significant_FC = ifelse(abs(log2FoldChange) >= 1.5, 1L, 0L ))
-diff_express <- mutate(diff_express, q_value = (-1* log10(padj)) )
-diff_express <- mutate(diff_express, significant_q = ifelse(q_value >= 1.301, 1, 0 ))
-
-significant_hits <- filter(diff_express, (significant_q ==1) & (significant_FC == 1))
-
-head(significant_hits )
-dim(significant_hits)
-
-arrange(significant_hits, desc(q_value))
-top50 <- arrange(significant_hits, desc(q_value)) %>% 
-  filter(name != "") %>% 
-  slice(1:50)
+# Data wrangling and plotting
 
 
-ggplot(data = diff_express, 
-       aes(x = log2FoldChange, y = q_value) ) +
-  geom_point() +
-  geom_point(data = top50, aes(x = log2FoldChange,y = q_value), colour = 'red2') + 
-  geom_text(data = top50, aes(x = log2FoldChange,y = q_value, label = name), colour = 'blue2') 
+library(gapminder)
 
-# make it prettier uisng a built in theme and 
-# add lines to the genes of interest
+head(gapminder)
+summary(gapminder)
 
-install.packages("ggrepel")
+
+
+
+
+
+
 library(ggrepel)
 
-ggplot(data = diff_express, 
-       aes(x = log2FoldChange, y = q_value) ) +
-  geom_point(size = 0.4, alpha= 0.4) +
-  geom_point(data = top50, 
-             aes(x = log2FoldChange,y = q_value), 
-             colour = 'red2') + 
-  geom_text_repel(data = top50, 
-            aes(x = log2FoldChange,y = q_value, label = name), 
-            colour = 'blue2') +
-  labs(x = 'Log2 Fold Change', y = "Q value", 
-       title = "Differential Gene Expression Volcano Plot") + 
-  theme_light()
+countries_of_interest <- 
+  gapminder %>% 
+  filter(year %in% c(1952, 2007)) %>% 
+  filter(country %in% c("United Kingdom", "United States", "China", "Afghanistan"))
+
+gapminder %>% 
+  filter(year %in% c(1952, 2007)) %>% 
+  ggplot(aes(x = gdpPercap, y = lifeExp, colour = country, size = pop)) + 
+  geom_point(alpha = 0.7) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  labs(x = 'GDP per capita ($)', y = "Life Expectancy (years)") + 
+  geom_text_repel(data= countries_of_interest, aes(label = country), colour = 'black', size = 5, nudge_x = 1.5) +
+  facet_wrap(~year) +
+  theme_light() + 
+    theme(legend.position = 'none') 
 
 ##
 ##
 ##
 
 
+##
+##
+##
 
-
-## package setup
-# only run the lines below if really needed
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("ggpubr")
-
-
-library(dplyr)
-library(ggplot2)
-library(ggpubr)
 
 
