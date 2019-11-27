@@ -6,9 +6,9 @@
 
 This is a quick run through of `R` for the SMART Course
 
-The .R files are from the RStudio Cloud instance from this this tutorial is run from.
+The .R files are from the RStudio Cloud instance on which this tutorial is run from.
 
-There is also a tutorial here for Biologists which builds up to generation of a volcano plot for gene expression data found in the `ggpubr` package.
+There is also a similar tutorial here for biologists which builds up to generation of a volcano plot for gene expression data found in the `ggpubr` package.
 
   
 
