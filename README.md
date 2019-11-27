@@ -18,6 +18,8 @@ Files:
         BasicR_SMART.R
         Answers.R
         BasicR_biologists.R
+        gganimate.Rmd
+        setup.R
 
         
 Previous year's tutorial is  archived in the 2018 folder. There are separate instructions and synthetic data here with a QI focus. 
