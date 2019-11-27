@@ -1,0 +1,32 @@
+---
+title: "Using gganimate to Visualise the Gapminder Dataset"
+output: html_document
+---
+
+```{r setup message =FALSE, warning=FALSE}
+library(ggplot2)
+library(gapminder)
+library(dplyr)
+library(gganimate)
+library(gifski)
+library(png)
+```
+
+
+```{r}
+p <- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  theme(legend.position = 'none') +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+
+animate(p, 100, 10)
+
+```
+
+
