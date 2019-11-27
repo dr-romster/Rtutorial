@@ -22,7 +22,7 @@ Files:
         setup.R
 
         
-Previous year's tutorial is  archived in the 2018 folder. There are separate instructions and synthetic data here with a QI focus. 
+Previous year's tutorial is  archived in the 2018 folder. There are separate instructions and synthetic data there with a QI focus. 
 
 ___
 *R Samanta, November 2019*  
