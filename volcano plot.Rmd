@@ -1,0 +1,336 @@
+---
+title: "Generating Volcano Plots with R"
+author: "R Samanta"
+date: "06/12/2019"
+output: 
+  html_document: 
+    highlight: zenburn
+    theme: spacelab
+    toc: yes
+---
+
+This is a quick tutorial on how to create a volcano plot to demonstrate differential gene expression data from sequencing experiments. It utilises a `tidyverse` approach for the most part as the `ggplot` functions give the best results for highly customisable plots for papers. 
+
+```{r setup, echo = F, warning=F, message=F}
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+library(ggpubr)
+
+
+data(diff_express)
+diff_express -> dge_results
+
+rm(diff_express)
+```
+
+
+## Step 1: Importing your data
+
+
+Import your differential gene expression table using the `read.csv()` command and assign it to a new variable. 
+
+The path to your filename needs to be quotation marks (either `" "` or `' '`). 
+
+The argument `header = TRUE` preserves column names and the `stringsasFactors=FALSE` will keep columns containing text as text strings and not categories (factors). 
+
+      dge_results <- read.csv("/User/Me/Documemnts/dge_res.csv", header = TRUE, stringasFactors = FALSE)
+  
+Inspect the data frame to check that all looks ok
+
+    head(dge_results)
+    dim(dge_results)
+    
+```{r echo = F}
+head(dge_results)
+dim(dge_results)
+```
+    
+The `dim()` command gives us the dimensions of the data frame. This example has 36,028 rows and 5 columns. 
+    
+You should have at least 4 columns with names like:
+
+1. Gene name / symbol
+2. p value
+3. fold change
+4. adjusted p value / false discovery rate
+
+In this example the ENSEMBL gene ids are the row names of the data frame. When we start using `dplyr` based commands or `ggplot2`, these libraries will not be happy with this and they will convert the row names to numbers, over-writing this data. 
+
+We can get round this issue by using the `tibble` package function `rownnames_to_column()`. The`var` argument wants a text string which it will use as the new column name. 
+
+Note that we are chaining / piping sequential commands using the pipe operator `%>%`. You can type this quickly on a Mac using CMD + Shift + M 
+
+```{r}
+library(dplyr)
+library(tibble)
+dge_results <- 
+  dge_results %>% 
+  data.frame %>% 
+  tibble::rownames_to_column(var = 'ENSEMBL_id')
+```
+
+You can re check their names using the `head()` or `colnames()` commands
+
+```{r}
+head(dge_results)
+```
+
+
+
+## Step 2: Modifying columns
+
+
+We need to create a q-value column which is the -log10 transformed FDR. We can do this either by direct assignment of an operation to the data frame or by using the `mutate` command from dplyr.
+
+```{r}
+dge_results$q_value <- log10(dge_results$padj) * -1
+
+# or 
+
+dge_results <- mutate(dge_results, q_value = log10(padj)* -1)
+```
+
+## Step 3: Plotting
+
+
+We can now do a basic volcano plot. (Don't worry we will build upto identifying top hits in a moment). It is good practice to do regular visualisations when doing data analysis.
+
+Our x values are the log fold changes, and the y values are the q values we just calculated. These two columns will be the key  *aesthetics* which we stipulate using the `aes()` function when creating a ggplot image. Aesthetics are also sometimes also referred to as 'mappings'. 
+
+We want a scatter plot but because we have so much data, we need to shrink the size of each point and make them slightly transparent.
+
+The `geom_point()` adds a point / scatter geometry to the graph, the `size=` and `alpha =` arguments here adjust the size and transparency of the points. 
+
+```{r}
+library(ggplot2)
+
+ggplot(data = dge_results,                       # stipulate data frame where data is 
+       aes(x = log2FoldChange, y = q_value) ) +  # set the aeshetics for the plot 
+  geom_point(size = 0.5, alpha = 0.5)            # add geoemetry to plotting framework
+```
+
+__NB__ you can ignore the warnings, they are just telling us about missing values in the data frame. 
+
+## Step 4: Finding significant hits
+
+We have to decide the thresholds at which we will attribute significance. 
+
+Usually we use the q-value first and then look at log2 fold change. 
+
+For this example we will consider adjusted p value of < 0.05 as significant. The corresponding q-value is log10(0.05) * -1 = 1.30103
+
+To flag these values we can either filter the data frame for rows that satisfy this logical condition or create a new column that will highlight these genes.
+
+This can be achieved in a number of ways, I like to use the `ifelse()` function which has the form:
+
+              ifelse( condition_is_true, do_A, otherwise_do_B)
+      
+```{r}
+dge_results <- 
+  dge_results %>% 
+  mutate(significant_q = ifelse(q_value >= 1.30103, 1, 0 ))
+```
+
+In the example above the new column 'significant_q' contains values 1 or 0, with 1 representing the rows with significant q-values.
+
+We can tot up the number of significant genes using the `count()` function which is another `dplyr` function that counts the number of unique values in a column of a given data frame.
+
+```{r}
+dge_results %>% count(significant_q)
+```
+
+We have 13,287 hits in this example. 
+
+We could look at the top 50 by arranging the data frame in q value order with the highest at the top. 
+
+We do this using the `arrange()` function, with the arguemnent `desc(column_name)` to rank them in descending order.
+
+To select the top 50 we use the `slice()` function. 
+
+```{r}
+dge_results %>% 
+  arrange(desc(q_value)) %>% 
+  slice(1:50)
+```
+
+Notice that there are some un-labelled genes here missing a name. These are likely uncharacterised sequences. We should remove these allthough they could be annotated as 'uncharacterised' if you wish.
+
+Removing the blanks involves filtering the data frame where the 'name' column is blank which can be reprensted in R as and empty pair of quotes `""`.
+
+```{r}
+dge_results <- 
+  dge_results %>% 
+  filter(name != "") %>%  # remove the rows where the name is blank
+  arrange(desc(q_value))
+```
+
+use `head(dge_results)` to check the top of the data frame
+
+```{r}
+head(dge_results)
+```
+
+You could export this table for gene set enrichment / pathway analysis by creating a new csv file. We do this using the `write.csv()` command.
+e.g. for the top 250 hits (based on q_value):
+    
+    dge_results %>% 
+    arrange(desc(q_value)) %>% 
+    slice(1:250) %>% 
+    write.csv(file = "dge_top_250.csv", row.names = FALSE)
+
+If you did not want all the columns you could pick the ones you wanted using the `select()` command.
+
+*NB* Lots of different libraries have their own version of the `select()` command, so if you load a new library that has this command R will use the other library's `select()` command instead of `dplyr`'s. 
+
+To tell R that we wish to be explicit about the package and command we want to use, we call the command prefixed by the package name and a couple of colons. e.g. `dplyr::select()`
+
+    dge_results %>% 
+    arrange(desc(q_value)) %>% 
+    slice(1:250) %>% 
+    dplyr::select(ENSEMBL_id, name, q_value) %>% 
+    write.csv(file = "dge_top_250.csv", row.names = FALSE)
+
+Next we need to find the genes that have signficant log fold changes for our plot so we can colour the ones going up and down clearly.
+
+There are lots of ways of doing this. For simplicity we will use create new data frames the `filter` command. We will use the thresholds of +1.5 and -1.5 for this example.
+
+```{r}
+upregulated_genes <-
+  dge_results %>% 
+  filter(significant_q == 1) %>% 
+  filter(log2FoldChange >= 1.5)
+
+downregulated_genes <-
+  dge_results %>% 
+  filter(significant_q == 1) %>% 
+  filter(log2FoldChange <= -1.5)
+
+dim(upregulated_genes)
+dim(downregulated_genes)
+```
+
+There are 3913 up and 3700 down regulated genes respectively
+
+We should also create a data frame with the top 50 for labelling the plot. Any more than this and it often gets messy.
+
+```{r}
+top_50 <- 
+  dge_results %>% 
+  filter(significant_q == 1) %>% 
+  arrange(desc(q_value)) %>% 
+  slice(1:50)
+```
+
+We can now redraw our volcano plot. We will use the same initial aesthetics, but add new geometries that take in data from our new filtered data frames that we created above.
+
+Each additional geometry can take the arguments `data=` and `aes()` to assign it new data and aesthetics for it to draw with. We can add extra arguements to each geometry to make them look differnet to the others. E.g. size, transparcency (alpha), and colour. 
+
+We can also use the geometry `geom_text` to add text labels to our top 50 hits. 
+
+Putting this all together:
+
+```{r warning=FALSE}
+
+ggplot(data = dge_results, 
+       aes(x = log2FoldChange, y = q_value)
+      ) + 
+  geom_point(size = 0.5, alpha = 0.5) +   # this gives us the same as before
+  geom_point(data = upregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'red') +
+  geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'blue') +
+  geom_text(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) )
+  
+```
+
+To stop the text from over-writing itself we can use the `geom_text_repel()` geometry which is from the `ggprepel` library, an add-on for `ggplot2`.
+
+
+
+```{r warning = FALSE}
+
+ggplot(data = dge_results, 
+       aes(x = log2FoldChange, y = q_value)
+      ) + 
+  geom_point(size = 0.5, alpha = 0.5) +   # this gives us the same as before
+  geom_point(data = upregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'red') +
+  geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'blue') +
+  geom_text_repel(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) )
+  
+```
+
+## Step 5: Making it pretty and exporting for publication
+
+We need to:
+
+- add axis labels
+
+- add a theme to get rid of the background
+
+There is whole host of extra customisation that can be achieved. 
+
+```{r warning = FALSE}
+
+ggplot(data = dge_results, 
+       aes(x = log2FoldChange, y = q_value)
+      ) + 
+  geom_point(size = 0.5, alpha = 0.5) +   # this gives us the same as before
+  geom_point(data = upregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'red') +
+  geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'blue') +
+  geom_text_repel(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) ) + 
+  
+  labs(x = "Log2 Fold Change", y = "-Log10 FDR") + # axis labels, takes text strings
+  theme_bw() +          # removes the background and other bits, keeps the frame
+  theme(panel.grid = element_blank(),     # removes all gridlines
+        axis.line = element_line(size = 0.8), # makes the axis line bolder
+        axis.text = element_text(size = 12),   # increase font size of the axis markers
+        axis.title = element_text(size  = 14))  # increase font size of the axis labels
+  
+```
+
+To export thise we save the whole plot call as a variable, then we call it whilst writing to a file. Note that assigning all the plotting code to a variable will not generate a plot until you call the variable. 
+
+We can create pdfs, tiffs, pngs, using the `pdf()`, `tiff()` or `png()` functions. 
+Each one takes essentially the same arguments of `width`, `height`, `units` (cm, inches, pixels) and `res` (resolution in dpi).
+
+
+We use the `dev.off()` (device off) command to stop writing to a file. The file will appear in the directory specificed by `setwd()`.
+
+```{r echo = T, eval = FALSE}
+export_plot <- ggplot(data = dge_results, 
+       aes(x = log2FoldChange, y = q_value)
+      ) + 
+  geom_point(size = 0.5, alpha = 0.5, colour = 'grey') +
+  geom_point(data = upregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'red') +
+  geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'blue') +
+  geom_text_repel(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) ) + 
+  
+  labs(x = "Log2 Fold Change", y = "-Log10 FDR") + # axis labels, takes text strings
+  theme_bw() +          # removes the background and other bits, keeps the frame
+  theme(panel.grid = element_blank(),     # removes all gridlines
+        axis.line = element_line(size = 0.8), # makes the axis line bolder
+        axis.text = element_text(size = 12),   # increase font size of the axis markers
+        axis.title = element_text(size  = 14))
+
+setwd("path/to/image/export/directory")
+pdf(file = "differential_ge_volcano_for_export.pdf", res = 300, 
+    width = 10, height = 8, 
+    units = "cm")
+export_plot
+
+dev.off()
+```
+
+
+
+There are lots of other possible modifications that can be achieved but the above should provide a framework to get you started. For the rest there is Google...
+
+
+`R Samanta, December 2019`
