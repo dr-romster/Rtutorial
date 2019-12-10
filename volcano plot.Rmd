@@ -249,6 +249,8 @@ To stop the text from over-writing itself we can use the `geom_text_repel()` geo
 
 
 ```{r warning = FALSE}
+library(ggrepel) 
+# if you don't have this package, install it with: install.packages("ggrepel")
 
 ggplot(data = dge_results, 
        aes(x = log2FoldChange, y = q_value)
@@ -258,8 +260,7 @@ ggplot(data = dge_results,
              size = 0.5, colour = 'red') +  # re-draws data points from upregulated genes data frame, colroiing them red
   geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
              size = 0.5, colour = 'blue') + # re-draws data points from downregulated genes data frame, colroiing them blue
-  geom_text_repel(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) )
-  # uses the name column from the top_50 data frame to add text labels to the plot
+  geom_text_repel(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) ) # uses the name column from the top_50 data frame to add text labels to the plot
 ```
 
 ## Step 5: Making it pretty and exporting for publication
@@ -326,6 +327,25 @@ pdf(file = "differential_ge_volcano_for_export.pdf", res = 300,
 export_plot
 
 dev.off()
+```
+
+```{r echo = FALSE, warning = FALSE, message=FALSE}
+ggplot(data = dge_results, 
+       aes(x = log2FoldChange, y = q_value)
+      ) + 
+  geom_point(size = 0.5, alpha = 0.5, colour = 'grey') +
+  geom_point(data = upregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'red') +
+  geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
+             size = 0.5, colour = 'blue') +
+  geom_text_repel(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) ) + 
+  
+  labs(x = "Log2 Fold Change", y = "-Log10 FDR") + # axis labels, takes text strings
+  theme_bw() +          # removes the background and other bits, keeps the frame
+  theme(panel.grid = element_blank(),     # removes all gridlines
+        axis.line = element_line(size = 0.8), # makes the axis line bolder
+        axis.text = element_text(size = 12),   # increase font size of the axis markers
+        axis.title = element_text(size  = 14))
 ```
 
 
