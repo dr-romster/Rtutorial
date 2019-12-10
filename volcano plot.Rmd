@@ -55,9 +55,9 @@ You should have at least 4 columns with names like:
 3. fold change
 4. adjusted p value / false discovery rate
 
-In this example the ENSEMBL gene ids are the row names of the data frame. When we start using `dplyr` based commands or `ggplot2`, these libraries will not be happy with this and they will convert the row names to numbers, over-writing this data. 
+In this example the ENSEMBL gene ids are the row names of the data frame. When we start using `dplyr` based commands or `ggplot2`, these libraries will not be happy with this and they will convert the row names to rown numbers, over-writing this aspect of the data. 
 
-We can get round this issue by using the `tibble` package function `rownnames_to_column()`. The`var` argument wants a text string which it will use as the new column name. 
+We can get around this issue by using the `tibble` package function `rownnames_to_column()`. The`var` argument expects a text string which it will use as the new column name. 
 
 Note that we are chaining / piping sequential commands using the pipe operator `%>%`. You can type this quickly on a Mac using CMD + Shift + M 
 
@@ -65,15 +65,15 @@ Note that we are chaining / piping sequential commands using the pipe operator `
 library(dplyr)
 library(tibble)
 dge_results <- 
-  dge_results %>% 
-  data.frame %>% 
-  tibble::rownames_to_column(var = 'ENSEMBL_id')
+  dge_results %>%                                 # take dge_results variable
+  data.frame %>%                                  # convert to a data frame 
+  tibble::rownames_to_column(var = 'ENSEMBL_id')  # create a new column with the row names
 ```
 
 You can re check their names using the `head()` or `colnames()` commands
 
 ```{r}
-head(dge_results)
+head(dge_results)   # look at the first 5 rows
 ```
 
 
@@ -81,10 +81,10 @@ head(dge_results)
 ## Step 2: Modifying columns
 
 
-We need to create a q-value column which is the -log10 transformed FDR. We can do this either by direct assignment of an operation to the data frame or by using the `mutate` command from dplyr.
+We need to create a q-value column which is the -log10 transformed FDR. We can do this either by direct assignment of an operation to the data frame or by using the `mutate()` command from dplyr.
 
 ```{r}
-dge_results$q_value <- log10(dge_results$padj) * -1
+dge_results$q_value <- log10(dge_results$padj) * -1  
 
 # or 
 
@@ -116,9 +116,9 @@ __NB__ you can ignore the warnings, they are just telling us about missing value
 
 We have to decide the thresholds at which we will attribute significance. 
 
-Usually we use the q-value first and then look at log2 fold change. 
+Usually we use the q value first and then look at log2 fold change. 
 
-For this example we will consider adjusted p value of < 0.05 as significant. The corresponding q-value is log10(0.05) * -1 = 1.30103
+For this example we will consider adjusted p value of < 0.05 as significant. The corresponding q value is log10(0.05) * -1 = 1.30103
 
 To flag these values we can either filter the data frame for rows that satisfy this logical condition or create a new column that will highlight these genes.
 
@@ -132,7 +132,7 @@ dge_results <-
   mutate(significant_q = ifelse(q_value >= 1.30103, 1, 0 ))
 ```
 
-In the example above the new column 'significant_q' contains values 1 or 0, with 1 representing the rows with significant q-values.
+In the example above the new column 'significant_q' contains values 1 or 0, with 1 representing the rows with significant q-values, set by the conditional threhold in our `ifelse()` command.
 
 We can tot up the number of significant genes using the `count()` function which is another `dplyr` function that counts the number of unique values in a column of a given data frame.
 
@@ -156,7 +156,7 @@ dge_results %>%
 
 Notice that there are some un-labelled genes here missing a name. These are likely uncharacterised sequences. We should remove these allthough they could be annotated as 'uncharacterised' if you wish.
 
-Removing the blanks involves filtering the data frame where the 'name' column is blank which can be reprensted in R as and empty pair of quotes `""`.
+Removing the blanks involves filtering the data frame where the 'name' column is blank which can be represented in R as and empty pair of quotes `""`.
 
 ```{r}
 dge_results <- 
@@ -193,18 +193,18 @@ To tell R that we wish to be explicit about the package and command we want to u
 
 Next we need to find the genes that have signficant log fold changes for our plot so we can colour the ones going up and down clearly.
 
-There are lots of ways of doing this. For simplicity we will use create new data frames the `filter` command. We will use the thresholds of +1.5 and -1.5 for this example.
+There are lots of ways of doing this. For simplicity we will create new data frames using the `filter` command. We will use the thresholds of +1.5 and -1.5 for this example.
 
 ```{r}
 upregulated_genes <-
   dge_results %>% 
-  filter(significant_q == 1) %>% 
-  filter(log2FoldChange >= 1.5)
+  filter(significant_q == 1) %>%   # filter rows with signiificant q values
+  filter(log2FoldChange >= 1.5)    # filter rows with fold change above or equal to threshold
 
 downregulated_genes <-
   dge_results %>% 
   filter(significant_q == 1) %>% 
-  filter(log2FoldChange <= -1.5)
+  filter(log2FoldChange < -1.5)
 
 dim(upregulated_genes)
 dim(downregulated_genes)
@@ -224,7 +224,7 @@ top_50 <-
 
 We can now redraw our volcano plot. We will use the same initial aesthetics, but add new geometries that take in data from our new filtered data frames that we created above.
 
-Each additional geometry can take the arguments `data=` and `aes()` to assign it new data and aesthetics for it to draw with. We can add extra arguements to each geometry to make them look differnet to the others. E.g. size, transparcency (alpha), and colour. 
+Each additional geometry can take the arguments `data=` and `aes()` to assign it new data and aesthetics for it to draw with. We can add extra arguements to each geometry to make them look different to the others. E.g. size, transparcency (alpha), and colour. 
 
 We can also use the geometry `geom_text` to add text labels to our top 50 hits. 
 
@@ -237,7 +237,7 @@ ggplot(data = dge_results,
       ) + 
   geom_point(size = 0.5, alpha = 0.5) +   # this gives us the same as before
   geom_point(data = upregulated_genes, aes(x = log2FoldChange, y = q_value), 
-             size = 0.5, colour = 'red') +
+             size = 0.5, colour = 'red') +   # re-draws the 
   geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
              size = 0.5, colour = 'blue') +
   geom_text(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) )
@@ -255,11 +255,11 @@ ggplot(data = dge_results,
       ) + 
   geom_point(size = 0.5, alpha = 0.5) +   # this gives us the same as before
   geom_point(data = upregulated_genes, aes(x = log2FoldChange, y = q_value), 
-             size = 0.5, colour = 'red') +
+             size = 0.5, colour = 'red') +  # re-draws data points from upregulated genes data frame, colroiing them red
   geom_point(data = downregulated_genes, aes(x = log2FoldChange, y = q_value), 
-             size = 0.5, colour = 'blue') +
+             size = 0.5, colour = 'blue') + # re-draws data points from downregulated genes data frame, colroiing them blue
   geom_text_repel(data = top_50, aes(x = log2FoldChange, y = q_value, label = name) )
-  
+  # uses the name column from the top_50 data frame to add text labels to the plot
 ```
 
 ## Step 5: Making it pretty and exporting for publication
@@ -270,7 +270,7 @@ We need to:
 
 - add a theme to get rid of the background
 
-There is whole host of extra customisation that can be achieved. 
+There is a whole host of extra customisation that can be achieved with only a few extra commands from the `ggplot2` library.  
 
 ```{r warning = FALSE}
 
