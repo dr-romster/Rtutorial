@@ -7,7 +7,7 @@
     <meta name="date" content="2021-11-16" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
     <script src="libs/htmlwidgets/htmlwidgets.js"></script>
     <script src="libs/viz/viz.js"></script>
     <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
@@ -20,6 +20,7 @@
     <script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
     <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
     <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <link rel="stylesheet" href="custom1.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -51,6 +52,13 @@ class: inverse, center, middle
 
 .show-only-last-code-result pre + pre:not(:last-of-type) code[class="remark-code"] {
     display: none;
+  
+.right-column2{
+  width: 70%;
+  float: right;
+  padding-top: 1em;
+  padding-left: 0.5em;
+}
 &lt;/style&gt;
 
 
@@ -58,7 +66,7 @@ class: inverse, center, middle
 
 class: highlight-last-item
 
-# We have lots to talk about:
+# We have lots to talk about
 
 - The basics of `R`
 
@@ -88,6 +96,9 @@ Statistical methods
 
 
 Customised, high quality outputs
+
+
+Version control 
 
 
 **Reproducible workflows**
@@ -129,7 +140,7 @@ Talks to other computer languages
 
 **2005** Imperial &amp; Cambridge
 
-**2005 - 13** FY, Core medicine, 1 year in Sydney ICU, Core anaesthetics
+**2005 - 13** FY, Core medicine, Sydney (ICU, 1 yr), Core anaesthetics
 
 **2013** St3 Anaesthetics East of England, FRCA
 
@@ -154,14 +165,27 @@ background-size: 80%
 
 ---
 
+
+# UndeR the Hood
+
+&lt;center&gt;
+
+<div id="htmlwidget-14c1f56fbd058510c750" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-14c1f56fbd058510c750">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;/center&gt;
+---
+
 class: inverse, middle, center
+
 ## https://rstudio.cloud/project/750723
 
-
 ---
+
 background-image: url(img/RstudioGUI.png)
 background-size: 95%
 class: inverse
+
 .pull-left[
 &lt;br/&gt;
 &lt;br/&gt;
@@ -195,176 +219,604 @@ class: inverse
 ]
 
 
+---
+class: inverse, middle, center
+
+.center[ &lt;img src="https://media.giphy.com/media/xUOxf7XfmpxuSode1O/giphy.gif" alt="dancing gif" width="800"/&gt;]
 
 ---
+
 class: inverse, middle, center
 
 # The Basics
 
 ---
 
-# UndeR the Hood
-
-
-<div id="htmlwidget-4983a5f7b2eae0bdffcc" style="width:504px;height:504px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4983a5f7b2eae0bdffcc">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Helvetica, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Helvetica, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"Rstudio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-
----
-
 # Getting Started
 
-To start a new script in the **Editor** window press this button ![](img/start_script.png){width=70%}
+To start a new script in the **Editor** window press this button and select *R Script* &lt;br/&gt;&lt;img src="img/start_script.png" width=300&gt;
+&lt;br/&gt;
 
-We write our code in script windows and send them to the **Console** using this button ![](img/run.png)
+We write our code in script windows and send them to the **Console** by highlighting our code and using this button &lt;br/&gt;&lt;img src="img/run.png", alt = "run", width=150&gt; &lt;br/&gt; Or we can press Ctrl + Enter (&amp;#8984; + Enter on Mac)
+&lt;br/&gt;
+
+*NB Enter just adds new lines to the script editor, but in the console it will run what you have entered *
+
+Errors show up as .red[red text] in the **Console**
 
 ---
-# remark.js vs xaringan
 
-Some differences between using remark.js (left) and using **xaringan** (right):
+class: show-only-last-code-result
 
-.pull-left[
-1. Start with a boilerplate HTML file;
+# Setting off...
 
-1. Plain Markdown;
 
-1. Write JavaScript to autoplay slides;
+.left-column[
 
-1. Manually configure MathJax;
+Mathematical operations
 
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
 ]
 
-.pull-right[
-1. Start with an R Markdown document;
+--
 
-1. R Markdown (can embed R/other code chunks);
 
-1. Provide an option `autoplay`;
+.right-column[
 
-1. MathJax just works;&lt;sup&gt;*&lt;/sup&gt;
+```r
+1+2
+```
 
-1. Highlight code with `{{}}`;
+```
+## [1] 3
+```
+{{content}}
 
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
+]
+--
+The other operators are **+   -   &amp;#42;   /** 
+
+
+```r
+10-3
+```
+
+```
+## [1] 7
+```
+{{content}}
+--
+
+
+```r
+2*3
+```
+
+```
+## [1] 6
+```
+{{content}}
+--
+
+
+```r
+4/5
+```
+
+```
+## [1] 0.8
+```
+
+{{content}}
+
+---
+
+class: show-only-last-code-result
+
+# What happened to your results?
+
+.left-column[
+Variables and assignment
+
 ]
 
-.footnote[[*] Not really. See next page.]
+--
 
----
+.right-column[ 
+To store values we need to **assign** our results or data to a **variable**
 
----
+{{content}}
+]
 
-# R Code
+--
 
-
-```r
-# a boring regression
-fit = lm(dist ~ 1 + speed, data = cars)
-coef(summary(fit))
-```
-
-```
-#               Estimate Std. Error   t value     Pr(&gt;|t|)
-# (Intercept) -17.579095  6.7584402 -2.601058 1.231882e-02
-# speed         3.932409  0.4155128  9.463990 1.489836e-12
-```
-
-```r
-dojutsu = c('地爆天星', '天照', '加具土命', '神威', '須佐能乎', '無限月読')
-grep('天', dojutsu, value = TRUE)
-```
-
-```
-# [1] "地爆天星" "天照"
-```
-
----
-
-# R Plots
+We do **assignment** with either `&lt;-` or `=`
+{{content}}
+--
 
 
 ```r
-par(mar = c(4, 4, 1, .1))
-plot(cars, pch = 19, col = 'darkgray', las = 1)
-abline(fit, lwd = 2)
+a &lt;- 1
 ```
+{{content}}
+--
 
-![](xaringan-slides_files/figure-html/cars-1.svg)&lt;!-- --&gt;
-
----
-
-# Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+Asking the computer to re*call* this variable will return the stored information
 
 
 ```r
-knitr::kable(head(iris), format = 'html')
+a
 ```
 
+```
+## [1] 1
+```
+{{content}}
+--
+We can store different types of data in a variable
+
+
+```r
+day &lt;- "Monday"
+day
+```
+
+```
+## [1] "Monday"
+```
+{{content}}
+
+---
+
+# Variable conventions
+
+.left-column[
+
+Naming variables
+]
+
+.footnote[ `==` means *equivalence* and returns either `TRUE` or `FALSE` based on a comparison of the left and right sides]
+
+--
+
+.right-column[
+
+Use any text but you can't use spaces or a number of special characters:
+
+      ^*%$@#!|/~()[]{}\
+{{content}}
+]
+--
+Variable names are case sensitive
+
+
+```r
+a &lt;- 1
+A &lt;- 2
+a == A
+```
+
+```
+## [1] FALSE
+```
+
+{{content}}
+--
+
+You can use `_` or `.` in variable names to make them easier to read: &lt;br/&gt; &lt;br/&gt;
+`magic_number &lt;- 7`
+
+{{content}}
+
+---
+
+# Variable types
+
+.left-column[
+Strings
+]
+--
+.right-column2[
+This is computer jargon for text as when you type normal words into the R console it will  refer look for functions or variables by that name.
+{{content}}
+]
+--
+
+We tell the computer that we are inputting text by wrapping quotation marks around our text. We can use either `" "` or `' '`, as long they are paired.
+
+{{content}}
+
+--
+
+
+```r
+text_variable &lt;- "A single element of text, even though it contains many words"
+```
+{{content}}
+
+--
+
+
+```r
+text_variable
+```
+
+```
+## [1] "A single element of text, even though it contains many words"
+```
+---
+
+# Variable types
+
+.left-column[
+Concatenation
+]
+
+--
+
+.right-column[
+
+If we want a variable to have multiple elements then we have to join the elements 
+together. This is called **concatenation** (or combining) and we do this by using
+the `c()` command.
+{{content}}
+]
+
+--
+
+Each element is seperated by a comma
+
+```
+some_numbers &lt;- c(1,2,3,4)
+
+weekend &lt;- c("Saturday", "Sunday")
+```
+{{content}}
+--
+
+If we mix data types, `R` converts everything to strings
+
+```r
+mixed_data &lt;- c(1, 2, " 3", 4)
+```
+
+{{content}}
+
+--
+
+
+```r
+mixed_data
+```
+
+```
+## [1] "1"  "2"  " 3" "4"
+```
+
+{{content}}
+
+---
+
+# R notation
+
+.left-column[
+Logical
+.right[`==` &lt;br/&gt;
+`&amp;` &lt;br/&gt;
+`|` &lt;br/&gt;
+`&gt;` &lt;br/&gt;
+`&lt;`&lt;br/&gt;
+`&gt;=`&lt;br/&gt;
+]
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+Missing Data
+.right[`NA`&lt;br/&gt;
+`NULL`&lt;br/&gt;
+]
+]
+--
+
+.right-column[&lt;br/&gt;
+Is equivalent / identical to &lt;br/&gt;
+Logical AND
+&lt;br/&gt;
+Logical OR
+&lt;br/&gt;
+Greater than
+&lt;br/&gt;
+Less than
+&lt;br/&gt;
+Greater than or equal to
+
+{{content}}
+]
+--
+
+```r
+a &lt;- 1
+b &lt;- 2
+b &gt;= a
+```
+
+```
+## [1] TRUE
+```
+{{content}}
+--
+&lt;br/&gt;
+missing &lt;br/&gt;
+not a number (e.g. divide by 0 or try to take a log of a negative number)
+{{content}}
+
+
+---
+
+class: inverse, center, middle
+
+#Exercise 1
+---
+
+# Go to R-Studio Cloud
+
+.left-column[
+Open the `basicR.R` script 
+&lt;br/&gt;&lt;br/&gt;
+Create a &lt;br/&gt;variable
+&lt;br/&gt;
+&lt;br/&gt;
+Create another variable
+&lt;br/&gt;
+&lt;br/&gt;
+Divide your numerical variable by 2
+&lt;br/&gt;
+&lt;br/&gt;
+Add your name to your string variable
+&lt;br/&gt;
+&lt;br/&gt;
+Add a 5th number to your numerical variable
+]
+--
+
+.right-column2[
+&lt;br/&gt;&lt;br/&gt;
+using the **Files** sub-tab in the **Outputs** window
+{{content}}
+]
+&lt;br/&gt;&lt;br/&gt;
+
+--
+
+&lt;br/&gt;
+containing the strings: John, Paul, Ringo, George
+
+{{content}}
+
+--
+&lt;br/&gt;
+consisting of the numbers: 200, 515, 180, 160
+
+{{content}}
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+store these new values as a new variable
+{{content}}
+
+--
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+use `c()` to update and store you name variable
+{{content}}
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+update and store you numerical variable
+{{content}}
+---
+
+class: inverse, center, middle
+
+&lt;img src="img/nerd_yes.gif" alt="nerd_yes" width='300'/&gt;
+
+---
+
+
+# Data frames
+
+In healthcare we primarily deal with tabular data
+
+--
+
+This should be organised in a *tidy* format with variable names on top and samples along the sides
+
+--
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; Sepal.Length &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Sepal.Width &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Petal.Length &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Petal.Width &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Patient.ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hb &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SBP &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; WCC &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Diabetes &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CAD &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 112 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 139 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 107 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 85 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 182 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
----
-
 
 ---
+class: highlight-last-item
 
+# Data Frames
+
+In R data frames can hold different types of data, with each column equivalent to its own variable.
+
+--
+
+We can populate the data frame with raw data from an imported file (e.g. a CSV), 
+or using values already assigned to a variable.
+
+--
+
+We use the function called `data.frame()` to do this. 
+
+Each column is given a name and assigned values from a variable.
+
+
+```r
+some_numbers &lt;- c(2,3,4)
+some_letters &lt;- c("a", "b", "c")
+
+df &lt;- data.frame( numbers = some_numbers,
+                  letters = some_letters )
+df
+```
+
+```
+##   numbers letters
+## 1       2       a
+## 2       3       b
+## 3       4       c
+```
+
+---
+class: show-only-last-code-result
+# Data frames
+
+We can access different components of the data frame using special operators
+
+To extract a named column we can use `$` operator with the column name
+
+
+```r
+df$numbers
+```
+
+```
+## [1] 2 3 4
+```
+
+We can also extract values using square bracket indexing: `[rows, columns]`
+
+
+```r
+df[1, ]
+```
+
+```
+##   numbers letters
+## 1       2       a
+```
+
+
+```r
+df[ , 2]
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+
+
+```r
+df[1, 2]
+```
+
+```
+## [1] "a"
+```
 
 ---
 
@@ -376,28 +828,14 @@ DT::datatable(
 )
 ```
 
-<div id="htmlwidget-872d2bbc60adaba0f729" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-872d2bbc60adaba0f729">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5d3127ac11670484d585" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5d3127ac11670484d585">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
 
 ---
 
-# Some Tips
-
-- A countdown timer can be added to every page of the slides using the `countdown` option under `nature`, e.g. if you want to spend one minute on every page when you give the talk, you can set:
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          countdown: 60000
-    ```
-
-    Then you will see a timer counting down from `01:00`, to `00:59`, `00:58`, ... When the time is out, the timer will continue but the time turns red.
-    
----
 
 # Some Tips
 
@@ -778,7 +1216,7 @@ class: center, bottom, inverse
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
+"highlightStyle": "dracula",
 "highlightLines": true,
 "countIncrementalSlides": false
 });

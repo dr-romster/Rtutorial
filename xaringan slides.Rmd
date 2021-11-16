@@ -5,10 +5,11 @@ institute: "NIHR Academic Clinical Lecturer <br/> University of Cambridge"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
-    css: [default, metropolis-fonts]
+    chakra: libs/remark-latest.min.js
+    css: [default, 'custom1.css', "rladies-fonts"]
     lib_dir: libs
     nature:
-      highlightStyle: github
+      highlightStyle: foundation
       highlightLines: true
       countIncrementalSlides: false
 ---
@@ -34,6 +35,13 @@ options(htmltools.dir.version = FALSE)
 
 .show-only-last-code-result pre + pre:not(:last-of-type) code[class="remark-code"] {
     display: none;
+  
+.right-column2{
+  width: 70%;
+  float: right;
+  padding-top: 1em;
+  padding-left: 0.5em;
+}
 ```
 
 
@@ -41,7 +49,7 @@ options(htmltools.dir.version = FALSE)
 
 class: highlight-last-item
 
-# We have lots to talk about:
+# We have lots to talk about
 
 - The basics of `R`
 
@@ -115,7 +123,7 @@ Talks to other computer languages
 
 **2005** Imperial & Cambridge
 
-**2005 - 13** FY, Core medicine, 1 year in Sydney ICU, Core anaesthetics
+**2005 - 13** FY, Core medicine, Sydney (ICU, 1 yr), Core anaesthetics
 
 **2013** St3 Anaesthetics East of England, FRCA
 
@@ -140,14 +148,67 @@ background-size: 80%
 
 ---
 
+
+# UndeR the Hood
+
+<center>
+
+```{r echo=FALSE}
+
+library(DiagrammeR)
+grViz("digraph flowchart  {
+      # node definitions with substituted label text
+      node [fontname = Courier, shape = oval, color = cornflowerblue]        
+      tab1 [label = '@@1']
+      tab6 [label = '@@6']
+      tab7 [label = '@@7']
+  
+      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]
+      tab3 [label = '@@3']
+      
+      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]
+      tab2 [label = '@@2']
+      
+      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]
+      tab5 [label = '@@5']
+      
+      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]
+      tab4 [label = '@@4']
+      
+      # edge definitions with the node IDs
+      tab1 -> tab3 ->tab6 -> tab7;
+      tab2 -> tab3;
+      tab4 -> tab2;
+      tab3 -> tab4;
+      tab5 -> tab3;
+      tab5 -> tab2;
+      tab7 -> tab6 -> tab3;
+      }
+
+      [1]: '3rd Party App (packages)'
+      [2]: 'R-Studio'
+      [3]: 'R'
+      [4]: 'Output'
+      [5]: 'User Input'
+      [6]: 'S3/S4/C'
+      [7]: 'Machine code'
+      ")
+
+```
+
+</center>
+---
+
 class: inverse, middle, center
+
 ## https://rstudio.cloud/project/750723
 
-
 ---
+
 background-image: url(img/RstudioGUI.png)
 background-size: 95%
 class: inverse
+
 .pull-left[
 <br/>
 <br/>
@@ -181,170 +242,485 @@ class: inverse
 ]
 
 
+---
+class: inverse, middle, center
+
+.center[ <img src="https://media.giphy.com/media/xUOxf7XfmpxuSode1O/giphy.gif" alt="dancing gif" width="800"/>]
 
 ---
+
 class: inverse, middle, center
 
 # The Basics
 
 ---
 
-# UndeR the Hood
-
-
-```{r echo=FALSE}
-
-library(DiagrammeR)
-grViz("digraph flowchart  {
-      # node definitions with substituted label text
-      node [fontname = Helvetica, shape = oval, color = cornflowerblue]        
-      tab1 [label = '@@1']
-      tab6 [label = '@@6']
-      tab7 [label = '@@7']
-  
-      node [fontname = Helvetica, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]
-      tab3 [label = '@@3']
-      
-      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]
-      tab2 [label = '@@2']
-      
-      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]
-      tab5 [label = '@@5']
-      
-      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]
-      tab4 [label = '@@4']
-      
-      # edge definitions with the node IDs
-      tab1 -> tab3 ->tab6 -> tab7;
-      tab2 -> tab3;
-      tab4 -> tab2;
-      tab3 -> tab4;
-      tab5 -> tab3;
-      tab7 -> tab6 -> tab3;
-      }
-
-      [1]: '3rd Party App (packages)'
-      [2]: 'Rstudio'
-      [3]: 'R'
-      [4]: 'Output'
-      [5]: 'User Input'
-      [6]: 'S3/S4/C'
-      [7]: 'Machine code'
-      ")
-
-```
-
----
-
 # Getting Started
 
-To start a new script in the **Editor** window press this button ![](img/start_script.png){width=70%}
+To start a new script in the **Editor** window press this button and select *R Script* <br/><img src="img/start_script.png" width=300>
+<br/>
 
-We write our code in script windows and send them to the **Console** using this button ![](img/run.png)
+We write our code in script windows and send them to the **Console** by highlighting our code and using this button <br/><img src="img/run.png", alt = "run", width=150> <br/> Or we can press Ctrl + Enter (&#8984; + Enter on Mac)
+<br/>
+
+*NB Enter just adds new lines to the script editor, but in the console it will run what you have entered *
+
+Errors show up as .red[red text] in the **Console**
 
 ---
-# remark.js vs xaringan
 
-Some differences between using remark.js (left) and using **xaringan** (right):
+class: show-only-last-code-result
 
-.pull-left[
-1. Start with a boilerplate HTML file;
+# Setting off...
 
-1. Plain Markdown;
 
-1. Write JavaScript to autoplay slides;
+.left-column[
 
-1. Manually configure MathJax;
+Mathematical operations
 
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
 ]
 
-.pull-right[
-1. Start with an R Markdown document;
+--
 
-1. R Markdown (can embed R/other code chunks);
 
-1. Provide an option `autoplay`;
+.right-column[
+```{r}
+1+2
+```
+{{content}}
 
-1. MathJax just works;<sup>*</sup>
-
-1. Highlight code with `{{}}`;
-
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
 ]
-
-.footnote[[*] Not really. See next page.]
-
----
-
----
-
-# R Code
-
-```{r comment='#'}
-# a boring regression
-fit = lm(dist ~ 1 + speed, data = cars)
-coef(summary(fit))
-dojutsu = c('地爆天星', '天照', '加具土命', '神威', '須佐能乎', '無限月読')
-grep('天', dojutsu, value = TRUE)
-```
-
----
-
-# R Plots
-
-```{r cars, fig.height=4, dev='svg'}
-par(mar = c(4, 4, 1, .1))
-plot(cars, pch = 19, col = 'darkgray', las = 1)
-abline(fit, lwd = 2)
-```
-
----
-
-# Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+--
+The other operators are **+   -   &#42;   /** 
 
 ```{r}
-knitr::kable(head(iris), format = 'html')
+10-3
+```
+{{content}}
+--
+
+```{r}
+2*3
+```
+{{content}}
+--
+
+```{r}
+4/5
+```
+
+{{content}}
+
+---
+
+class: show-only-last-code-result
+
+# What happened to your results?
+
+.left-column[
+Variables and assignment
+
+]
+
+--
+
+.right-column[ 
+To store values we need to **assign** our results or data to a **variable**
+
+{{content}}
+]
+
+--
+
+We do **assignment** with either `<-` or `=`
+{{content}}
+--
+
+```{r} 
+a <- 1
+```
+{{content}}
+--
+
+Asking the computer to re*call* this variable will return the stored information
+
+```{r}
+a
+```
+{{content}}
+--
+We can store different types of data in a variable
+
+```{r}
+day <- "Monday"
+day
+```
+{{content}}
+
+---
+
+# Variable conventions
+
+.left-column[
+
+Naming variables
+]
+
+.footnote[ `==` means *equivalence* and returns either `TRUE` or `FALSE` based on a comparison of the left and right sides]
+
+--
+
+.right-column[
+
+Use any text but you can't use spaces or a number of special characters:
+
+      ^*%$@#!|/~()[]{}\
+{{content}}
+]
+--
+Variable names are case sensitive
+
+```{r echo = T}
+a <- 1
+A <- 2
+a == A
+```
+
+{{content}}
+--
+
+You can use `_` or `.` in variable names to make them easier to read: <br/> <br/>
+`magic_number <- 7`
+
+{{content}}
+
+---
+
+# Variable types
+
+.left-column[
+Strings
+]
+--
+.right-column2[
+This is computer jargon for text as when you type normal words into the R console it will  refer look for functions or variables by that name.
+{{content}}
+]
+--
+
+We tell the computer that we are inputting text by wrapping quotation marks around our text. We can use either `" "` or `' '`, as long they are paired.
+
+{{content}}
+
+--
+
+```{r}
+text_variable <- "A single element of text, even though it contains many words"
+```
+{{content}}
+
+--
+
+```{r}
+text_variable
+```
+---
+
+# Variable types
+
+.left-column[
+Concatenation
+]
+
+--
+
+.right-column[
+
+If we want a variable to have multiple elements then we have to join the elements 
+together. This is called **concatenation** (or combining) and we do this by using
+the `c()` command.
+{{content}}
+]
+
+--
+
+Each element is seperated by a comma
+
+```
+some_numbers <- c(1,2,3,4)
+
+weekend <- c("Saturday", "Sunday")
+```
+{{content}}
+--
+
+If we mix data types, `R` converts everything to strings
+```{r}
+mixed_data <- c(1, 2, " 3", 4)
+```
+
+{{content}}
+
+--
+
+```{r}
+mixed_data
+```
+
+{{content}}
+
+---
+
+# R notation
+
+.left-column[
+Logical
+.right[`==` <br/>
+`&` <br/>
+`|` <br/>
+`>` <br/>
+`<`<br/>
+`>=`<br/>
+]
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Missing Data
+.right[`NA`<br/>
+`NULL`<br/>
+]
+]
+--
+
+.right-column[<br/>
+Is equivalent / identical to <br/>
+Logical AND
+<br/>
+Logical OR
+<br/>
+Greater than
+<br/>
+Less than
+<br/>
+Greater than or equal to
+
+{{content}}
+]
+--
+```{r}
+a <- 1
+b <- 2
+b >= a
+```
+{{content}}
+--
+<br/>
+missing <br/>
+not a number (e.g. divide by 0 or try to take a log of a negative number)
+{{content}}
+
+
+---
+
+class: inverse, center, middle
+
+#Exercise 1
+---
+
+# Go to R-Studio Cloud
+
+.left-column[
+Open the `basicR.R` script 
+<br/><br/>
+Create a <br/>variable
+<br/>
+<br/>
+Create another variable
+<br/>
+<br/>
+Divide your numerical variable by 2
+<br/>
+<br/>
+Add your name to your string variable
+<br/>
+<br/>
+Add a 5th number to your numerical variable
+]
+--
+
+.right-column2[
+<br/><br/>
+using the **Files** sub-tab in the **Outputs** window
+{{content}}
+]
+<br/><br/>
+
+--
+
+<br/>
+containing the strings: John, Paul, Ringo, George
+
+{{content}}
+
+--
+<br/>
+consisting of the numbers: 200, 515, 180, 160
+
+{{content}}
+
+--
+
+<br/>
+<br/>
+store these new values as a new variable
+{{content}}
+
+--
+<br/>
+<br/>
+<br/>
+<br/>
+use `c()` to update and store you name variable
+{{content}}
+
+--
+
+<br/>
+<br/>
+update and store you numerical variable
+{{content}}
+---
+
+class: inverse, center, middle
+
+<img src="img/nerd_yes.gif" alt="nerd_yes" width='300'/>
+
+---
+
+
+# Data frames
+
+In healthcare we primarily deal with tabular data
+
+--
+
+This should be organised in a *tidy* format with variable names on top and samples along the sides
+
+--
+
+```{r echo = FALSE}
+set.seed(1234)
+df_ex <- knitr::kable(data.frame("Patient ID"= seq(1:10),
+                        "Hb" = round(rnorm(10, 10, 2),1),
+                        "SBP" = round(rnorm(10, 110, 30),0),
+                        "WCC" = round(rnorm(10, 8, 3),1),
+                        "Diabetes" = rbinom(10, 1, 0.5),
+                        "CAD" = rbinom(10, 1, 0.2)), 
+             format = 'html' )
+df_ex
+```
+
+
+---
+class: highlight-last-item
+
+# Data Frames
+
+In R data frames can hold different types of data, with each column equivalent to its own variable.
+
+--
+
+We can populate the data frame with raw data from an imported file (e.g. a CSV), 
+or using values already assigned to a variable.
+
+--
+
+We use the function called `data.frame()` to do this. 
+
+Each column is given a name and assigned values from a variable.
+--
+
+
+```{r}
+some_numbers <- c(2,3,4)
+some_letters <- c("a", "b", "c")
+
+df <- data.frame( numbers = some_numbers,
+                  letters = some_letters )
+df
 ```
 
 ---
 
+# Data frames
 
----
+We can access different components of the data frame using special operators
 
+To extract a named column we can use `$` operator with the column name
 
----
+--
 
-```{r eval=require('DT'), tidy=FALSE}
-DT::datatable(
-  head(iris, 10),
-  fillContainer = FALSE, options = list(pageLength = 8)
-)
+```{R}
+df$numbers
 ```
 
----
+--
+
+We can also extract values using square bracket indexing: `[rows, columns]`
+
+```{r}
+df[1, ]
+```
+--
+
+```{r}
+df[ , 2]
+```
+
+--
+
+```{r}
+df[1, 2]
+```
 
 
 ---
+class:show-only-last-code-result  
 
-# Some Tips
+# Data frames
 
-- A countdown timer can be added to every page of the slides using the `countdown` option under `nature`, e.g. if you want to spend one minute on every page when you give the talk, you can set:
+We can access the top 5 or bottom 5 rows by using the `head()` and `tail()` functions. 
 
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          countdown: 60000
-    ```
+```{r}
+head(df)
+```
 
-    Then you will see a timer counting down from `01:00`, to `00:59`, `00:58`, ... When the time is out, the timer will continue but the time turns red.
-    
+--
+
+The `summary()` function gives us a glimpse of a data frame and some statistics associated with each variable.
+
+```{r}
+summary(df)
+```
+--
+
+The `str()` function gives us a glimpse of the structure, but without the stats. 
+```{r}
+str(df)
+```
+We can view this information in the **Environment** window.
+
 ---
+
+# Anatomy of a function
+
+If data frame are the 'objects' in R, then functions are the verbs that manipulate them
+
+.blue [plot]
+---
+
 
 # Some Tips
 
@@ -371,107 +747,11 @@ DT::datatable(
 
 ---
 
-# Some Tips
 
-- There are several ways to build incremental slides. See [this presentation](https://slides.yihui.org/xaringan/incremental.html) for examples.
 
-- The option `highlightLines: true` of `nature` will highlight code lines that start with `*`, or are wrapped in `{{ }}`, or have trailing comments `#<<`;
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          highlightLines: true
-    ```
-
-    See examples on the next page.
 
 ---
 
-# Some Tips
-
-
-.pull-left[
-An example using a leading `*`:
-
-    ```r
-    if (TRUE) {
-    ** message("Very important!")
-    }
-    ```
-Output:
-```r
-if (TRUE) {
-* message("Very important!")
-}
-```
-
-This is invalid R code, so it is a plain fenced code block that is not executed.
-]
-
-.pull-right[
-An example using `{{}}`:
-
-````
-`r ''````{r tidy=FALSE}
-if (TRUE) {
-*{{ message("Very important!") }}
-}
-```
-````
-Output:
-```{r tidy=FALSE}
-if (TRUE) {
-{{ message("Very important!") }}
-}
-```
-
-It is valid R code so you can run it. Note that `{{}}` can wrap an R expression of multiple lines.
-]
-
----
-
-# Some Tips
-
-An example of using the trailing comment `#<<` to highlight lines:
-
-````markdown
-`r ''````{r tidy=FALSE}
-library(ggplot2)
-ggplot(mtcars) + 
-  aes(mpg, disp) + 
-  geom_point() +   #<<
-  geom_smooth()    #<<
-```
-````
-
-Output:
-
-```{r tidy=FALSE, eval=FALSE}
-library(ggplot2)
-ggplot(mtcars) + 
-  aes(mpg, disp) + 
-  geom_point() +   #<<
-  geom_smooth()    #<<
-```
-
----
-
-# Some Tips
-
-When you enable line-highlighting, you can also use the chunk option `highlight.output` to highlight specific lines of the text output from a code chunk. For example, `highlight.output = TRUE` means highlighting all lines, and `highlight.output = c(1, 3)` means highlighting the first and third line.
-
-````md
-`r ''````{r, highlight.output=c(1, 3)}
-head(iris)
-```
-````
-
-```{r, highlight.output=c(1, 3), echo=FALSE}
-head(iris)
-```
-
-Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about R's recycling of vectors)
 
 ---
 
