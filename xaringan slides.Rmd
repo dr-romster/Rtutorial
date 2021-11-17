@@ -895,7 +895,7 @@ This involves rapid iterations of the above cycle, which is facilitated by easy 
 
 --
 
-The goal of the any data science work is to tell a story and good, clean graphics are a good way to do this. 
+The goal of data science work is to tell a story and easy to interpret visualisation of the data is a good way to achieve this. 
 
 
 ---
@@ -969,12 +969,12 @@ summary(larynx_df)
 
 Use `?laryngoscope` to read the documentation and better appreciate the contents of this data frame.
 
-How many female patients are there in this data set?
+###How many female patients are there in this data set?
 
-How many patients are there with ASA 3?
+###How many patients are there with ASA 3?
 
 
-**Tip use the `count()` function from the `dplyr` package**
+**.red[Tip:] use the `count()` function from the `dplyr` package**
 
 
 ---
