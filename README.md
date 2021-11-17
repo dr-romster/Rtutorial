@@ -1,6 +1,6 @@
 # `R` Tutorial
 
-`R` Introduction Workshop for Cambridge SMART Course 2019
+`R` Introduction Workshop for Cambridge SMART Course 
 ---
 ---
 
@@ -10,7 +10,6 @@ The .R files are from the RStudio Cloud instance on which this tutorial is run f
 
 There is also a similar tutorial here for biologists which builds up to generation of a volcano plot for gene expression data found in the `ggpubr` package.
 
-  
 
 
 Files:
@@ -22,10 +21,10 @@ Files:
         setup.R
 
         
-Previous year's tutorial is  archived in the 2018 folder. There are separate instructions and synthetic data there with a QI focus. 
+Previous years' tutorial is  archived in the 2018 folder. There are separate instructions and synthetic data there with a QI focus. 
 
 ___
-*R Samanta, November 2019*  
+*R Samanta*  
 *University of Cambridge*  
 
 
