@@ -812,7 +812,7 @@ At the end of the documentation there are usually examples
 {{content}}
 --
 
-If you're still stuck then Google / Stack Overflow are your friends
+If you are still stuck then Google / Stack Overflow are your friends
 {{content}}
 
 ---
@@ -980,8 +980,7 @@ Use `?laryngoscope` to read the documentation and better appreciate the contents
 #Recap
 
 You now understand the following terms
-
-.right_column[ Variable <br/><br/>
+.right-column[ Variable <br/><br/>
 String <br/><br/>
 Data frame<br/><br/>
 Concatenate<br/><br/>
@@ -992,13 +991,12 @@ Function<br/><br/>
 #Recap
 
 You can
-
-.right_column[
+.right-column[
   Assign variables<br/><br/>
   Manipulate the values in a varible using functions and operations<br/><br/>
 
   Access values contained in data frames<br/><br/>
-  Quickly obtain insights into the structure and nature of data in a data frame
+  Quickly obtain insights into the structure and nature of values in a data frame
 ]
 
 ---
