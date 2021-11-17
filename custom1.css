@@ -72,6 +72,7 @@ th, td { padding: 5px; }
 }
 .red { color: red; }
 .blue { color: blue; }
+.purple { color: rgb(134, 8, 134); }
 
 .bg_xari {
   position: relative;

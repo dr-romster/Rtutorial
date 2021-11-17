@@ -72,7 +72,7 @@ class: highlight-last-item
 
 --
 
-- Plotting, functions, data frames
+- Data frames, functions, plotting
 
 --
 
@@ -976,16 +976,40 @@ Use `?laryngoscope` to read the documentation and better appreciate the contents
 
 **.red[Tip:] use the `count()` function from the `dplyr` package**
 
+---
+#Recap
+
+You now understand the following terms
+
+.right_column[ Variable <br/><br/>
+String <br/><br/>
+Data frame<br/><br/>
+Concatenate<br/><br/>
+Function<br/><br/>
+]
+
+---
+#Recap
+
+You can
+
+.right_column[
+  Assign variables<br/><br/>
+  Manipulate the values in a varible using functions and operations<br/><br/>
+
+  Access values contained in data frames<br/><br/>
+  Quickly obtain insights into the structure and nature of data in a data frame
+]
 
 ---
 
 ## Importing and Exporting data
 
-We usually import delimited files into `R`: CSV, tab delimited. 
+We usually import delimited files into `R`: CSV, tab delimited
 
 --
 
-The `read.csv()` and `read.delim()` commands do this.
+The `read.csv()` and `read.delim()` commands do this
 
 ```{r echo=T, eval=F}
 new_df <- read.csv("path/to/file.csv",
@@ -994,13 +1018,21 @@ new_df <- read.csv("path/to/file.csv",
 
 --
 
-Excel files can also be read and imported, using the `readxl` package.
+Excel files can also be read and imported, using the `readxl` package
 
 --
 
 Data frames can be stored as `.csv` files using the `write.csv()` commands
 
-Plots can be saved as any number of formats: .png and .pdf are usually the best ones
+Plots can be saved in a number of formats
+
+.purple[.png] and .purple[.pdf] are good for cross-platform sharing
+
+Some journals request high resolution .purple[.tiff] files
+
+--
+
+Data frames and variables can be similarly exported `write.csv()` or saved as `.Rdata` objects
 
 ---
 #The next step: Rmarkdown
@@ -1011,13 +1043,13 @@ This is a combination of `R` code and text that can be used to generate:
 
 - papers
 
-- presentations  (This slide deck is written in Rmarkdown)
+- presentations  (like these slides)
 
 - dashboards
 
 --
 
-Data can be cleaned, visualised and interpreted to create a narrative. 
+Code can be run in chunks, which helps to breakdown your workflow, reduce congitive overload and support the narrative
 
 Use of comments (`#`) is essential to remind your future self what you were hoping to achieve at each step of your analysis
 
