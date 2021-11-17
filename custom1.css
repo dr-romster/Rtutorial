@@ -71,3 +71,23 @@ th, td { padding: 5px; }
   }
 }
 .red { color: red; }
+.blue { color: blue; }
+
+.bg_xari {
+  position: relative;
+  z-index: 1;
+}
+
+.bg_xari::before {    
+      content: "";
+      background-image: url("https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/Sharingan_triple.svg");
+      background-size: 25%;
+      background-repeat : no-repeat;
+      position: absolute;
+      top: 305px;
+      right: 100px;
+      bottom: 100px;
+      left: 405px;
+      opacity: 0.4;
+      z-index: -1;
+}

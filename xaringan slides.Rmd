@@ -5,7 +5,6 @@ institute: "NIHR Academic Clinical Lecturer <br/> University of Cambridge"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
-    chakra: libs/remark-latest.min.js
     css: [default, 'custom1.css', "rladies-fonts"]
     lib_dir: libs
     nature:
@@ -42,6 +41,8 @@ options(htmltools.dir.version = FALSE)
   padding-top: 1em;
   padding-left: 0.5em;
 }
+  
+
 ```
 
 
@@ -93,7 +94,7 @@ Talks to other computer languages
 
 .pull-right[
 
- .right[ <img src="img/excel_fail.png" alt="drawing" width="400"/>
+ .right[ <img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/excel_fail.png" alt="drawing" width="400"/>
 
 *The Guardian, 6th October 2020*
 
@@ -228,7 +229,7 @@ class: inverse
 ]
 .pull-right[
 <br/>
-## <nbsp/>Envrionment
+## <nbsp/>Environment
 <br/>
 <br/>
 <br/>
@@ -401,8 +402,9 @@ You can use `_` or `.` in variable names to make them easier to read: <br/> <br/
 .left-column[
 Strings
 ]
+
 --
-.right-column2[
+.right-column[
 This is computer jargon for text as when you type normal words into the R console it will  refer look for functions or variables by that name.
 {{content}}
 ]
@@ -529,7 +531,7 @@ class: inverse, center, middle
 #Exercise 1
 ---
 
-# Go to R-Studio Cloud
+## In R-Studio Cloud
 
 .left-column[
 Open the `basicR.R` script 
@@ -626,13 +628,13 @@ df_ex
 ---
 class: highlight-last-item
 
-# Data Frames
+# Data frames
 
 In R data frames can hold different types of data, with each column equivalent to its own variable.
 
 --
 
-We can populate the data frame with raw data from an imported file (e.g. a CSV), 
+We can populate the data frame with raw data from an imported file (e.g. a CSV, Excel file), 
 or using values already assigned to a variable.
 
 --
@@ -716,257 +718,322 @@ We can view this information in the **Environment** window.
 
 # Anatomy of a function
 
-If data frame are the 'objects' in R, then functions are the verbs that manipulate them
+If data frames are 'objects/nouns' in R, then functions are the verbs that manipulate them
 
-.blue [plot]
----
-
-
-# Some Tips
-
-- The title slide is created automatically by **xaringan**, but it is just another remark.js slide added before your other slides.
-
-    The title slide is set to `class: center, middle, inverse, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          titleSlideClass: [top, left, inverse]
-    ```
-    
+.center[<img src="img/anatomy.png" alt="functional anatomy" width="600">]
 --
 
-- If you'd like to create your own title slide, disable **xaringan**'s title slide with the `seal = FALSE` option of `moon_reader`.
+Functions can be built in, from packages or user-defined
 
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        seal: false
-    ```
+```{r echo=FALSE, eval = F, include = F}
 
+library(DiagrammeR)
+suppressPackageStartupMessages(library(widgetframe))
+DiagrammeR::mermaid("
+graph TB
+A(plot)-->B[verb]
+C(x)-->D[object]
+E(y)-->F[object]
+G(xlab)-->H[argument]
+")
+
+``` 
 ---
+# Anatomy of a function
 
+.left-column[
+nesting functions
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+?function.name
+]
 
+.right-column[
+Functions can be nested within each other, but you have to read them inside-out:
 
-
----
-
-
----
-
-# Some Tips
-
-- To make slides work offline, you need to download a copy of remark.js in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
-
-- You can use `xaringan::summon_remark()` to download the latest or a specified version of remark.js. By default, it is downloaded to `libs/remark-latest.min.js`.
-
-- Then change the `chakra` option in YAML to point to this file, e.g.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        chakra: libs/remark-latest.min.js
-    ```
-
-- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
-
----
-
-# Macros
-
-- remark.js [allows users to define custom macros](https://github.com/yihui/xaringan/issues/80) (JS functions) that can be applied to Markdown text using the syntax `![:macroName arg1, arg2, ...]` or `![:macroName arg1, arg2, ...](this)`. For example, before remark.js initializes the slides, you can define a macro named `scale`:
-
-    ```js
-    remark.macros.scale = function (percentage) {
-      var url = this;
-      return '<img src="' + url + '" style="width: ' + percentage + '" />';
-    };
-    ```
-
-    Then the Markdown text
-
-    ```markdown
-    ![:scale 50%](image.jpg)
-    ```
-
-    will be translated to
-    
-    ```html
-    <img src="image.jpg" style="width: 50%" />
-    ```
-
----
-
-# Macros (continued)
-
-- To insert macros in **xaringan** slides, you can use the option `beforeInit` under the option `nature`, e.g.,
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          beforeInit: "macros.js"
-    ```
-
-    You save your remark.js macros in the file `macros.js`.
-
-- The `beforeInit` option can be used to insert arbitrary JS code before `remark.create()`. Inserting macros is just one of its possible applications.
-
----
-
-# CSS
-
-Among all options in `xaringan::moon_reader`, the most challenging but perhaps also the most rewarding one is `css`, because it allows you to customize the appearance of your slides using any CSS rules or hacks you know.
-
-You can see the default CSS file [here](https://github.com/yihui/xaringan/blob/master/inst/rmarkdown/templates/xaringan/resources/default.css). You can completely replace it with your own CSS files, or define new rules to override the default. See the help page `?xaringan::moon_reader` for more information.
-
----
-
-# CSS
-
-For example, suppose you want to change the font for code from the default "Source Code Pro" to "Ubuntu Mono". You can create a CSS file named, say, `ubuntu-mono.css`:
-
-```css
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+```{r echo = T, eval = F}
+round(log10(x), 2)
 ```
 
-Then set the `css` option in the YAML metadata:
+This function take the log of *x*, before rounding the result to 2 decimal points. 
 
-```yaml
-output:
-  xaringan::moon_reader:
-    css: ["default", "ubuntu-mono.css"]
-```
+Be sure to have the correct number of **)**s
 
-Here I assume `ubuntu-mono.css` is under the same directory as your Rmd.
+<br/>
+Provides the help documentation for the given function
+{{content}}
+]
 
-See [yihui/xaringan#83](https://github.com/yihui/xaringan/issues/83) for an example of using the [Fira Code](https://github.com/tonsky/FiraCode) font, which supports ligatures in program code.
+--
 
----
+At the end of the documentation there are usually examples
+{{content}}
+--
 
-# CSS (with Sass)
-
-**xaringan** also supports Sass support via **rmarkdown**. Suppose you want to use the same color for different elements, e.g., first heading and bold text. You can create a `.scss` file, say `mytheme.scss`, using the [sass](https://sass-lang.com/) syntax with variables:
-
-```scss
-$mycolor: #ff0000; 
-.remark-slide-content > h1 { color: $mycolor; }
-.remark-slide-content strong { color: $mycolor; }
-```
-
-Then set the `css` option in the YAML metadata using this file placed under the same directory as your Rmd:
-
-```yaml
-output:
-  xaringan::moon_reader:
-    css: ["default", "mytheme.scss"]
-```
-
-This requires **rmarkdown** >= 2.8 and the [**sass**](https://rstudio.github.io/sass/) package. You can learn more about **rmarkdown** and **sass** support in [this blog post](https://blog.rstudio.com/2021/04/15/2021-spring-rmd-news/#sass-and-scss-support-for-html-based-output) and in [**sass** overview vignette](https://rstudio.github.io/sass/articles/sass.html).
+If you're still stuck then Google / Stack Overflow are your friends
+{{content}}
 
 ---
 
-# Themes
+class: inverse, middle, center
 
-Don't want to learn CSS? Okay, you can use some user-contributed themes. A theme typically consists of two CSS files `foo.css` and `foo-fonts.css`, where `foo` is the theme name. Below are some existing themes:
-
-```{r, R.options=list(width = 70)}
-names(xaringan:::list_css())
-```
+# Exercise 2
 
 ---
 
-# Themes
+.left-column[
+Create a data frame
+<br/>
+<br/>
+<br/><br/>
+Extract data from a data frame
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/>
+Assign new data to a specified location in a data frame
+]
 
-To use a theme, you can specify the `css` option as an array of CSS filenames (without the `.css` extensions), e.g.,
+.right-column[Create a data frame using the two variables (one with character strings, the other containing some numbers) into a data frame 
+{{content}}
+]
 
-```yaml
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts]
-```
+--
+<br/><br/><br/><br/>
+Call the first row of the data frame
+{{content}}
 
-If you want to contribute a theme to **xaringan**, please read [this blog post](https://yihui.org/en/2017/10/xaringan-themes).
+--
+
+<br/>
+Call the second column of the data frame
+{{content}}
+
+--
+
+<br/>
+Call the third value in the first column of the data frame
+{{content}}
+
+--
+
+<br/><br/>
+Change the value at this location to 2021
+{{content}}
+
 
 ---
 class: inverse, middle, center
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
-background-size: contain
 
-# Naruto
+.center[<img src="img/hancock.gif" alt="Matt sitting" width="600"/>]
+---
+
+class: inverse, middle, center
+
+.center[<img src="img/hancock2.gif" alt="Matt sitting" width="600"/>]
+---
+background-image: url(img/brb.gif)
+background-size: contain
+class: inverse
 
 ---
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
-background-size: 100px
-background-position: 90% 8%
 
-# Sharingan
+## The data science circle of life
 
-The R package name **xaringan** was derived<sup>1</sup> from **Sharingan**, a dōjutsu in the Japanese anime _Naruto_ with two abilities:
+.center[<img src="img/tidy_circle.png" alt="Tidy workflow" width="600"/>]
 
-- the "Eye of Insight"
+<br/>
+--
 
-- the "Eye of Hypnotism"
+`R` is particularly adept at **exploratory data analysis** 
 
-I think a presentation is basically a way to communicate insights to the audience, and a great presentation may even "hypnotize" the audience.<sup>2,3</sup>
+--
 
-.footnote[
-[1] In Chinese, the pronounciation of _X_ is _Sh_ /ʃ/ (as in _shrimp_). Now you should have a better idea of how to pronounce my last name _Xie_.
+This involves rapid iterations of the above cycle, which is facilitated by easy to read code and high quality plots.
 
-[2] By comparison, bad presentations only put the audience to sleep.
+--
 
-[3] Personally I find that setting background images for slides is a killer feature of remark.js. It is an effective way to bring visual impact into your presentations.
+The goal of the any data science work is to tell a story and good, clean graphics are the best way to do this. 
+
+
+---
+# ggplot2: A grammar of graphics
+
+`ggplot2` is a library in `R` which takes a data frame and first requests the 
+plotting parameter before it draws anything
+
+These parameters are referred to as **aesthetics**
+
+Different plots are then added using the given aesthetics, these are referred to 
+as **geometries**
+--
+.pull-left[
+
+```{R echo=T, eval=FALSE, include=T}
+library(ggplot2)
+ggplot(data = iris, 
+       aes( x = Species, 
+          y = Sepal.Length, 
+          colour = Species) ) +
+       geom_boxplot() + 
+       geom_jitter() + 
+       theme_bw()
+```
 ]
 
+.pull-right[
+```{R echo=F}
+library(ggplot2)
+
+ggplot( data = iris, 
+       aes( x = Species, 
+          y = Sepal.Length,
+          colour = Species) ) +
+       geom_boxplot( ) + 
+       geom_jitter( ) + 
+  theme_bw( )
+```
+]
 ---
+class: inverse, center, middle
 
-# Naruto terminology
-
-The **xaringan** package borrowed a few terms from Naruto, such as
-
-- [Sharingan](https://naruto.fandom.com/wiki/Sharingan) (写輪眼; the package name)
-
-- The [moon reader](https://naruto.fandom.com/wiki/Moon_Reader) (月読; an attractive R Markdown output format)
-
-- [Chakra](https://naruto.fandom.com/wiki/Chakra) (查克拉; the path to the remark.js library, which is the power to drive the presentation)
-
-- [Nature transformation](https://naruto.fandom.com/wiki/Nature_Transformation) (性質変化; transform the chakra by setting different options)
-
-- The [infinite moon reader](https://naruto.fandom.com/wiki/Infinite_Tsukuyomi) (無限月読; start a local web server to continuously serve your slides)
-
-- The [summoning technique](https://naruto.fandom.com/wiki/Summoning_Technique) (download remark.js from the web)
-
-You can click the links to know more about them if you want. The jutsu "Moon Reader" may seem a little evil, but that does not mean your slides are evil.
+.center[<img src="img/remi_fent.png" width="800"/>]
 
 ---
+class: center, middle, inverse
 
-class: center
-
-# Hand seals (印)
-
-Press `h` or `?` to see the possible ninjutsu you can use in remark.js.
-
-![](https://upload.wikimedia.org/wikipedia/commons/7/7e/Mudra-Naruto-KageBunshin.svg)
+.center[<img src="img/tv.png" width="800"/>]
 
 ---
 
-class: center, middle
+# The `medicaldata` package
+
+This is package that contains some curated medical data which we can use to practice with
+
+--
+
+Load the laryngoscopy data and inspect the data frame
+
+```{r echo= T, eval = F}
+library(medicaldata)
+larynx_df <- laryngoscope
+head(larynx_df)
+str(larynx_df)
+summary(larynx_df)
+```
+
+--
+
+Use `?laryngoscope` to read the documentation and better appreciate the contents of this data frame.
+
+How many female patients are there in this data set?
+
+How many patients are there with ASA 3?
+
+
+**Tip use the `count()` function from the `dplyr` package**
+
+
+---
+
+## Importing and Exporting data
+
+We usually import delimited files into `R`: CSV, tab delimited. 
+
+--
+
+The `read.csv()` and `read.delim()` commands do this.
+
+```{r echo=T, eval=F}
+new_df <- read.csv("path/to/file.csv",
+                   header = TRUE)
+```
+
+--
+
+Excel files can also be read and imported, using the `readxl` package.
+
+--
+
+Data frames can be stored as `.csv` files using the `write.csv()` commands
+
+Plots can be saved as any number of formats: .png and .pdf are usually the best ones
+
+---
+#The next step: Rmarkdown
+
+This is a combination of `R` code and text that can be used to generate:
+
+- reports
+
+- papers
+
+- presentations  (This slide deck is written in Rmarkdown)
+
+- dashboards
+
+--
+
+Data can be cleaned, visualised and interpreted to create a narrative. 
+
+Use of comments (`#`) is essential to remind your future self what you were hoping to achieve at each step of your analysis
+
+
+---
+class: highlight-last-item
+#Finally
+
+One of the main advantages of `R`, for beginner programmers, is that objects, functions and concepts are generally consistent across almost all packages. 
+--
+
+- Data frames
+
+--
+
+- Lists
+
+--
+
+- Models
+
+--
+
+- Functions
+
+--
+
+This is both an advantage and a limitation if you wish to become a more advanced 
+software developer. 
+
+
+---
+class: inverse, center, middle, bg_xari
+<br/>
+<br/>
+<br/>
+<br/>
 
 # Thanks!
+<br/>
+<br/>
+<br/>
+<br/>
+rs307@cam.ac.uk
+
+@dr-romster
+
 
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
 The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
 
----
-background-image: url(img/Sharingan_triple.svg)
-background-size: 15%
-
-
-class: center, bottom, inverse
-
-# made with **xaringan**
 
