@@ -617,14 +617,14 @@ store these new values as a new variable
 <br/>
 <br/>
 <br/>
-use `c()` to update and store you name variable
+use `c()` to update and store your name variable
 {{content}}
 
 --
 
 <br/>
 <br/>
-update and store you numerical variable
+update and store your numerical variable
 {{content}}
 ---
 
