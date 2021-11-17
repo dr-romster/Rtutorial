@@ -13,18 +13,19 @@ output:
       countIncrementalSlides: false
     seal: false
 ---
-class: middle left
-background-image: url("img/CUni.png")
+class: segue, left
+background-image: url("img/CUni2.png")
 background-size: 300px
 background-position: 95% 5%
 
 <br/>
 <br/><br/><br/><br/><br/><br/>
-.title1[SMART-R 2021]<br/>
+.title1[SMART-R]<br/>
 .title2[Dr Romit Samanta <br/>
 NIHR Academic Clinical Lecturer in ICM <br/>
-Department of Medicine ]
-
+Department of Medicine & Addenbrooke's Hospital <br>
+<br>
+`r Sys.Date()`]
 
 
 ```{r setup, include=FALSE}
@@ -101,7 +102,7 @@ Customised, high quality outputs
 Version control 
 
 
-**Reproducible workflows**
+.bolder[Reproducible workflows]
 
 
 Talks to other computer languages
@@ -163,7 +164,7 @@ Talks to other computer languages
 <br/><br/>
  PhD  [*Endotype Discovery in ARDS*]
 <br/><br/>
- NIHR Academic Clinincal Lecturer in ICM
+ NIHR Academic Clinical Lecturer in ICM
 <br/><br/>
 {{content}}
 ]
@@ -235,7 +236,7 @@ grViz("digraph flowchart  {
 
 class: inverse, middle, center
 
-## https://rstudio.cloud/project/750723
+## https://rstudio.cloud/project/676865
 
 ---
 
@@ -291,7 +292,7 @@ class: inverse, middle, center
 
 # Getting Started
 
-To start a new script in the **Editor** window press this button and select *R Script* <br/><img src="img/start_script.png" width=300>
+To start a new script in the .bolder[Editor] window press this button and select *R Script* <br/><img src="img/start_script.png" width=300>
 <br/>
 
 We write our code in script windows and send them to the **Console** by highlighting our code and using this button <br/><img src="img/run.png", alt = "run", width=150> <br/> Or we can press Ctrl + Enter (&#8984; + Enter on Mac)
@@ -406,7 +407,7 @@ Naming variables
 
 .right-column[
 
-Use any text but you can't use spaces or a number of special characters:
+Use any text but you cant use spaces or a number of special characters:
 
       ^*%$@#!|/~()[]{}\
 {{content}}
@@ -524,7 +525,7 @@ Logical
 <br/>
 Missing Data
 .right[`NA`<br/>
-`NULL`<br/>
+`NULL/NaN`<br/>
 ]
 ]
 --
@@ -553,9 +554,14 @@ b >= a
 --
 <br/>
 missing <br/>
-not a number (e.g. divide by 0 or try to take a log of a negative number)
+not a number/not defined (e.g. divide by 0)
 {{content}}
 
+---
+
+class: inverse, center, middle
+
+.center[<img src="img/boris_conf.gif" alt="Baffled Boris" width="450"/>]
 
 ---
 
@@ -969,9 +975,9 @@ summary(larynx_df)
 
 Use `?laryngoscope` to read the documentation and better appreciate the contents of this data frame.
 
-###How many female patients are there in this data set?
+####How many female patients are there?
 
-###How many patients are there with ASA 3?
+####How many patients have an ASA score of 3?
 
 
 **.red[Tip:] use the `count()` function from the `dplyr` package**
@@ -979,7 +985,7 @@ Use `?laryngoscope` to read the documentation and better appreciate the contents
 ---
 #Recap
 
-You now understand the following terms
+####You now understand the following terms
 .right-column[ Variable <br/><br/>
 String <br/><br/>
 Data frame<br/><br/>
@@ -990,7 +996,7 @@ Function<br/><br/>
 ---
 #Recap
 
-You can
+####You can
 .right-column[
   Assign variables<br/><br/>
   Manipulate the values in a varible using functions and operations<br/><br/>
@@ -1111,15 +1117,16 @@ class: inverse, center, middle, bg_xari
 <br/>
 <br/>
 <br/>
-
+<br/>
 # Thanks!
 <br/>
 <br/>
 <br/>
-<br/>
-rs307@cam.ac.uk
+`r icons::simple_icons("minutemailer")` rs307@cam.ac.uk
 
-@dr-romster
+`r icons::simple_icons("twitter")` @dr_romster
+
+`r icons::simple_icons("github")` dr-romster
 
 
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).

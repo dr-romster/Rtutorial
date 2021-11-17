@@ -85,7 +85,7 @@ th, td { padding: 5px; }
       background-size: 25%;
       background-repeat : no-repeat;
       position: absolute;
-      top: 305px;
+      top: 295px;
       right: 100px;
       bottom: 100px;
       left: 405px;
@@ -107,14 +107,53 @@ th, td { padding: 5px; }
   z-index: -1;
 }
 
-
-.title1{
+.title1b{
   font-size: 4em;
   font-family: Georgia, serif;
   text-align: middle;
   color: #386ca1;
 }
-.title2{
+.title2b{
   font-size: 1.25em;
   color: #386ca1;
+}
+
+
+.title1{
+  font-size: 4em;
+  text-align: middle;
+  color: #ffffff;
+}
+.title2{
+  font-size: 1.25em;
+  color: #ffffff;
+}
+
+.brand-red { color: #e64626; }
+.brand-blue { color: #0148A4; }
+.brand-yellow { color: #FFB800; }
+.brand-charcoal {color: #424242; }
+.brand-gray {color: #F1F1F1;}
+.brand-grey {color: #F1F1F1;}
+.black { color: black; }
+.white { color: white; }
+.green { color: green; }
+.yellow { color: yellow; }
+.orange { color: orange; }
+.gray { color: gray; }
+.grey { color: gray; }
+
+.bold { font-weight: bold; }
+.bolder { font-weight: bolder; }
+
+/* segue */
+.segue {
+  text-align:center;
+  vertical-align: middle;
+  background-color: #191970;
+  color: #ffffff;
+  text-shadow: 0 0 20px #333;
+}
+.segue .remark-slide-number {
+  display: none;
 }
