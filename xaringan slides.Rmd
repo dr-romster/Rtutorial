@@ -564,7 +564,7 @@ class: inverse, center, middle
 #Exercise 1
 ---
 
-## In R-Studio Cloud
+## In R-Studio cloud
 
 .left-column[
 Open the `basicR.R` script 
@@ -641,18 +641,18 @@ In healthcare we primarily deal with tabular data
 
 --
 
-This should be organised in a *tidy* format with variable names on top and samples along the sides
+This should be organised in a .red[tidy] format with variable names on top and samples along the sides
 
 --
 
 ```{r echo = FALSE}
 set.seed(1234)
-df_ex <- knitr::kable(data.frame("Patient ID"= seq(1:10),
+df_ex <- knitr::kable(head(data.frame("Patient ID"= seq(1:10),
                         "Hb" = round(rnorm(10, 10, 2),1),
                         "SBP" = round(rnorm(10, 110, 30),0),
                         "WCC" = round(rnorm(10, 8, 3),1),
                         "Diabetes" = rbinom(10, 1, 0.5),
-                        "CAD" = rbinom(10, 1, 0.2)), 
+                        "CCF" = rbinom(10, 1, 0.2)),8) , 
              format = 'html' )
 df_ex
 ```
@@ -925,7 +925,7 @@ ggplot(data = iris,
 ]
 
 .pull-right[
-```{R echo=F}
+```{R echo=F, out.height=290 }
 library(ggplot2)
 
 ggplot( data = iris, 
@@ -940,7 +940,7 @@ ggplot( data = iris,
 ---
 class: inverse, center, middle
 
-.center[<img src="img/remi_fent.png" width="800"/>]
+.center[<img src="img/remi_fent2.png" width="800"/>]
 
 ---
 class: center, middle, inverse
@@ -1065,6 +1065,10 @@ Do one or two online courses (Udemy, coursera) - but there is plenty of free con
 --
 
 A support community (real people, NHS-R, StackOverflow, Twitter)
+
+--
+
+You may need to learn some statistics and causal inference principles to make the most of `R`
 
 ---
 class: inverse, center, middle

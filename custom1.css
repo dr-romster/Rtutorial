@@ -106,10 +106,7 @@ th, td { padding: 5px; }
   z-index: -1;
 }
 
-.title-slide h1, h2, h3 {
-  text-align: center;
-  color: #386ca1;
-}
+
 .title1{
   font-size: 4em;
   font-family: Georgia, serif;

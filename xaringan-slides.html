@@ -188,8 +188,8 @@ background-size: 80%
 
 &lt;center&gt;
 
-<div id="htmlwidget-89517946d58c53cac0e8" style="width:504px;height:504px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-89517946d58c53cac0e8">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-be0dc1f9b07f8cadbfa0" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be0dc1f9b07f8cadbfa0">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ---
@@ -578,7 +578,7 @@ class: inverse, center, middle
 #Exercise 1
 ---
 
-## In R-Studio Cloud
+## In R-Studio cloud
 
 .left-column[
 Open the `basicR.R` script 
@@ -655,7 +655,7 @@ In healthcare we primarily deal with tabular data
 
 --
 
-This should be organised in a *tidy* format with variable names on top and samples along the sides
+This should be organised in a .red[tidy] format with variable names on top and samples along the sides
 
 --
 
@@ -667,7 +667,7 @@ This should be organised in a *tidy* format with variable names on top and sampl
    &lt;th style="text-align:right;"&gt; SBP &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; WCC &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Diabetes &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; CAD &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CCF &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -732,22 +732,6 @@ This should be organised in a *tidy* format with variable names on top and sampl
    &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 85 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 182 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5.2 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
@@ -1067,12 +1051,12 @@ ggplot(data = iris,
 ]
 
 .pull-right[
-![](xaringan-slides_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+&lt;img src="xaringan-slides_files/figure-html/unnamed-chunk-28-1.png" height="290" /&gt;
 ]
 ---
 class: inverse, center, middle
 
-.center[&lt;img src="img/remi_fent.png" width="800"/&gt;]
+.center[&lt;img src="img/remi_fent2.png" width="800"/&gt;]
 
 ---
 class: center, middle, inverse
@@ -1199,6 +1183,10 @@ Do one or two online courses (Udemy, coursera) - but there is plenty of free con
 --
 
 A support community (real people, NHS-R, StackOverflow, Twitter)
+
+--
+
+You may need to learn some statistics and causal inference principles to make the most of `R`
 
 ---
 class: inverse, center, middle
