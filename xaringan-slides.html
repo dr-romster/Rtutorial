@@ -4,7 +4,7 @@
     <title>SMART:R 2021</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr Romit Samanta" />
-    <meta name="date" content="2021-11-17" />
+    <meta name="date" content="2021-11-18" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
@@ -29,7 +29,7 @@ background-position: 95% 5%
 NIHR Academic Clinical Lecturer in ICM &lt;br/&gt;
 Department of Medicine &amp; Addenbrooke's Hospital &lt;br&gt;
 &lt;br&gt;
-2021-11-17]
+2021-11-18]
 
 
 
@@ -177,6 +177,16 @@ Talks to other computer languages
 &lt;br/&gt;
 *No academic credentials before embarking on the UDA post*
 {{content}}
+
+---
+
+class: 
+# You are not committing to this journey
+
+&lt;center&gt;
+<div id="htmlwidget-62cdc67f77b03fd3cade" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-62cdc67f77b03fd3cade">{"x":{"diagram":"digraph flowchart  {\n      graph[layout = dot, rankdir = LR]\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=2.4, height = 1.5, fixedsize = false, fontsize = 45]        \n      tab1 [label = \"Naive\"]\n      tab2 [label = \"Familiar\"]\n      tab3 [label = \"Proficient\"]\n      tab4 [label = \"Developer\"]\n      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,\n      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        \n      tab5 [label = \"Audits \n QI \n Papers\"]\n      tab6 [label = \"Statistics \n New ad-hoc\n methods\"]\n      tab7 [label = \"New packages / \n methods for\n publication \n Software engineer\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]\n      tab1 -> tab5  [style=invis, minlen=2.5]\n      tab2 -> tab6  [style=invis, minlen=2.5]\n      tab3 -> tab7  [style=invis, minlen=2.5]\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+&lt;/center&gt;
 ---
 
 background-image: url(img/baseR.png)
@@ -189,8 +199,8 @@ background-size: 80%
 
 &lt;center&gt;
 
-<div id="htmlwidget-38f19c16921050d8dc58" style="width:504px;height:504px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-38f19c16921050d8dc58">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b635b807d72e14c80df3" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b635b807d72e14c80df3">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ---
@@ -1057,7 +1067,7 @@ ggplot(data = iris,
 ]
 
 .pull-right[
-&lt;img src="xaringan-slides_files/figure-html/unnamed-chunk-28-1.png" height="290" /&gt;
+&lt;img src="xaringan-slides_files/figure-html/unnamed-chunk-29-1.png" height="290" /&gt;
 ]
 ---
 class: inverse, center, middle
