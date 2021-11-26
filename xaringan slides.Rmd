@@ -21,11 +21,11 @@ background-position: 95% 5%
 <br/>
 <br/><br/><br/><br/><br/><br/>
 .title1[SMART-R]<br/>
-.title2[Dr Romit Samanta <br/>
-NIHR Academic Clinical Lecturer in ICM <br/>
+.title2[Dr Romit Samanta] <br/>
+.title3[NIHR Academic Clinical Lecturer in ICM <br/>
 Department of Medicine & Addenbrooke's Hospital <br>
 <br>
-`r Sys.Date()`]
+SMART Course `r Sys.Date()`]
 
 
 ```{r setup, include=FALSE}
@@ -152,7 +152,7 @@ Talks to other computer languages
 ]
 
 .right-column2[<br/>
- Imperial & Cambridge
+Cambridge & Imperial
 <br/><br/>
  FY, Core medicine, Sydney (ICU, 1 yr), Core anaesthetics
 <br/><br/>
@@ -162,7 +162,7 @@ Talks to other computer languages
 <br/><br/>
  University Division of Anaesthesia (UDA) post
 <br/><br/>
- PhD  [*Endotype Discovery in ARDS*]
+ PhD  [ Thesis: *Endotype Discovery in ARDS* ]
 <br/><br/>
  NIHR Academic Clinical Lecturer in ICM
 <br/><br/>
@@ -171,7 +171,7 @@ Talks to other computer languages
 
 --
 
-*Not an ACF*
+*Never an ACF*
 <br/>
 <br/>
 *No academic credentials before embarking on the UDA post*
@@ -189,7 +189,7 @@ library(DiagrammeR)
 grViz("digraph flowchart  {
       graph[layout = dot, rankdir = LR]
       # node definitions with substituted label text
-      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=2.4, height = 1.5, fixedsize = false, fontsize = 45]        
+      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        
       tab1 [label = '@@1']
       tab2 [label = '@@2']
       tab3 [label = '@@3']
@@ -216,6 +216,7 @@ grViz("digraph flowchart  {
       [7]: 'New packages / \\n methods for\\n publication \\n Software engineer'
       ")
 ```
+<br/><br/>
 </center>
 ---
 
@@ -336,8 +337,12 @@ class: inverse, middle, center
 To start a new script in the .bolder[Editor] window press this button and select *R Script* <br/><img src="img/start_script.png" width=300>
 <br/>
 
+--
+
 We write our code in script windows and send them to the **Console** by highlighting our code and using this button <br/><img src="img/run.png", alt = "run", width=150> <br/> Or we can press Ctrl + Enter (&#8984; + Enter on Mac)
 <br/>
+
+--
 
 *NB Enter just adds new lines to the script editor, but in the console it will run what you have entered *
 
@@ -546,13 +551,15 @@ mixed_data
 
 {{content}}
 
+
 ---
 
 # R notation
 
 .left-column[
 Logical
-.right[`==` <br/>
+.right[`!` <br/>
+`==` <br/>
 `&` <br/>
 `|` <br/>
 `>` <br/>
@@ -572,6 +579,7 @@ Missing Data
 --
 
 .right-column[<br/>
+Not (the opposite of) <br/>
 Is equivalent / identical to <br/>
 Logical AND
 <br/>
@@ -672,6 +680,8 @@ use `c()` to update and store your name variable
 <br/>
 <br/>
 update and store your numerical variable
+
+`r countdown::countdown(minutes = 4, warn_when=60)`
 {{content}}
 ---
 
@@ -688,7 +698,7 @@ In healthcare we primarily deal with tabular data
 
 --
 
-This should be organised in a .red[tidy] format with variable names on top and samples along the sides
+This should be organised in a .red[tidy] format with variable names as column headers and samples in rows
 
 --
 
@@ -908,13 +918,10 @@ Call the third value in the first column of the data frame
 
 <br/><br/>
 Change the value at this location to 2021
+`r countdown::countdown(minutes = 5, warn_when=60)`
+
 {{content}}
 
-
----
-class: inverse, middle, center
-
-.center[<img src="img/hancock.gif" alt="Matt sitting" width="600"/>]
 ---
 
 class: inverse, middle, center
@@ -948,19 +955,23 @@ The goal of data science work is to tell a story and easy to interpret visualisa
 ---
 # ggplot2: A grammar of graphics
 
-`ggplot2` is a library in `R` which takes a data frame and first defines the 
+`ggplot2` is a **package** for `R` which takes a data frame and first defines the 
 plotting parameters before it draws anything
 
 These parameters are referred to as **aesthetics**
 
-Different plots are then added, using the given aesthetics.
+--
+
+Different plots are then added, using the given aesthetics
 
 These are referred to as **geometries**
+
 --
 .pull-left[
 
 ```{R echo=T, eval=FALSE, include=T}
 library(ggplot2)
+
 ggplot(data = iris, 
        aes( x = Species, 
           y = Sepal.Length, 
@@ -972,7 +983,7 @@ ggplot(data = iris,
 ]
 
 .pull-right[
-```{R echo=F, out.height=290 }
+```{R echo=F, out.height=290, fig.retina = 3 }
 library(ggplot2)
 
 ggplot( data = iris, 
@@ -1020,8 +1031,9 @@ Use `?laryngoscope` to read the documentation and better appreciate the contents
 
 ####How many patients have an ASA score of 3?
 
+`r countdown::countdown(minutes = 3)`
 
-**.red[Tip:] use the `count()` function from the `dplyr` package**
+**.red[Tip:] There is a `count()` function in the `dplyr` package**
 
 ---
 #Recap
@@ -1103,49 +1115,66 @@ Use of comments (`#`) is essential to remind your future self what you were hopi
 class: highlight-last-item
 #Finally
 
-One of the main advantages of `R`, for beginner programmers, is that objects, functions and concepts are generally consistent across almost all packages. 
+One of the main advantages of `R`, for beginner programmers, is that objects and concepts are generally consistent across most packages. 
 --
 
-- Data frames
-
---
-
+.pull-left[
+<br/>
+<br/>
 - Lists
-
---
-
+<br/><br/>
 - Models
-
---
-
+<br/><br/>
 - Functions
+]
 
 --
 
-This is both an advantage and a limitation if you wish to become a more advanced 
-software developer. 
+.pull-right[
+
+```{r eval = TRUE, out.width='450px', echo = FALSE}
+knitr::include_graphics("img/mistype.jpg")
+```
+]
+---
+background-image: url(img/where_to.png)
+background-size: cover
+
+# Where to go next
+
+
+Obtain **some data** 
+
+--
+
+**Clean** it and **plot** it using `R`
+
+Write a report using `Rmarkdown` 
+
+--
+
+Do one or two online courses *(not essential)*
+
+--
+
+A **support community **
+
+- real people, NHS-R, StackOverflow 
+
+- Twitter `#TidyTuesday`
+
+
+--
+
+[**Enjoy the experience!**](https::/twitter.com)
 
 ---
-class: highlight-last-item
-#Where to go next
 
-Get some data - better if it is from a project you are interested in
+class: inverse, center, middle
 
---
+<img src="img/dr_who_tt.png" alt="tidy Tuesday" width="450"/>
 
-Clean it and plot it using `R`
-
---
-
-Do one or two online courses (Udemy, coursera) - but there is plenty of free content on YouTube.
-
---
-
-A support community (real people, NHS-R, StackOverflow, Twitter)
-
---
-
-You may need to learn some statistics and causal inference principles to make the most of `R`
+`r icons::simple_icons("twitter")`  `#TidyTuesday` [week of 22 November 2021](https://twitter.com/issa_madjid/status/1463285632424370181?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1463285632424370181%7Ctwgr%5E%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fpublish.twitter.com%2F%3Fquery%3Dhttps3A2F2Ftwitter.com2Fissa_madjid2Fstatus2F1463285632424370181widget%3DTweet)
 
 ---
 class: inverse, center, middle

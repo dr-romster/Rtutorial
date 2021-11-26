@@ -125,9 +125,15 @@ th, td { padding: 5px; }
   color: #ffffff;
 }
 .title2{
+  font-size: 2em;
+  color: #ffffff;
+}
+
+.title3{
   font-size: 1.25em;
   color: #ffffff;
 }
+
 
 .brand-red { color: #e64626; }
 .brand-blue { color: #0148A4; }
@@ -150,7 +156,7 @@ th, td { padding: 5px; }
 .segue {
   text-align:center;
   vertical-align: middle;
-  background-color: #191970;
+  background-color: #11475e;
   color: #ffffff;
   text-shadow: 0 0 20px #333;
 }
