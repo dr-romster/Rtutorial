@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Science in Healthcare</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr Romit Samanta" />
+    <meta name="date" content="2022-07-14" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
+    <link rel="stylesheet" href="custom1.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: segue, left
+background-image: url("img/CUni2.png")
+background-size: 300px
+background-position: 95% 5%
+
+&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+.title1[Data Science in Healthcare]&lt;br/&gt;
+.title2[Dr Romit Samanta] &lt;br/&gt;
+.title3[NIHR Academic Clinical Lecturer in ICM &lt;br/&gt;
+Heart &amp; Lung Research Institute, University of Cambridge &lt;br/&gt; 
+Royal Papworth &amp; Addenbrooke's Hospital &lt;br/&gt;
+&lt;br/&gt;
+East of England Anaesthetics Trainee Forum 2022-07-14]
+
+
+
+
+&lt;style type="text/css"&gt;
+.highlight-last-item &gt; ul &gt; li, 
+.highlight-last-item &gt; ol &gt; li {
+  opacity: 0.5;
+}
+.highlight-last-item &gt; ul &gt; li:last-of-type,
+.highlight-last-item &gt; ol &gt; li:last-of-type {
+  opacity: 1;
+}
+
+.show-only-last-code-result pre + pre:not(:last-of-type) code[class="remark-code"] {
+    display: none;
+  
+.right-column2{
+  width: 70%;
+  float: right;
+  padding-top: 1em;
+  padding-left: 0.5em;
+}
+
+&lt;/style&gt;
+
+---
+
+# Declarations
+
+Clinical lectureship funded by the National Institute for Healthcare Research (NIHR)
+
+PhD funded by:
+- Medical Research Council
+- NIHR
+- Glaxosmithkline plc
+- Cambrdige Biomedical Research Center
+
+No conflicts of interest
+
+All the software I use is open source and free.
+
+---
+
+class: highlight-last-item
+
+# We have lots to talk about
+
+- How I got into this mess
+
+--
+
+- What is Data Science?
+
+--
+
+- Why is this new?
+
+--
+
+- How can I jump on this bandwagon?
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+
+.red[I am not going to talk about:]
+
+
+
+- Statistics
+
+
+- Machine learning
+
+
+- Artifical intelligence
+
+
+- Google chatbots that think they might be alive
+
+---
+
+# Anyone can do this
+
+.left-column[
+**2005**
+&lt;br/&gt;&lt;br/&gt;
+**2005 - 13**
+&lt;br/&gt;&lt;br/&gt;
+**2013**
+&lt;br/&gt;&lt;br/&gt;
+*2015*&lt;br/&gt;&lt;br/&gt;
+**2016 - 17**&lt;br/&gt;&lt;br/&gt;
+**2018 - 21**&lt;br/&gt;&lt;br/&gt;
+**2021**
+]
+
+.right-column2[&lt;br/&gt;
+Cambridge &amp; Imperial
+&lt;br/&gt;&lt;br/&gt;
+ FY, Core medicine, Sydney (ICU, 1 yr), Core anaesthetics
+&lt;br/&gt;&lt;br/&gt;
+ St3 Anaesthetics East of England, FRCA
+&lt;br/&gt;&lt;br/&gt;
+ *SMART course*
+&lt;br/&gt;&lt;br/&gt;
+ University Division of Anaesthesia (UDA) post
+&lt;br/&gt;&lt;br/&gt;
+ PhD  [ Thesis: *Endotype Discovery in ARDS* ]
+&lt;br/&gt;&lt;br/&gt;
+ NIHR Academic Clinical Lecturer in ICM
+&lt;br/&gt;&lt;br/&gt;
+{{content}}
+]
+
+--
+
+*Not an ACF*
+&lt;br/&gt;
+&lt;br/&gt;
+*No academic credentials before embarking on the UDA post*
+{{content}}
+
+
+---
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data3.png" alt="data_science1" width="800"/&gt;]
+
+
+---
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data2.png" alt="data_science1" width="800"/&gt;]
+
+
+---
+
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data1.png" alt="data_science2" width="800"/&gt;]
+
+
+---
+
+# The well-rehearsed path
+
+--
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/res1.png" alt="research-path" width="610"/&gt;]
+
+
+---
+
+
+# So what has changed?
+
+--
+
+Data availability
+
+--
+
+Accessibility of methods
+
+
+--
+
+The need for a narrative that:
+
+--
+ 
+ - Changes behaviour
+
+--
+
+ - Influences policy
+
+
+---
+
+class: highlight-last-item
+
+# Why can't I just use Excel?
+
+.pull-left[
+Data size limitations
+
+
+Statistical methods
+
+
+Customised, high quality outputs
+
+
+Version control 
+
+
+Reproducible workflows
+
+
+Talk to other computer languages
+
+
+Grinds to a halt
+]
+
+
+.pull-right[
+
+ .right[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/excel_fail.png" alt="drawing" width="400"/&gt;
+
+*The Guardian, 6th October 2020*
+
+] ]
+
+---
+
+
+# R alternatives
+
+1 Python 
+
+
+2 Julia
+
+
+3 Matlab (££)
+
+
+4 STATA (stats only) (££)
+
+
+---
+
+class: 
+# You are not committing to this journey
+
+&lt;center&gt;
+<div id="htmlwidget-66839f1323b85ed3db65" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-66839f1323b85ed3db65">{"x":{"diagram":"digraph flowchart  {\n      graph[layout = dot, rankdir = LR]\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        \n      tab1 [label = \"Naive\"]\n      tab2 [label = \"Familiar\"]\n      tab3 [label = \"Proficient\"]\n      tab4 [label = \"Developer\"]\n      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,\n      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        \n      tab5 [label = \"Audits \n QI \n Papers\"]\n      tab6 [label = \"Statistics \n New ad-hoc\n methods\"]\n      tab7 [label = \"New packages / \n methods for\n publication \n Software engineer\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]\n      tab1 -> tab5  [style=invis, minlen=2.5]\n      tab2 -> tab6  [style=invis, minlen=2.5]\n      tab3 -> tab7  [style=invis, minlen=2.5]\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+&lt;br/&gt;&lt;br/&gt;
+&lt;/center&gt;
+---
+
+class: inverse, middle, center
+
+# FINE, but I just want to give an ANAESTHETIC!
+
+---
+
+# Data changes behaviour and practice
+
+--
+
+
+- RCoA: NAP 
+
+
+--
+
+- NELA
+
+--
+
+- National Hip Fracture Database
+
+
+.center[&lt;img src="img/nhfd_cuh.png" alt="national hip fracture DB CUH" width="650"/&gt;]
+
+
+---
+
+# Data changes behaviour and practice
+
+- Oxygen saturation measurement discrepancies between different races
+
+
+.center[&lt;img src="img/spo2_nejm.png", alt = "nejm spo2 discrepancy" width ="600"/&gt;]
+
+---
+
+
+## The data science circle of life
+
+.center[&lt;img src="img/tidy_circle.png" alt="Tidy workflow" width="600"/&gt;]
+
+&lt;br/&gt;
+--
+
+`R` is particularly adept at **exploratory data analysis** 
+
+--
+
+This involves rapid iterations of the above cycle, which is facilitated by easy to read code and high quality plots.
+
+--
+
+As a doctor you have .red[domain] knowledge which means you understand how the data is collected and why things are recorded the way that they are in electronic health care records. 
+
+
+---
+# ggplot2: A grammar of graphics
+
+`ggplot2` is a .red[package] for `R` which can help to create plots for data in a variety of different ways that can be iteratively improved to help convey the message. 
+
+--
+
+It makes exploration of data very easy and systematic
+
+--
+.pull-left[
+
+
+```r
+library(ggplot2)
+
+ggplot(data = iris, 
+       aes( x = Species, 
+          y = Sepal.Length, 
+          colour = Species) ) +
+       geom_boxplot() + 
+       geom_jitter() + 
+       theme_bw()
+```
+]
+
+.pull-right[
+&lt;img src="trainee-_forum_files/figure-html/unnamed-chunk-4-1.png" width="504" height="290" /&gt;
+]
+
+---
+
+class: inverse, center, middle
+
+.center[&lt;img src="img/boris_conf.gif" width="600"/&gt;]
+
+---
+class: highlight-last-item
+
+#Why I use `R`
+
+One of the main advantages of `R`, for beginner programmers, is that objects and concepts are generally consistent across most packages. 
+--
+
+.pull-left[
+&lt;br/&gt;
+&lt;br/&gt;
+- Lists
+&lt;br/&gt;&lt;br/&gt;
+- Models
+&lt;br/&gt;&lt;br/&gt;
+- Functions
+]
+
+--
+
+.pull-right[
+
+&lt;img src="img/mistype.jpg" width="450px" /&gt;
+]
+
+
+
+---
+class: inverse, center, middle
+
+## Data science offers the opportunity to address questions that previously, might only have been answered by specialised, established researchers.
+
+
+---
+
+class: inverse, center, middle
+
+.center[&lt;img src="img/dog-motor.gif" width="300"/&gt;]
+
+
+---
+class: inverse, center, middle
+
+.center[&lt;img src="img/remi_fent2.png" width="800"/&gt;]
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/H_and_L.png" width="650"/&gt;]
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/tv.png" width="800"/&gt;]
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/cov_compliance_raster.png" width="500"/&gt;]
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/lineage_plot_2022_07_05.png" width="600"/&gt;]
+
+---
+
+class: inverse, center, middle
+
+&lt;img src="img/gender_pay_TT.jpeg" alt="tidy Tuesday" width="380"/&gt;
+
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"&gt;&lt;/path&gt;&lt;/svg&gt;  `#TidyTuesday` [week of 05 July 2022](https://twitter.com/geokaramanis/status/1543270993455710210?s=20&amp;t=-uOXAlTg8lXTLMS7pcKLzw)
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/get-into-the-car.gif" width="350"/&gt;]
+
+---
+
+
+class: center, middle, inverse
+
+## It is probably no longer acceptable to say:
+
+### *"Let's try this, it will probably not do any harm"*
+
+
+---
+
+background-image: url(img/where_to.png)
+background-size: cover
+
+# Where to go next
+
+
+Find a question or a problem that interests you
+
+--
+
+Is this data available somewhere?
+
+--
+
+[eICU, MIMIC 3/4, UAmDb, Kaggle.com]
+
+--
+
+Clean / organise by learning a language
+
+--
+
+A support community
+
+- real people, NHS-R, StackOverflow 
+
+- Twitter
+
+--
+
+**Enjoy the experience!**
+
+---
+
+# How deep does this rabbit hole go?
+
+--
+
+- Cambridge center for AI in healthcare
+
+- Big Data institute, University of Oxford
+
+- UCL Institute for Health Informatics
+
+--
+
+- HDR UK
+
+.center[&lt;img src="img/hdr_uk.png" alt="hdr uk" width="450"/&gt;]
+
+
+---
+class: inverse, center, middle
+
+&lt;img src="img/sc_david.gif" alt="david gif" width="400"/&gt;
+
+---
+
+# My rabbit hole:
+
+.center[&lt;img src="img/CL projects.png" alt="CL projects" width=650/&gt;]
+
+---
+
+# What do I get out of it?
+
+--
+
+Problem solving
+
+--
+
+Using a different part of my brain
+
+--
+
+Genuine "Eureka!" moments
+
+--
+
+Collaboration
+
+--
+
+Contributing to some of the most important questions in my field
+
+--
+
+Less exhausted by clinical workload
+
+--
+
+How can I make changes? What is the narrative that will support change and what data do I need to provide?
+
+---
+
+class: inverse, center, middle
+
+&lt;img src="img/pixar.gif" alt="bad pixar meme" width=400/&gt;
+
+---
+
+background-image: url(img/rabbit-hole.png)
+background-size: cover
+class: inverse
+
+# So in Summary 
+
+--
+
+Data is .red[not] the new gold
+
+--
+
+It is more accessible than experimental research &lt;br/&gt;(which it does not replace)
+
+--
+
+Data science is not a life-sentence
+
+--
+
+Explore for yourself how far you can &lt;br/&gt; go down the rabbit hole...
+
+---
+
+class: inverse, center, middle, bg_xari
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+# Thank you for listening!
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M17.187 19.181L24 4.755 0 12.386l9.196 1.963.043 4.896 2.759-2.617-2.147-2.076 7.336 4.63z"&gt;&lt;/path&gt;&lt;/svg&gt; rs307@cam.ac.uk
+
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"&gt;&lt;/path&gt;&lt;/svg&gt; @dr_romster
+
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"&gt;&lt;/path&gt;&lt;/svg&gt; dr-romster
+
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "foundation",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
