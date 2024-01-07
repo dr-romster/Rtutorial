@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SMART:R 2022</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr Romit Samanta" />
+    <meta name="date" content="2023-10-03" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="custom1.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: segue, left
+background-image: url("img/CUni2.png")
+background-size: 300px
+background-position: 95% 5%
+
+&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+.title1[SMART-R]&lt;br/&gt;
+.title2[Dr Romit Samanta] &lt;br/&gt;
+.title3[NIHR Clinical Lecturer in ICM &lt;br/&gt;
+Heart and Lung Research Institute &amp; Addenbrooke's Hospital &lt;br&gt;
+&lt;br&gt;
+SMART Course 2023-10-03]
+
+
+
+
+&lt;style type="text/css"&gt;
+.highlight-last-item &gt; ul &gt; li, 
+.highlight-last-item &gt; ol &gt; li {
+  opacity: 0.5;
+}
+.highlight-last-item &gt; ul &gt; li:last-of-type,
+.highlight-last-item &gt; ol &gt; li:last-of-type {
+  opacity: 1;
+}
+
+.show-only-last-code-result pre + pre:not(:last-of-type) code[class="remark-code"] {
+    display: none;
+  
+.right-column2{
+  width: 70%;
+  float: right;
+  padding-top: 1em;
+  padding-left: 0.5em;
+}
+
+&lt;/style&gt;
+
+
+---
+background-image: url("img/HLRI.jpg")
+background-size: 400px
+background-position: 95% 90%
+
+# Declarations
+
+Clinical lectureship funded by the National Institute for Healthcare Research (NIHR)
+
+PhD funded by:
+- Medical Research Council
+- NIHR
+- Glaxosmithkline plc
+- Cambridge Biomedical Research Center
+
+No conflicts of interest
+
+All the software I use is open source and free.
+
+---
+
+class: highlight-last-item
+
+# We have lots to talk about
+
+- The basics of `R`
+
+--
+
+- Data frames, functions, plotting
+
+--
+
+- Using `R` for *your* projects
+
+--
+
+- Data science principles
+
+
+---
+# Anyone can do this
+
+.left-column[
+**2005**
+&lt;br/&gt;&lt;br/&gt;
+**2005 - 13**
+&lt;br/&gt;&lt;br/&gt;
+**2013**
+&lt;br/&gt;&lt;br/&gt;
+*2015*&lt;br/&gt;&lt;br/&gt;
+**2016 - 17**&lt;br/&gt;&lt;br/&gt;
+**2018 - 21**&lt;br/&gt;&lt;br/&gt;
+**2021**
+]
+
+.right-column2[&lt;br/&gt;
+Cambridge &amp; Imperial
+&lt;br/&gt;&lt;br/&gt;
+ FY, Core medicine, Sydney (ICU, 1 yr), Core anaesthetics
+&lt;br/&gt;&lt;br/&gt;
+ St3 Anaesthetics East of England, FRCA
+&lt;br/&gt;&lt;br/&gt;
+ *SMART course*
+&lt;br/&gt;&lt;br/&gt;
+ University Division of Anaesthesia (UDA) post
+&lt;br/&gt;&lt;br/&gt;
+ PhD  [ Thesis: *Endotype Discovery in ARDS* ]
+&lt;br/&gt;&lt;br/&gt;
+ NIHR Academic Clinical Lecturer in ICM
+&lt;br/&gt;&lt;br/&gt;
+{{content}}
+]
+
+--
+
+*Never an ACF*
+&lt;br/&gt;
+&lt;br/&gt;
+*No academic credentials before embarking on the UDA post*
+{{content}}
+---
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data3.png" alt="data_science3" width="800"/&gt;]
+
+
+---
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data2.png" alt="data_science2" width="800"/&gt;]
+
+
+---
+
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data1.png" alt="data_science1" width="800"/&gt;]
+
+
+---
+
+# The well-rehearsed path
+
+--
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/res1.png" alt="research-path" width="610"/&gt;]
+
+
+---
+
+
+# So what has changed?
+
+--
+
+Data availability
+
+Accessibility of methods
+
+--
+
+The need for a narrative that:
+
+ 
+ - Changes behaviour
+
+ - Influences policy
+
+
+
+---
+
+class: highlight-last-item
+
+# Why can't I just use Excel?
+
+.pull-left[
+Data size limitations
+
+
+Statistical methods
+
+
+Customised, high quality outputs
+
+
+Version control 
+
+
+.bolder[Reproducible workflows]
+
+
+Talks to other computer languages
+]
+
+
+.pull-right[
+
+ .right[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/excel_fail.png" alt="drawing" width="400"/&gt;
+
+*The Guardian, 6th October 2020*
+
+] ]
+
+---
+
+
+# R alternatives
+
+Python 
+
+
+Julia 
+
+
+Matlab (£)
+
+
+Graphpad Prism (£)
+
+
+STATA (£)
+
+
+
+---
+
+class: 
+# You are not committing to this journey
+
+&lt;center&gt;
+<div id="htmlwidget-db91351a2437c8c16d9a" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-db91351a2437c8c16d9a">{"x":{"diagram":"digraph flowchart  {\n      graph[layout = dot, rankdir = LR]\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        \n      tab1 [label = \"Naive\"]\n      tab2 [label = \"Familiar\"]\n      tab3 [label = \"Proficient\"]\n      tab4 [label = \"Developer\"]\n      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,\n      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        \n      tab5 [label = \"Audits \n QI \n Papers\"]\n      tab6 [label = \"Statistics \n New ad-hoc\n methods\"]\n      tab7 [label = \"New packages / \n methods for\n publication \n Software engineer\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]\n      tab1 -> tab5  [style=invis, minlen=2.5]\n      tab2 -> tab6  [style=invis, minlen=2.5]\n      tab3 -> tab7  [style=invis, minlen=2.5]\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+&lt;br/&gt;&lt;br/&gt;
+&lt;/center&gt;
+---
+
+
+class: inverse, middle, center
+
+# FINE, but I just want to give an anaesthetic!
+
+---
+
+# Data changes behaviour and practice
+
+--
+
+
+- RCoA: NAP 
+
+
+--
+
+- NELA
+
+
+- National Hip Fracture Database
+
+
+.center[&lt;img src="img/nhfd_cuh.png" alt="national hip fracture DB CUH" width="650"/&gt;]
+
+
+---
+
+# Data changes behaviour and practice
+
+Oxygen saturation measurement discrepancies between different skin tones. 
+
+
+.center[&lt;img src="img/spo2_nejm.png", alt = "nejm spo2 discrepancy" width ="600"/&gt;]
+
+---
+
+
+class: inverse, middle, center
+
+.center[&lt;img src="img/truss1.gif", alt = "Truss1" width ="600"/&gt;]
+
+---
+
+class: inverse, middle, center
+background-image: url(img/baseR.png)
+background-size: 80%
+
+---
+
+
+# UndeR the Hood
+
+&lt;center&gt;
+
+<div id="htmlwidget-7855065f1b65298d3bdc" style="width:504px;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7855065f1b65298d3bdc">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;/center&gt;
+---
+
+class: inverse, middle, center
+
+## https://rstudio.cloud/content/4956373
+
+## https://shorturl.at/abmO8
+
+
+---
+
+background-image: url(img/RstudioGUI.png)
+background-size: 95%
+class: inverse
+
+.pull-left[
+&lt;br/&gt;
+&lt;br/&gt;
+## Editor
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+## Console
+]
+.pull-right[
+&lt;br/&gt;
+## &lt;nbsp/&gt;Environment
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+## Output
+]
+
+
+---
+class: inverse, middle, center
+
+.center[ &lt;img src="https://media.giphy.com/media/xUOxf7XfmpxuSode1O/giphy.gif" alt="dancing gif" width="800"/&gt;]
+
+---
+
+class: inverse, middle, center
+
+# The Basics
+
+---
+
+# Getting Started
+
+To start a new script in the .bolder[Editor] window press this button and select *R Script* &lt;br/&gt;&lt;img src="img/start_script.png" width=300&gt;
+&lt;br/&gt;
+
+--
+
+We write our code in script windows and send them to the **Console** by highlighting our code and using this button &lt;br/&gt;&lt;img src="img/run.png", alt = "run", width=150&gt; &lt;br/&gt; Or we can press Ctrl + Enter (&amp;#8984; + Enter on Mac)
+&lt;br/&gt;
+
+--
+
+*NB Enter just adds new lines to the script editor, but in the console it will run what you have entered *
+
+Errors show up as .red[red text] in the **Console**
+
+---
+
+class: show-only-last-code-result
+
+# Setting off...
+
+
+.left-column[
+
+Mathematical operations
+
+]
+
+--
+
+
+.right-column[
+
+```r
+1+2
+```
+
+```
+## [1] 3
+```
+{{content}}
+
+]
+--
+The other operators are **+   -   &amp;#42;   /** 
+
+
+```r
+10-3
+```
+
+```
+## [1] 7
+```
+{{content}}
+--
+
+
+```r
+2*3
+```
+
+```
+## [1] 6
+```
+{{content}}
+--
+
+
+```r
+4/5
+```
+
+```
+## [1] 0.8
+```
+
+{{content}}
+
+---
+
+class: show-only-last-code-result
+
+# What happened to your results?
+
+.left-column[
+Variables and assignment
+
+]
+
+--
+
+.right-column[ 
+To store values we need to **assign** our results or data to a **variable**
+
+{{content}}
+]
+
+--
+
+We do **assignment** with either `&lt;-` or `=`
+{{content}}
+--
+
+
+```r
+a &lt;- 1
+```
+{{content}}
+--
+
+Asking the computer to re*call* this variable will return the stored information
+
+
+```r
+a
+```
+
+```
+## [1] 1
+```
+{{content}}
+--
+We can store different types of data in a variable
+
+
+```r
+day &lt;- "Monday"
+day
+```
+
+```
+## [1] "Monday"
+```
+{{content}}
+
+---
+
+# Variable conventions
+
+.left-column[
+
+Naming variables
+]
+
+.footnote[ `==` means *equivalence* and returns either `TRUE` or `FALSE` based on a comparison of the left and right sides]
+
+--
+
+.right-column[
+
+Use any text but you cant use spaces or a number of special characters:
+
+      ^*%$@#!|/~()[]{}\
+{{content}}
+]
+--
+Variable names are case sensitive
+
+
+```r
+a &lt;- 1
+A &lt;- 2
+a == A
+```
+
+```
+## [1] FALSE
+```
+
+{{content}}
+--
+
+You can use `_` or `.` in variable names to make them easier to read: &lt;br/&gt; &lt;br/&gt;
+`magic_number &lt;- 7`
+
+{{content}}
+
+---
+
+# Variable types
+
+.left-column[
+Strings
+]
+
+--
+.right-column[
+This is computer jargon for text as when you type normal words into the R console it will  refer look for functions or variables by that name.
+{{content}}
+]
+--
+
+We tell the computer that we are inputting text by wrapping quotation marks around our text. We can use either `" "` or `' '`, as long they are paired.
+
+{{content}}
+
+--
+
+
+```r
+text_variable &lt;- "A single element of text, even though it contains many words"
+```
+{{content}}
+
+--
+
+
+```r
+text_variable
+```
+
+```
+## [1] "A single element of text, even though it contains many words"
+```
+---
+
+# Variable types
+
+.left-column[
+Concatenation
+]
+
+--
+
+.right-column[
+
+If we want a variable to have multiple elements then we have to join the elements 
+together. This is called **concatenation** (or combining) and we do this by using
+the `c()` command.
+{{content}}
+]
+
+--
+
+Each element is seperated by a comma
+
+```
+some_numbers &lt;- c(1,2,3,4)
+
+weekend &lt;- c("Saturday", "Sunday")
+```
+{{content}}
+--
+
+If we mix data types, `R` converts everything to strings
+
+```r
+mixed_data &lt;- c(1, 2, " 3", 4)
+```
+
+{{content}}
+
+--
+
+
+```r
+mixed_data
+```
+
+```
+## [1] "1"  "2"  " 3" "4"
+```
+
+{{content}}
+
+
+---
+
+# R notation
+
+.left-column[
+Logical
+.right[`!` &lt;br/&gt;
+`==` &lt;br/&gt;
+`&amp;` &lt;br/&gt;
+`|` &lt;br/&gt;
+`&gt;` &lt;br/&gt;
+`&lt;`&lt;br/&gt;
+`&gt;=`&lt;br/&gt;
+]
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+Missing Data
+.right[`NA`&lt;br/&gt;
+`NULL/NaN`&lt;br/&gt;
+]
+]
+--
+
+.right-column[&lt;br/&gt;
+Not (the opposite of) &lt;br/&gt;
+Is equivalent / identical to &lt;br/&gt;
+Logical AND
+&lt;br/&gt;
+Logical OR
+&lt;br/&gt;
+Greater than
+&lt;br/&gt;
+Less than
+&lt;br/&gt;
+Greater than or equal to
+
+{{content}}
+]
+--
+
+```r
+a &lt;- 1
+b &lt;- 2
+b &gt;= a
+```
+
+```
+## [1] TRUE
+```
+{{content}}
+--
+&lt;br/&gt;
+missing &lt;br/&gt;
+not a number/not defined (e.g. divide by 0)
+{{content}}
+
+---
+
+class: inverse, center, middle
+
+.center[&lt;img src="img/boris_conf.gif" alt="Baffled Boris" width="450"/&gt;]
+
+---
+
+class: inverse, center, middle
+
+#Exercise 1
+---
+
+## In R-Studio cloud
+
+.left-column[
+Open the `basicR.R` script 
+&lt;br/&gt;&lt;br/&gt;
+Create a &lt;br/&gt;variable
+&lt;br/&gt;
+&lt;br/&gt;
+Create another variable
+&lt;br/&gt;
+&lt;br/&gt;
+Divide your numerical variable by 2
+&lt;br/&gt;
+&lt;br/&gt;
+Add your name to your string variable
+&lt;br/&gt;
+&lt;br/&gt;
+Add a 5th number to your numerical variable
+]
+--
+
+.right-column2[
+&lt;br/&gt;&lt;br/&gt;
+using the **Files** sub-tab in the **Outputs** window
+{{content}}
+]
+&lt;br/&gt;&lt;br/&gt;
+
+--
+
+&lt;br/&gt;
+containing the strings: John, Paul, Ringo, George
+
+{{content}}
+
+--
+&lt;br/&gt;
+consisting of the numbers: 200, 515, 180, 160
+
+{{content}}
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+store these new values as a new variable
+{{content}}
+
+--
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+use `c()` to update and store your name variable
+{{content}}
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+update and store your numerical variable
+
+<div class="countdown" id="timer_651bd393" style="right:0;bottom:0;" data-warnwhen="60">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+{{content}}
+---
+
+class: inverse, center, middle
+
+&lt;img src="img/truss-bell.gif" alt="nerd_yes" width='600'/&gt;
+
+---
+
+
+# Data frames
+
+--
+
+In healthcare we primarily deal with tabular data
+
+--
+
+This should be organised in a .red[tidy] format with variable names as column headers and samples in rows
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Patient.ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hb &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SBP &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; WCC &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Diabetes &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CCF &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 112 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 139 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 107 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+class: highlight-last-item
+
+# Data frames
+
+In R data frames can hold different types of data, with each column equivalent to its own variable.
+
+--
+
+We can populate the data frame with raw data from an imported file (e.g. a CSV, Excel file), 
+or using values already assigned to a variable.
+
+---
+
+class: highlight-last-item
+
+# Data frames
+We use the function called `data.frame()` to do this. 
+
+Each column is given a name and assigned values from a variable.
+--
+
+
+
+```r
+some_numbers &lt;- c(2,3,4)
+some_letters &lt;- c("a", "b", "c")
+
+df &lt;- data.frame( numbers = some_numbers,
+                  letters = some_letters )
+df
+```
+
+```
+##   numbers letters
+## 1       2       a
+## 2       3       b
+## 3       4       c
+```
+
+---
+
+# Data frames
+
+We can access different components of the data frame using special operators
+--
+
+To extract a named column we can use `$` operator with the column name
+
+
+
+```r
+df$numbers
+```
+
+```
+## [1] 2 3 4
+```
+
+--
+
+We can also extract values using square bracket indexing: `[rows, columns]`
+
+
+```r
+df[1, ]
+```
+
+```
+##   numbers letters
+## 1       2       a
+```
+--
+
+
+```r
+df[ , 2]
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+--
+
+
+```r
+df[1, 2]
+```
+
+```
+## [1] "a"
+```
+
+
+---
+class:show-only-last-code-result  
+
+# Data frames
+
+We can access the top 5 or bottom 5 rows by using the `head()` and `tail()` functions. 
+
+
+```r
+head(df)
+```
+
+```
+##   numbers letters
+## 1       2       a
+## 2       3       b
+## 3       4       c
+```
+
+--
+
+The `summary()` function gives us a glimpse of a data frame and some statistics associated with each variable.
+
+
+```r
+summary(df)
+```
+
+```
+##     numbers      letters         
+##  Min.   :2.0   Length:3          
+##  1st Qu.:2.5   Class :character  
+##  Median :3.0   Mode  :character  
+##  Mean   :3.0                     
+##  3rd Qu.:3.5                     
+##  Max.   :4.0
+```
+--
+
+The `str()` function gives us a glimpse of the structure, but without the stats. 
+
+```r
+str(df)
+```
+
+```
+## 'data.frame':	3 obs. of  2 variables:
+##  $ numbers: num  2 3 4
+##  $ letters: chr  "a" "b" "c"
+```
+We can view this information in the **Environment** window.
+
+---
+class:show-only-last-code-result  
+
+# Data frames
+
+If we want to observe all the data at once (like in Excel), then we can use the `View()` command 
+
+
+```r
+View(df)
+```
+
+---
+
+# Anatomy of a function
+
+If data frames are 'objects/nouns' in R, then functions are the verbs that manipulate them
+
+.center[&lt;img src="img/anatomy.png" alt="functional anatomy" width="600"&gt;]
+--
+
+Functions can be built in, from packages or user-defined
+
+
+---
+# Anatomy of a function
+
+.left-column[
+nesting functions
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+?function.name
+]
+
+.right-column[
+Functions can be nested within each other, but you have to read them inside-out:
+
+
+```r
+round(log10(x), 2)
+```
+
+This function take the log of *x*, before rounding the result to 2 decimal points. 
+
+Be sure to have the correct number of **.red[)]** s
+
+&lt;br/&gt;
+Provides the help documentation for the given function
+{{content}}
+]
+
+--
+
+At the end of the documentation there are usually examples
+{{content}}
+--
+
+If you are still stuck then Google / Stack Overflow are your friends
+{{content}}
+
+---
+
+class: inverse, middle, center
+
+# Exercise 2
+
+---
+
+.left-column[
+Create a data frame
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;
+Extract data from a data frame
+&lt;br/&gt;&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;
+&lt;br/&gt;
+Assign new data to a specified location in a data frame
+]
+
+.right-column[Create a data frame using the two variables (one with character strings, the other containing some numbers) into a data frame 
+{{content}}
+]
+
+--
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+Call the first row of the data frame
+{{content}}
+
+--
+
+&lt;br/&gt;
+Call the second column of the data frame
+{{content}}
+
+--
+
+&lt;br/&gt;
+Call the third value in the first column of the data frame
+{{content}}
+
+--
+
+&lt;br/&gt;&lt;br/&gt;
+Change the value at this location to 2021
+<div class="countdown" id="timer_651bd555" style="right:0;bottom:0;" data-warnwhen="60">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+{{content}}
+
+---
+
+class: inverse, middle, center
+
+.center[&lt;img src="img/easy_truss.gif" alt="Matt sitting" width="600"/&gt;]
+
+---
+
+background-image: url(img/brb.gif)
+background-size: contain
+class: inverse
+
+---
+
+## The data science circle of life
+
+.center[&lt;img src="img/tidy_circle.png" alt="Tidy workflow" width="600"/&gt;]
+
+&lt;br/&gt;
+--
+
+`R` is particularly adept at **exploratory data analysis** 
+
+--
+
+This involves rapid iterations of the above cycle, which is facilitated by easy to read code and high quality plots.
+
+--
+
+The goal of data science work is to tell a story and easy to interpret visualisation of the data is a good way to achieve this. 
+
+
+---
+# ggplot2: A grammar of graphics
+
+`ggplot2` is a **package** for `R` which takes a data frame and first defines the 
+plotting parameters before it draws anything
+
+These parameters are referred to as **aesthetics**
+
+--
+
+Different plots are then added, using the given aesthetics
+
+These are referred to as **geometries**
+
+--
+.pull-left[
+
+
+```r
+library(ggplot2)
+
+ggplot(data = iris, 
+       aes( x = Species, 
+          y = Sepal.Length, 
+          colour = Species) ) +
+       geom_boxplot() + 
+       geom_jitter() + 
+       theme_bw()
+```
+]
+
+.pull-right[
+&lt;img src="xaringan-slides-2022_files/figure-html/unnamed-chunk-30-1.png" width="504" height="290" /&gt;
+]
+---
+class: inverse, center, middle
+
+.center[&lt;img src="img/remi_fent2.png" width="800"/&gt;]
+
+---
+class: center, middle, inverse
+
+.center[&lt;img src="img/tv.png" width="800"/&gt;]
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/lineage_plot_2022_07_05.png" width="600"/&gt;]
+
+---
+
+# The `medicaldata` package
+
+This is package that contains some curated medical data which we can use to practice with
+
+--
+
+Load the laryngoscopy data and inspect the data frame
+
+
+```r
+library(medicaldata)
+larynx_df &lt;- laryngoscope
+head(larynx_df)
+str(larynx_df)
+summary(larynx_df)
+```
+
+
+Use `?laryngoscope` to read the documentation and better appreciate the contents of this data frame.
+
+---
+
+# The `medicaldata` package
+
+####How many female patients are there?
+
+####How many patients have an ASA score of 3?
+
+--
+
+**.red[Tip 1:]** You can use a function called `which()` to find values in a vector that satisfy a logical condition
+
+
+**.red[Tip 2:]** The `table()` function will generate a table from unique values in a vector
+
+**.red[Tip 3:]** There is a `count()` function in the `dplyr` package
+
+<div class="countdown" id="timer_651bd452" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+
+---
+#Recap
+
+####You now understand the following terms
+.right-column[ Variable &lt;br/&gt;&lt;br/&gt;
+String &lt;br/&gt;&lt;br/&gt;
+Data frame&lt;br/&gt;&lt;br/&gt;
+Concatenate&lt;br/&gt;&lt;br/&gt;
+Function&lt;br/&gt;&lt;br/&gt;
+]
+
+---
+#Recap
+
+####You can
+.right-column[
+  Assign variables&lt;br/&gt;&lt;br/&gt;
+  Manipulate the values in a varible using functions and operations&lt;br/&gt;&lt;br/&gt;
+
+  Access values contained in data frames&lt;br/&gt;&lt;br/&gt;
+  Quickly obtain insights into the structure and nature of values in a data frame
+]
+
+---
+
+## Importing and exporting data
+
+We usually import delimited files into `R`: CSV, tab delimited
+
+--
+
+The `read.csv()` and `read.delim()` commands do this
+
+
+```r
+new_df &lt;- read.csv("path/to/file.csv",
+                   header = TRUE)
+```
+
+--
+
+Excel files can also be read and imported, using the `readxl` package
+
+--
+
+Data frames can be stored as `.csv` files using the `write.csv()` commands, or as `.Rdata` objects.
+
+`.Rdata` object can also contain variables and models.
+
+
+---
+
+## Outputs 
+
+Plots can be saved in a number of formats
+
+.purple[.png] and .purple[.pdf] are good for cross-platform sharing
+
+Some journals request high resolution .purple[.tiff] files
+
+
+---
+#The next step: Rmarkdown
+
+This is a combination of `R` code and text that can be used to generate:
+
+- reports
+
+- papers
+
+- presentations  (like these slides)
+
+- dashboards
+
+--
+
+Code can be run in chunks, which helps to breakdown your workflow, reduce cognitive overload and steadily build a narrative.
+
+
+---
+class: highlight-last-item
+#Finally
+
+One of the main advantages of `R`, for beginner programmers, is that objects and concepts are generally consistent across most packages. 
+--
+
+.pull-left[
+&lt;br/&gt;
+&lt;br/&gt;
+- Lists
+&lt;br/&gt;&lt;br/&gt;
+- Models
+&lt;br/&gt;&lt;br/&gt;
+- Functions
+]
+
+--
+
+.pull-right[
+
+&lt;img src="img/mistype.jpg" width="450px" /&gt;
+]
+---
+background-image: url(img/where_to.png)
+background-size: cover
+
+# Where to go next
+
+
+Obtain **some data** 
+
+--
+
+**Clean** it and **plot** it using `R`
+
+Write a report using `Rmarkdown` 
+
+--
+
+Do one or two online courses *(not essential)*
+
+--
+
+A **support community **
+
+- real people, NHS-R, StackOverflow 
+
+- Twitter `#TidyTuesday`
+
+
+--
+
+[**Enjoy the experience!**](https::/twitter.com)
+
+---
+
+class: inverse, center, middle
+
+&lt;img src="img/bake_off.png" alt="tidy Tuesday" width="550"/&gt;
+
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"&gt;&lt;/path&gt;&lt;/svg&gt;  `#TidyTuesday` [week of 25 October 2022](https://twitter.com/PauBaudry/status/1585932001500356608?s=20&amp;t=6MaOVmZzbr7g2kLNocTzGw)
+
+---
+class: inverse, center, middle
+
+&lt;img src="img/truss2.gif" alt="truss gif" width="600"/&gt;
+
+---
+
+
+# My rabbit hole:
+
+.center[&lt;img src="img/CL projects.png" alt="CL projects" width=650/&gt;]
+
+---
+
+# What do I get out of it?
+
+--
+
+Problem solving
+
+
+Using a different part of my brain
+
+
+Genuine "Eureka!" moments
+
+
+Collaboration
+
+
+Contributing to some of the most important questions in my field
+
+--
+
+Less exhausted by clinical workload
+
+--
+
+How can I make changes? What is the narrative that will support change and what data and analysis do I need to provide to support this?
+
+---
+
+
+background-image: url(img/rabbit-hole.png)
+background-size: cover
+class: inverse
+
+# In Summary 
+
+--
+
+Data is not the new gold
+
+
+It is more accessible than experimental research &lt;br/&gt;(which it does not replace)
+
+--
+
+Data science is not a life-sentence
+
+
+Explore for yourself how far you can &lt;br/&gt; go down the rabbit hole...
+
+
+---
+class: inverse, center, middle, bg_xari
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+# Thank you!
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M17.187 19.181L24 4.755 0 12.386l9.196 1.963.043 4.896 2.759-2.617-2.147-2.076 7.336 4.63z"&gt;&lt;/path&gt;&lt;/svg&gt; rs307@cam.ac.uk
+
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"&gt;&lt;/path&gt;&lt;/svg&gt; @dr_romster
+
+&lt;svg role="img" viewBox="0 0 24 24" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;title&gt;&lt;/title&gt;  &lt;path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"&gt;&lt;/path&gt;&lt;/svg&gt; dr-romster
+
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "foundation",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

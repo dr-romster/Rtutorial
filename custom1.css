@@ -134,7 +134,7 @@ th, td { padding: 5px; }
   color: #ffffff;
 }
 
-
+.tiny { font-size: 50%; }
 .brand-red { color: #e64626; }
 .brand-blue { color: #0148A4; }
 .brand-yellow { color: #FFB800; }

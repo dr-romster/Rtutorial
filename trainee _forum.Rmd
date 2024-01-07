@@ -341,7 +341,7 @@ class: inverse, middle, center
 
 # Data changes behaviour and practice
 
-- Oxygen saturation measurement discrepancies between different races
+- Oxygen saturation measurement discrepancies between different skin tones
 
 
 .center[<img src="img/spo2_nejm.png", alt = "nejm spo2 discrepancy" width ="600"/>]
@@ -615,7 +615,7 @@ background-image: url(img/rabbit-hole.png)
 background-size: cover
 class: inverse
 
-# So in Summary 
+# Summary 
 
 --
 
@@ -630,8 +630,8 @@ It is more accessible than experimental research <br/>(which it does not replace
 Data science is not a life-sentence
 
 --
+Explore for .red[yourself] how far you can <br/> go down the rabbit hole...
 
-Explore for yourself how far you can <br/> go down the rabbit hole...
 
 ---
 
