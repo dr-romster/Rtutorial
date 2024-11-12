@@ -111,16 +111,16 @@ class: highlight-last-item
 *2015*<br/><br/>
 **2016 - 17**<br/><br/>
 **2018 - 21**<br/><br/>
-**2021-23**<br/><br/>
+**2021 - 23**<br/><br/>
 **2023**<br/><br/>
-**2024**<br/><br/>
+**2024 - **<br/><br/>
 
 ]
 
 .right-column2[<br/>
 Cambridge & Imperial
 <br/><br/>
- FY, Core medicine, Sydney (ICU, 1 yr), Core anaesthetics
+ FY, Core medicine, Sydney, Core anaesthetics
 <br/><br/>
  St3 Anaesthetics East of England
 <br/><br/>
@@ -128,7 +128,7 @@ Cambridge & Imperial
 <br/><br/>
  University Division of Anaesthesia (UDA) post
 <br/><br/>
- PhD  [ *Endotype Discovery in ARDS* ]
+ PhD  [ *Endotype Discovery in ARDS*  ]
 <br/><br/>
  NIHR Academic Clinical Lecturer in ICM
 <br/><br/>
@@ -1182,6 +1182,26 @@ class: center, middle, inverse
 
 class: center, middle, inverse
 
+.center[<img src="img/tbi1.png" width="600"/>]
+
+---
+
+class: center, middle, inverse
+
+.center[<img src="img/tbi2.png" width="800"/>]
+
+
+---
+
+class: center, middle, inverse
+
+.center[<img src="img/tbi3.png" width="800"/>]
+
+
+---
+
+class: center, middle, inverse
+
 .center[<img src="img/bbc_ggplot.jpg" width="1000"/>]
 
 https://bbc.github.io/rcookbook/
@@ -1275,7 +1295,7 @@ knitr::include_graphics("img/data_scienctist.jpg")
 
 ---
 
-## Importing and exporting data
+# Importing and exporting data
 
 We usually import delimited files into `R`: CSV, tab delimited
 
@@ -1305,7 +1325,116 @@ Data frames can be stored as `.csv` files using `write.csv()`, <br/> or as `.Rda
 
 ---
 
-## Outputs 
+class: center, middle, inverse
+
+.center[<img src="https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/85520b8f-4629-4763-8a2a-9ceff27458bf_rw_1920.jpg?h=21007b20ac00cf37318dca645c215453" width="1000"/>]
+
+Openscapes blog (c) Julia Lowndes & Allison Horst
+
+---
+
+class: inverse, middle, center
+
+# Exercise 3
+
+---
+## Tidy data exercise  &nbsp; &nbsp; &nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+.left-column[
+Create a new <br/> script file 
+<br/><br/>
+Load the `dplyr` <br/> package
+<br/>
+<br/>
+Load the `readxl` <br/> package
+<br/>
+<br/>
+Import the `rota.xlsx` file
+<br/>
+<br/>
+`View()` the imported <br/> object
+
+]
+
+
+.right-column2[
+
+<br/>
+Use the `New File` button above the script pane
+{{content}}
+]
+<br/><br/>
+
+--
+
+<br/>
+Use the `library()` function
+
+{{content}}
+
+--
+<br/>
+
+
+{{content}}
+
+--
+
+
+<br/><br/>
+Use the `readxlsx()` function from the `readxl` package
+{{content}}
+
+--
+<br/>
+<br/>
+<br/>
+<br/>
+Are there any issues?
+{{content}}
+
+--
+
+<br/>
+<br/>
+We want to work out who is on shift .red[next Monday].
+
+`r countdown::countdown(minutes = 3, warn_when=60)`
+{{content}}
+
+---
+## Tidy data exercise  &nbsp; &nbsp; &nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+We want to work out who is on shift .red[next Monday].
+
+--
+
+We need to create two objects: 
+
+- One with the dates and shifts
+- One with the doctor names
+- They need to have a common element
+
+--
+
+We are going to `filter` the rota table
+
+--
+
+We are going to `join` the doctor table to it
+
+--
+
+We may need to .red[pivot] our tables to get them into the correct, .red[tidy] shape to do this. 
+
+
+`r countdown::countdown(minutes = 6, warn_when=60)`
+
+---
+
+
+
+# Outputs 
 
 Plots can be saved in a number of formats
 
