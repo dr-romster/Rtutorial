@@ -1397,7 +1397,7 @@ Are there any issues?
 
 <br/>
 <br/>
-We want to work out who is on shift .red[next Monday].
+We want to work out who is on shift next Monday.
 
 `r countdown::countdown(minutes = 3, warn_when=60)`
 {{content}}
@@ -1426,6 +1426,8 @@ We are going to `join` the doctor table to it
 --
 
 We may need to .red[pivot] our tables to get them into the correct, .red[tidy] shape to do this. 
+
+.center[<img src="img/tidyr_spread_gather_updated.png" alt="gather gif" height="200"/> ]
 
 
 `r countdown::countdown(minutes = 6, warn_when=60)`
