@@ -1,7 +1,7 @@
 ---
-title: "SMART:R 2022"
+title: "SMART:R 2024"
 author: "Dr Romit Samanta"
-institute: "NIHR Clinical Lecturer <br/> University of Cambridge"
+institute: "NIHR DSE Fellow <br/> University of Cambridge"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -23,8 +23,8 @@ background-position: 95% 5%
 <br/><br/><br/><br/><br/><br/>
 .title1[SMART-R]<br/>
 .title2[Dr Romit Samanta] <br/>
-.title3[NIHR Clinical Lecturer in ICM <br/>
-Heart and Lung Research Institute & Addenbrooke's Hospital <br>
+.title3[NIHR DSE Fellow, Consultant ICU & Anaesthetics  <br/>
+MRC Biostatistics Uni & Addenbrooke's Hospital <br>
 <br>
 SMART Course `r Sys.Date()`]
 
@@ -63,6 +63,8 @@ background-size: 400px
 background-position: 95% 90%
 
 # Declarations
+
+NIHR Development and Skills Enhancement fellowship
 
 Clinical lectureship funded by the National Institute for Healthcare Research (NIHR)
 
@@ -109,8 +111,9 @@ class: highlight-last-item
 *2015*<br/><br/>
 **2016 - 17**<br/><br/>
 **2018 - 21**<br/><br/>
-**2021-**<br/><br/>
-**2023**
+**2021-23**<br/><br/>
+**2023**<br/><br/>
+**2024**<br/><br/>
 
 ]
 
@@ -119,17 +122,19 @@ Cambridge & Imperial
 <br/><br/>
  FY, Core medicine, Sydney (ICU, 1 yr), Core anaesthetics
 <br/><br/>
- St3 Anaesthetics East of England, FRCA
+ St3 Anaesthetics East of England
 <br/><br/>
  *SMART course*
 <br/><br/>
  University Division of Anaesthesia (UDA) post
 <br/><br/>
- PhD  [ Thesis: *Endotype Discovery in ARDS* ]
+ PhD  [ *Endotype Discovery in ARDS* ]
 <br/><br/>
  NIHR Academic Clinical Lecturer in ICM
 <br/><br/>
   Dual CCT
+<br/><br/>
+NIHR DSE Fellowship, NCCU Consultant post
   
 {{content}}
 ]
@@ -247,7 +252,7 @@ class: highlight-last-item
 
 # Why can't I just use <s>Excel</s> ChatGPT?
 
-LLMs are **very good** at entry and intermediate level coding in many programming languages.
+Large Language Models (LLMs) are **very good** at entry and intermediate level coding in many programming languages.
 
 They are excellent at translating between different languages.
 
@@ -429,7 +434,6 @@ class: inverse, middle, center
 
 ## https://posit.cloud/content/4956373
 
-## https://shorturl.at/ilKRW
 
 
 ---
@@ -784,7 +788,7 @@ Create a <br/>variable
 Create another variable
 <br/>
 <br/>
-Divide your numerical variable by 2
+Multiply your numerical variable by 2
 <br/>
 <br/>
 Add your name to your string variable
@@ -905,7 +909,7 @@ df
 
 ---
 
-# Data frames
+# Data frames  &nbsp; &nbsp; &nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
 
 We can access different components of the data frame using special operators
 --
@@ -1003,18 +1007,7 @@ G(xlab)-->H[argument]
 
 .left-column[
 nesting functions
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-?function.name
+
 ]
 
 .right-column[
@@ -1026,22 +1019,31 @@ round(log10(x), 2)
 
 This function take the log of *x*, before rounding the result to 2 decimal points. 
 
-Be sure to have the correct number of **.red[)]** s
+Be sure to have the correct number of  **.red[)]** s
 
 <br/>
 Provides the help documentation for the given function
 {{content}}
 ]
 
---
+---
+# Anatomy of a function
+
+.left-column[
+
+?function.name
+
+]
+
+.right-column[
 
 At the end of the documentation there are usually examples
 {{content}}
---
 
-If you are still stuck then Google / Stack Overflow are your friends
+
+If you are still stuck then Google / StackOverflow / ChatGPT are your friends
 {{content}}
-
+]
 ---
 
 class: inverse, middle, center
@@ -1222,6 +1224,9 @@ Use `?laryngoscope` to read the documentation and better appreciate the contents
 
 **.red[Tip 3:]** There is a `count()` function in the `dplyr` package
 
+
+Think of what additional, clinically important, questions you could answer using this data.
+
 `r countdown::countdown(minutes = 5)`
 
 
@@ -1286,6 +1291,8 @@ new_df <- read.csv("path/to/file.csv",
 --
 
 Excel files can also be read and imported, using the `readxl` package
+
+Google sheets can be read using the `googlesheets` package. 
 
 --
 
