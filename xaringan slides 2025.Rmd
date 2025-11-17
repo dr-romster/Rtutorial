@@ -1,5 +1,5 @@
 ---
-title: "SMART:R 2024"
+title: "SMART:R 2025"
 author: "Dr Romit Samanta"
 institute: "NIHR DSE Fellow <br/> University of Cambridge"
 date: "`r Sys.Date()`"
@@ -23,7 +23,7 @@ background-position: 95% 5%
 <br/><br/><br/><br/><br/><br/>
 .title1[SMART-R]<br/>
 .title2[Dr Romit Samanta] <br/>
-.title3[NIHR DSE Fellow, Consultant ICU & Anaesthetics  <br/>
+.title3[NIHR DSE Fellow, Consultant NCCU & Anaesthetics  <br/>
 MRC Biostatistics Unit & Addenbrooke's Hospital <br>
 <br>
 SMART Course `r Sys.Date()`]
@@ -58,9 +58,6 @@ options(htmltools.dir.version = FALSE)
 
 
 ---
-background-image: url("img/HLRI.jpg")
-background-size: 400px
-background-position: 95% 90%
 
 # Declarations
 
@@ -76,6 +73,8 @@ PhD (2017-2021) funded by:
 No conflicts of interest.
 
 All the software I use is open source and free.
+
+No generative AI was used for this workshop.
 
 ---
 
@@ -138,11 +137,8 @@ NIHR DSE Fellowship, NCCU Consultant post
   
 {{content}}
 ]
-
 --
-
 *Never an ACF*
-<br/>
 <br/>
 *No academic credentials before embarking on the UDA post*
 {{content}}
@@ -193,6 +189,8 @@ The need for a narrative that:
  - Changes behaviour
 
  - Influences policy
+ 
+ - Translates to patient care
 
 
 
@@ -348,8 +346,11 @@ class: inverse, middle, center
 
 - NELA
 
+--
 
 - National Hip Fracture Database
+
+--
 
 
 .center[<img src="img/nhfd_cuh.png" alt="national hip fracture DB CUH" width="650"/>]
@@ -364,13 +365,13 @@ Oxygen saturation measurement discrepancies between different skin tones.
 
 .center[<img src="img/spo2_nejm.png", alt = "nejm spo2 discrepancy" width ="600"/>]
 
----
 
 
-class: inverse, middle, center
+
+<!-- class: inverse, middle, center
 
 .center[<img src="img/truss1.gif", alt = "Truss1" width ="600"/>]
-
+-->
 ---
 
 class: inverse, middle, center
@@ -380,7 +381,7 @@ background-size: 80%
 ---
 
 
-# UndeR the Hood
+# Unde-R the Hood
 
 <center>
 
@@ -794,7 +795,7 @@ Multiply your numerical variable by 2
 Add your name to your string variable
 <br/>
 <br/>
-Add a 5th number to your numerical variable
+Add a 4th number to your numerical variable
 ]
 --
 
@@ -809,13 +810,13 @@ using the **Files** sub-tab in the **Outputs** window
 --
 
 <br/>
-containing the strings: John, Paul, Ringo, George
+containing the strings: Harry, Hermione, Ron
 
 {{content}}
 
 --
 <br/>
-consisting of the numbers: 200, 515, 180, 160
+consisting of the numbers: 200, 515, 180
 
 {{content}}
 
@@ -869,7 +870,7 @@ df_ex <- knitr::kable(head(data.frame("Patient ID"= seq(1:10),
                         "SBP" = round(rnorm(10, 110, 30),0),
                         "WCC" = round(rnorm(10, 8, 3),1),
                         "Diabetes" = rbinom(10, 1, 0.5),
-                        "CCF" = rbinom(10, 1, 0.2)),8) , 
+                        "HT" = rbinom(10, 1, 0.5)),8) , 
              format = 'html' )
 df_ex
 ```
@@ -911,7 +912,35 @@ df
 
 # Data frames  &nbsp; &nbsp; &nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
 
+CSV files can be imported using the `read.csv()` function. 
+
+```{r echo=T, eval=F}
+imported_df <- read.csv(file = "external_data.csv", header = TRUE)
+imported_df
+```
+
+
+Spreadsheet files can be imported but require third-party packages like `readxl` and `googlesheets4`. 
+
+```{r echo=T, eval=F}
+library(readxl)
+sample_rota <- read_xlsx(path = "sample_rota.xlsx")
+
+library(googlesheets4)
+path_to_google_sheet <- "https://docs.google.com/spreadsheets/d/11MIsxVLAv_Nw8lVJbEUSYJ7X1bUTiGyQLA6GXzKB7v4/edit?usp=sharing"
+
+sample_nccu_rota <- googlesheets4::read_sheet(path_to_google_sheet, 
+                                              na = "", 
+                                              range = "Generic pattern!A3:X93")
+  
+```
+
+---
+
+# Data frames  &nbsp; &nbsp; &nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
 We can access different components of the data frame using special operators
+
 --
 
 To extract a named column we can use `$` operator with the column name
@@ -1094,17 +1123,17 @@ Call the third value in the first column of the data frame
 --
 
 <br/><br/>
-Change the value at this location to 2021
+Change the value at this location to 50
 `r countdown::countdown(minutes = 5, warn_when=60)`
 
 {{content}}
 
----
 
-class: inverse, middle, center
+
+<!--class: inverse, middle, center
 
 .center[<img src="img/easy_truss.gif" alt="Matt sitting" width="600"/>]
-
+-->
 ---
 
 ## The data science circle of life
@@ -1188,17 +1217,26 @@ class: center, middle, inverse
 
 class: center, middle, inverse
 
-.center[<img src="img/tbi2.png" width="800"/>]
+.center[<img src="img/tbi3.png" width="800"/>]
 
 
 ---
 
 class: center, middle, inverse
 
-.center[<img src="img/tbi3.png" width="800"/>]
+.center[<img src="img/infection_to_slide.png" width="1000"/>]
 
 
 ---
+
+
+class: center, middle, inverse
+
+.center[<img src="img/NCCU_weekly_rota algorithm.png" width="550"/>]
+
+
+---
+
 
 class: center, middle, inverse
 
@@ -1287,11 +1325,18 @@ knitr::include_graphics("img/data_scienctist.jpg")
 ####You can
 .right-column[
   Assign variables<br/><br/>
-  Manipulate the values in a varible using functions and operations<br/><br/>
+  Manipulate the values in a variable using functions and operations<br/><br/>
 
   Access values contained in data frames<br/><br/>
   Quickly obtain insights into the structure and nature of values in a data frame
 ]
+
+---
+
+class: center, middle, inverse
+
+.center[<img src="img/vibe_coder.png" width="1000"/>]
+
 
 ---
 
@@ -1446,7 +1491,7 @@ Some journals request high resolution .purple[.tiff] files
 
 
 ---
-#The next step: Rmarkdown
+#The next step: R-Markdown
 
 This is a combination of `R` code and text that can be used to generate:
 
@@ -1501,19 +1546,19 @@ Obtain **some data**
 
 **Clean** it and **plot** it using `R`
 
-Write a report using `Rmarkdown` 
+Write a report using `R Markdown` 
 
 --
 
-ChatGPT / RTutor.AI
+Use AI to help you when stuck
 
 --
 
 A **support community **
 
-- real people, NHS-R, StackOverflow 
+- NHS-R, Stack Overflow 
 
-- Twitter `#TidyTuesday`
+- Blue Sky `#TidyTuesday`
 
 
 --
@@ -1598,8 +1643,6 @@ class: inverse, center, middle, bg_xari
 <br/>
 <br/>
 `r fontawesome::fa("inbox")` rs307@cam.ac.uk
-
-`r fontawesome::fa("twitter")` @dr_romster
 
 `r fontawesome::fa("github")` dr-romster
 
