@@ -4,7 +4,7 @@
     <title>SMART:R 2025</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr Romit Samanta" />
-    <meta name="date" content="2025-11-17" />
+    <meta name="date" content="2025-11-18" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
@@ -33,7 +33,7 @@ background-position: 95% 5%
 .title3[NIHR DSE Fellow, Consultant NCCU &amp; Anaesthetics  &lt;br/&gt;
 MRC Biostatistics Unit &amp; Addenbrooke's Hospital &lt;br&gt;
 &lt;br&gt;
-SMART Course 2025-11-17]
+SMART Course 2025-11-18]
 
 
 
@@ -84,21 +84,25 @@ No generative AI was used for this workshop.
 
 class: highlight-last-item
 
-# We have lots to talk about
+# In 2 hours you will be able to 
 
-- The basics of `R`
-
---
-
-- Data frames, functions, plotting
+- Understand some of the basics of `R`
 
 --
 
-- Using `R` for *your* projects
+- Create variables, Data frames
 
 --
 
-- Data science principles
+- Use functions, do some plotting
+
+--
+
+- Import data
+
+--
+
+- Understand broader data science principles
 
 
 ---
@@ -258,9 +262,15 @@ Large Language Models (LLMs) are **very good** at entry and intermediate level c
 
 They are excellent at translating between different languages.
 
+They really help with error messages
+
+They really help you to understand code
+
 RTutor.AI (https://rtutor.ai/)
 
-Domain knowledge is **essential** when using LLMs. 
+Domain knowledge is still **essential** when using AI tools.
+
+I use them all the time
 
 
 ---
@@ -289,17 +299,6 @@ STATA (£)
 
 
 ---
-
-class: 
-# You are not committing to this journey
-
-&lt;center&gt;
-<div class="grViz html-widget html-fill-item" id="htmlwidget-b9e45c57099871fbde24" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-b9e45c57099871fbde24">{"x":{"diagram":"digraph flowchart  {\n      graph[layout = dot, rankdir = LR]\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        \n      tab1 [label = \"Naive\"]\n      tab2 [label = \"Familiar\"]\n      tab3 [label = \"Proficient\"]\n      tab4 [label = \"Developer\"]\n      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,\n      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        \n      tab5 [label = \"Audits \n QI \n Papers\"]\n      tab6 [label = \"Statistics \n New ad-hoc\n methods\"]\n      tab7 [label = \"New packages / \n methods for\n publication \n Software engineer\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]\n      tab1 -> tab5  [style=invis, minlen=2.5]\n      tab2 -> tab6  [style=invis, minlen=2.5]\n      tab3 -> tab7  [style=invis, minlen=2.5]\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-&lt;br/&gt;&lt;br/&gt;
-&lt;/center&gt;
----
-
 
 class: inverse, middle, center
 
@@ -358,8 +357,8 @@ background-size: 80%
 
 &lt;center&gt;
 
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5acc8c686c4b0ebdaa9e" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-5acc8c686c4b0ebdaa9e">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4720dcb60ee16a3f2c95" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-4720dcb60ee16a3f2c95">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ---
@@ -368,7 +367,7 @@ class: inverse, middle, center
 
 ## https://posit.cloud/content/4956373
 
-
+.center[&lt;img src="img/SmartR_QR.png" width = 400/&gt;]
 
 ---
 
@@ -798,7 +797,7 @@ containing the strings: Harry, Hermione, Ron
 
 --
 &lt;br/&gt;
-consisting of the numbers: 200, 515, 180
+consisting of the numbers: 10, 50, 5
 
 {{content}}
 
@@ -823,7 +822,7 @@ use `c()` to update and store your name variable
 &lt;br/&gt;
 update and store your numerical variable
 
-<div class="countdown" id="timer_36e6c775" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_3ed9966d" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -835,6 +834,29 @@ class: inverse, center, middle
 &lt;img src="img/truss-bell.gif" alt="nerd_yes" width='600'/&gt;
 
 ---
+
+# Error codes
+
+
+``` r
+x
+```
+
+
+``` r
+head())
+```
+
+
+``` r
+more_data &lt;- c(0, 1, 2, 
+```
+
+
+
+---
+
+
 
 
 # Data frames
@@ -927,6 +949,103 @@ This should be organised in a .red[tidy] format with variable names as column he
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+---
+
+# Data frames
+
+This should be organised in a .red[tidy] format with variable names as column headers and samples in rows
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Patient.ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Day &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hb &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SBP &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; WCC &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Diabetes &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; HT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 112 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 139 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 107 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+.red[What's going on with Patient 1's Hypertension and Diabetes diagnosis?]
 
 ---
 class: highlight-last-item
@@ -1222,7 +1341,7 @@ Call the third value in the first column of the data frame
 
 &lt;br/&gt;&lt;br/&gt;
 Change the value at this location to 50
-<div class="countdown" id="timer_3be92987" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_e33411ce" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1287,7 +1406,7 @@ ggplot(data = iris,
 ]
 
 .pull-right[
-&lt;img src="xaringan-slides-2025_files/figure-html/unnamed-chunk-32-1.png" width="504" height="290" /&gt;
+&lt;img src="xaringan-slides-2025_files/figure-html/unnamed-chunk-35-1.png" width="504" height="290" /&gt;
 ]
 ---
 class: inverse, center, middle
@@ -1303,14 +1422,16 @@ class: center, middle, inverse
 
 class: center, middle, inverse
 
-.center[&lt;img src="img/tbi1.png" width="600"/&gt;]
-
+.center[&lt;img src="img/ferritin_log_odds.png" width="600"/&gt;]
+&lt;br/&gt;
+Mehta P, Samanta R et al *Thorax* 2024
 ---
 
 class: center, middle, inverse
 
 .center[&lt;img src="img/tbi3.png" width="800"/&gt;]
-
+&lt;br/&gt;
+Samanta R, Chiollaz AC, Needham E et al *eBiomed* 2024
 
 ---
 
@@ -1324,7 +1445,7 @@ class: center, middle, inverse
 
 class: center, middle, inverse
 
-.center[&lt;img src="img/NCCU_weekly_rota algorithm.png" width="550"/&gt;]
+.center[&lt;img src="img/NCCU_weekly_rota_algorithm.png" width="550"/&gt;]
 
 
 ---
@@ -1378,7 +1499,7 @@ Use `?laryngoscope` to read the documentation and better appreciate the contents
 
 Think of what additional, clinically important, questions you could answer using this data.
 
-<div class="countdown" id="timer_d22a1e8b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_c172efc5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1539,7 +1660,7 @@ Are there any issues?
 &lt;br/&gt;
 We want to work out who is on shift next Monday.
 
-<div class="countdown" id="timer_bbfea66a" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_3dac6f43" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1573,7 +1694,7 @@ We may need to .red[pivot] our tables to get them into the correct, .red[tidy] s
 .center[&lt;img src="img/tidyr_spread_gather_updated.png" alt="gather gif" height="200"/&gt; ]
 
 
-<div class="countdown" id="timer_e5b0367c" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_98fb73a3" data-warn-when="60" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1592,7 +1713,7 @@ Some journals request high resolution .purple[.tiff] files
 
 
 ---
-#The next step: Rmarkdown
+#The next step: R-Markdown
 
 This is a combination of `R` code and text that can be used to generate:
 
@@ -1645,7 +1766,7 @@ Obtain **some data**
 
 **Clean** it and **plot** it using `R`
 
-Write a report using `Rmarkdown` 
+Write a report using `R Markdown` 
 
 --
 
@@ -1710,6 +1831,16 @@ Less exhausted by clinical workload
 
 ---
 
+class: 
+# You are not committing to this journey
+
+&lt;center&gt;
+<div class="grViz html-widget html-fill-item" id="htmlwidget-2425626db13de78f3f47" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-2425626db13de78f3f47">{"x":{"diagram":"digraph flowchart  {\n      graph[layout = dot, rankdir = LR]\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        \n      tab1 [label = \"Naive\"]\n      tab2 [label = \"Familiar\"]\n      tab3 [label = \"Proficient\"]\n      tab4 [label = \"Developer\"]\n      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,\n      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        \n      tab5 [label = \"Audits \n QI \n Papers\"]\n      tab6 [label = \"Statistics \n New ad-hoc\n methods\"]\n      tab7 [label = \"New packages / \n methods for\n publication \n Software engineer\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]\n      tab1 -> tab5  [style=invis, minlen=2.5]\n      tab2 -> tab6  [style=invis, minlen=2.5]\n      tab3 -> tab7  [style=invis, minlen=2.5]\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+&lt;br/&gt;&lt;br/&gt;
+&lt;/center&gt;
+---
+
 
 background-image: url(img/rabbit-hole.png)
 background-size: cover
@@ -1742,9 +1873,11 @@ class: inverse, center, middle, bg_xari
 &lt;br/&gt;
 &lt;br/&gt;
 <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M121 32C91.6 32 66 52 58.9 80.5L1.9 308.4C.6 313.5 0 318.7 0 323.9V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V323.9c0-5.2-.6-10.4-1.9-15.5l-57-227.9C446 52 420.4 32 391 32H121zm0 64H391l48 192H387.8c-12.1 0-23.2 6.8-28.6 17.7l-14.3 28.6c-5.4 10.8-16.5 17.7-28.6 17.7H195.8c-12.1 0-23.2-6.8-28.6-17.7l-14.3-28.6c-5.4-10.8-16.5-17.7-28.6-17.7H73L121 96z"/></svg> rs307@cam.ac.uk
-
+&lt;br/&gt;
 <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> dr-romster
-
+&lt;br/&gt;
+<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+&lt;!-- https://rstudio.github.io/fontawesome/articles/icon-reference.html --&gt;
 
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 

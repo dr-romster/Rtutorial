@@ -80,21 +80,25 @@ No generative AI was used for this workshop.
 
 class: highlight-last-item
 
-# We have lots to talk about
+# In 2 hours you will be able to 
 
-- The basics of `R`
-
---
-
-- Data frames, functions, plotting
+- Understand some of the basics of `R`
 
 --
 
-- Using `R` for *your* projects
+- Create variables, Data frames
 
 --
 
-- Data science principles
+- Use functions, do some plotting
+
+--
+
+- Import data
+
+--
+
+- Understand broader data science principles
 
 
 ---
@@ -254,9 +258,15 @@ Large Language Models (LLMs) are **very good** at entry and intermediate level c
 
 They are excellent at translating between different languages.
 
+They really help with error messages
+
+They really help you to understand code
+
 RTutor.AI (https://rtutor.ai/)
 
-Domain knowledge is **essential** when using LLMs. 
+Domain knowledge is still **essential** when using AI tools.
+
+I use them all the time
 
 
 ---
@@ -285,48 +295,6 @@ STATA (£)
 
 
 ---
-
-class: 
-# You are not committing to this journey
-
-<center>
-```{r echo = FALSE}
-library(DiagrammeR)
-
-grViz("digraph flowchart  {
-      graph[layout = dot, rankdir = LR]
-      # node definitions with substituted label text
-      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        
-      tab1 [label = '@@1']
-      tab2 [label = '@@2']
-      tab3 [label = '@@3']
-      tab4 [label = '@@4']
-      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,
-      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        
-      tab5 [label = '@@5']
-      tab6 [label = '@@6']
-      tab7 [label = '@@7']
-      
-      # edge definitions with the node IDs
-      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]
-      tab1 -> tab5  [style=invis, minlen=2.5]
-      tab2 -> tab6  [style=invis, minlen=2.5]
-      tab3 -> tab7  [style=invis, minlen=2.5]
-      }
-
-      [1]: 'Naive'
-      [2]: 'Familiar'
-      [3]: 'Proficient'
-      [4]: 'Developer'
-      [5]: 'Audits \\n QI \\n Papers'
-      [6]: 'Statistics \\n New ad-hoc\\n methods'
-      [7]: 'New packages / \\n methods for\\n publication \\n Software engineer'
-      ")
-```
-<br/><br/>
-</center>
----
-
 
 class: inverse, middle, center
 
@@ -435,7 +403,7 @@ class: inverse, middle, center
 
 ## https://posit.cloud/content/4956373
 
-
+.center[<img src="img/SmartR_QR.png" width = 400/>]
 
 ---
 
@@ -816,7 +784,7 @@ containing the strings: Harry, Hermione, Ron
 
 --
 <br/>
-consisting of the numbers: 200, 515, 180
+consisting of the numbers: 10, 50, 5
 
 {{content}}
 
@@ -851,6 +819,26 @@ class: inverse, center, middle
 
 ---
 
+# Error codes
+
+```{r echo = T, eval = F}
+x
+```
+
+```{r echo = T, eval = F}
+head())
+```
+
+```{r echo = T, eval = F}
+more_data <- c(0, 1, 2, 
+```
+
+
+
+---
+
+
+
 
 # Data frames
 
@@ -875,6 +863,28 @@ df_ex <- knitr::kable(head(data.frame("Patient ID"= seq(1:10),
 df_ex
 ```
 
+---
+
+# Data frames
+
+This should be organised in a .red[tidy] format with variable names as column headers and samples in rows
+
+```{r echo = FALSE}
+set.seed(42)
+df_ex <- knitr::kable(head(data.frame("Patient ID"= c(1, 1, seq(1:8)),
+                                    "Day" = c(1, 2, 5, rep(1, 7)),  
+                        "Hb" = round(rnorm(10, 10, 2),1),
+                        "SBP" = round(rnorm(10, 110, 30),0),
+                        "WCC" = round(rnorm(10, 8, 3),1),
+                        "Diabetes" = rbinom(10, 1, 0.5),
+                        "HT" = rbinom(10, 1, 0.5)),8) , 
+             format = 'html' )
+df_ex
+```
+
+--
+
+.red[What's going on with Patient 1's Hypertension and Diabetes diagnosis?]
 
 ---
 class: highlight-last-item
@@ -1211,14 +1221,16 @@ class: center, middle, inverse
 
 class: center, middle, inverse
 
-.center[<img src="img/tbi1.png" width="600"/>]
-
+.center[<img src="img/ferritin_log_odds.png" width="600"/>]
+<br/>
+Mehta P, Samanta R et al *Thorax* 2024
 ---
 
 class: center, middle, inverse
 
 .center[<img src="img/tbi3.png" width="800"/>]
-
+<br/>
+Samanta R, Chiollaz AC, Needham E et al *eBiomed* 2024
 
 ---
 
@@ -1232,7 +1244,7 @@ class: center, middle, inverse
 
 class: center, middle, inverse
 
-.center[<img src="img/NCCU_weekly_rota algorithm.png" width="550"/>]
+.center[<img src="img/NCCU_weekly_rota_algorithm.png" width="550"/>]
 
 
 ---
@@ -1611,6 +1623,47 @@ Less exhausted by clinical workload
 
 ---
 
+class: 
+# You are not committing to this journey
+
+<center>
+```{r echo = FALSE}
+library(DiagrammeR)
+
+grViz("digraph flowchart  {
+      graph[layout = dot, rankdir = LR]
+      # node definitions with substituted label text
+      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        
+      tab1 [label = '@@1']
+      tab2 [label = '@@2']
+      tab3 [label = '@@3']
+      tab4 [label = '@@4']
+      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,
+      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        
+      tab5 [label = '@@5']
+      tab6 [label = '@@6']
+      tab7 [label = '@@7']
+      
+      # edge definitions with the node IDs
+      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]
+      tab1 -> tab5  [style=invis, minlen=2.5]
+      tab2 -> tab6  [style=invis, minlen=2.5]
+      tab3 -> tab7  [style=invis, minlen=2.5]
+      }
+
+      [1]: 'Naive'
+      [2]: 'Familiar'
+      [3]: 'Proficient'
+      [4]: 'Developer'
+      [5]: 'Audits \\n QI \\n Papers'
+      [6]: 'Statistics \\n New ad-hoc\\n methods'
+      [7]: 'New packages / \\n methods for\\n publication \\n Software engineer'
+      ")
+```
+<br/><br/>
+</center>
+---
+
 
 background-image: url(img/rabbit-hole.png)
 background-size: cover
@@ -1643,9 +1696,11 @@ class: inverse, center, middle, bg_xari
 <br/>
 <br/>
 `r fontawesome::fa("inbox")` rs307@cam.ac.uk
-
+<br/>
 `r fontawesome::fa("github")` dr-romster
-
+<br/>
+`r fontawesome::fa("linkedin")`
+<!-- https://rstudio.github.io/fontawesome/articles/icon-reference.html -->
 
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
