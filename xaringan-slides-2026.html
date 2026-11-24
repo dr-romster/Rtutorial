@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SMART:R 2025</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr Romit Samanta" />
+    <meta name="date" content="2026-11-24" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <link href="libs/htmltools-fill/fill.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="custom1.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: segue, left
+background-image: url("img/CUni2.png")
+background-size: 300px
+background-position: 95% 5%
+
+&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+.title1[SMART-R]&lt;br/&gt;
+.title2[Dr Romit Samanta] &lt;br/&gt;
+.title3[NIHR DSE Fellow, Consultant NCCU &amp; Anaesthetics  &lt;br/&gt;
+MRC Biostatistics Unit &amp; Addenbrooke's Hospital &lt;br&gt;
+&lt;br&gt;
+SMART Course 2026-11-24]
+
+
+
+
+&lt;style type="text/css"&gt;
+.highlight-last-item &gt; ul &gt; li, 
+.highlight-last-item &gt; ol &gt; li {
+  opacity: 0.5;
+}
+.highlight-last-item &gt; ul &gt; li:last-of-type,
+.highlight-last-item &gt; ol &gt; li:last-of-type {
+  opacity: 1;
+}
+
+.show-only-last-code-result pre + pre:not(:last-of-type) code[class="remark-code"] {
+    display: none;
+  
+.right-column2{
+  width: 70%;
+  float: right;
+  padding-top: 1em;
+  padding-left: 0.5em;
+}
+
+&lt;/style&gt;
+
+
+---
+
+# Declarations
+
+NIHR Development and Skills Enhancement fellowship
+
+Clinical lectureship funded by the National Institute for Healthcare Research (NIHR)
+
+PhD (2017-2021) funded by:
+- MRC
+- GlaxoSmithKline plc
+- NIHR Cambridge Biomedical Research Center
+
+No conflicts of interest.
+
+All the software I use is open source and free.
+
+No generative AI was used for this workshop.
+
+---
+
+class: highlight-last-item
+
+# In 2 hours you will be able to 
+
+- Understand some of the basics of `R`
+
+--
+
+- Create variables, Data frames
+
+--
+
+- Use functions, do some plotting
+
+--
+
+- Import data
+
+--
+
+- Understand broader data science principles
+
+
+---
+# Anyone can do this
+
+.left-column[
+**2005**
+&lt;br/&gt;&lt;br/&gt;
+**2005 - 13**
+&lt;br/&gt;&lt;br/&gt;
+**2013**
+&lt;br/&gt;&lt;br/&gt;
+*2015*&lt;br/&gt;&lt;br/&gt;
+**2016 - 17**&lt;br/&gt;&lt;br/&gt;
+**2018 - 21**&lt;br/&gt;&lt;br/&gt;
+**2021 - 23**&lt;br/&gt;&lt;br/&gt;
+**2023**&lt;br/&gt;&lt;br/&gt;
+**2024 - **&lt;br/&gt;&lt;br/&gt;
+
+]
+
+.right-column2[&lt;br/&gt;
+Cambridge &amp; Imperial
+&lt;br/&gt;&lt;br/&gt;
+ FY, Core medicine, Sydney, Core anaesthetics
+&lt;br/&gt;&lt;br/&gt;
+ St3 Anaesthetics East of England
+&lt;br/&gt;&lt;br/&gt;
+ *SMART course*
+&lt;br/&gt;&lt;br/&gt;
+ University Division of Anaesthesia (UDA) post
+&lt;br/&gt;&lt;br/&gt;
+ PhD  [ *Endotype Discovery in ARDS*  ]
+&lt;br/&gt;&lt;br/&gt;
+ NIHR Academic Clinical Lecturer in ICM
+&lt;br/&gt;&lt;br/&gt;
+  Dual CCT
+&lt;br/&gt;&lt;br/&gt;
+NIHR DSE Fellowship, NCCU Consultant post
+  
+{{content}}
+]
+--
+*Never an ACF*
+&lt;br/&gt;
+*No academic credentials before embarking on the UDA post*
+{{content}}
+---
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data3.png" alt="data_science3" width="800"/&gt;]
+
+
+---
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data2.png" alt="data_science2" width="800"/&gt;]
+
+
+---
+
+
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/data1.png" alt="data_science1" width="800"/&gt;]
+
+
+---
+
+# The well-rehearsed path
+
+--
+
+.center[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/res1.png" alt="research-path" width="610"/&gt;]
+
+
+---
+
+
+# So what has changed?
+
+--
+
+Data availability
+
+Accessibility of methods
+
+--
+
+The need for a narrative that:
+
+ 
+ - Changes behaviour
+
+ - Influences policy
+ 
+ - Translates to patient care
+
+
+
+---
+
+class: highlight-last-item
+
+# Why can't I just use Excel?
+
+.pull-left[
+Data size limitations
+
+
+Statistical methods
+
+
+Customised, high quality outputs
+
+
+Version control 
+
+
+.bolder[Reproducible workflows]
+
+
+Talks to other computer languages
+]
+
+
+.pull-right[
+
+ .right[ &lt;img src="https://raw.githubusercontent.com/dr-romster/Rtutorial/master/img/excel_fail.png" alt="drawing" width="400"/&gt;
+
+*The Guardian, 6th October 2020*
+
+] ]
+
+---
+
+class: highlight-last-item
+
+# Why can't I just use Excel?
+
+.center[ &lt;img src="img/ANRO.png" alt="ANRO" width="610"/&gt;]
+
+
+
+.right[**The Register** 12th October 2023] 
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+https://www.theregister.com/2023/10/12/excel_anesthetist_recruitment_blunder/
+
+---
+
+class: highlight-last-item
+
+# Why can't I just use &lt;s&gt;Excel&lt;/s&gt; AI?
+
+Large Language Models (LLMs) are **very good** at entry and intermediate level coding in many programming languages.
+
+They are excellent at translating between different languages.
+
+They really help with error messages
+
+They really help you to understand code
+
+RTutor.AI (https://rtutor.ai/)
+
+Domain knowledge is still **essential** when using AI tools.
+
+I use them all the time
+
+
+---
+
+
+
+
+
+
+# R alternatives
+
+Python 
+
+
+Julia 
+
+
+Matlab (£)
+
+
+Graphpad Prism (£)
+
+
+STATA (£)
+
+
+SPSS (£)
+
+
+-- 
+
+(Get an AI to code one up from scratch and try to sell it for ££!)
+
+---
+
+class: inverse, middle, center
+
+# FINE, but I just want to give an anaesthetic!
+
+---
+
+# Data changes behaviour and practice
+
+--
+
+
+- RCoA: NAP 
+
+
+--
+
+- NELA
+
+--
+
+- National Hip Fracture Database
+
+--
+
+
+.center[&lt;img src="img/nhfd_cuh.png" alt="national hip fracture DB CUH" width="650"/&gt;]
+
+
+---
+
+# Data changes behaviour and practice
+
+Oxygen saturation measurement discrepancies between different skin tones. 
+
+
+.center[&lt;img src="img/spo2_nejm.png", alt = "nejm spo2 discrepancy" width ="600"/&gt;]
+
+
+
+
+&lt;!-- class: inverse, middle, center
+
+.center[&lt;img src="img/truss1.gif", alt = "Truss1" width ="600"/&gt;]
+--&gt;
+---
+
+class: inverse, middle, center
+background-image: url(img/baseR.png)
+background-size: 80%
+
+---
+
+
+# Unde-R the Hood
+
+&lt;center&gt;
+
+<div class="grViz html-widget html-fill-item" id="htmlwidget-56f08f3c35d07fe4cb6b" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-56f08f3c35d07fe4cb6b">{"x":{"diagram":"digraph flowchart  {\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, color = cornflowerblue]        \n      tab1 [label = \"3rd Party App (packages)\"]\n      tab6 [label = \"S3/S4/C\"]\n      tab7 [label = \"Machine code\"]\n  \n      node [fontname = Courier, shape = egg, fillcolor = Dodgerblue, style = filled, fontcolor = MidnightBlue]\n      tab3 [label = \"R\"]\n      \n      node [fontname = Helvetica, shape = egg, fillcolor = Darkslategray, style = filled, fontcolor = white]\n      tab2 [label = \"R-Studio\"]\n      \n      node [fontname = Helvetica, shape = square, fillcolor = DarkSeaGreen, style = filled, fontcolor = DimGray]\n      tab5 [label = \"User Input\"]\n      \n      node [fontname = Helvetica, shape = diamond, fillcolor = Gold, style = filled, fontcolor =red ]\n      tab4 [label = \"Output\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab3 ->tab6 -> tab7;\n      tab2 -> tab3;\n      tab4 -> tab2;\n      tab3 -> tab4;\n      tab5 -> tab3;\n      tab5 -> tab2;\n      tab7 -> tab6 -> tab3;\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+&lt;/center&gt;
+---
+
+class: inverse, middle, center
+
+## https://posit.cloud/content/4956373
+
+.center[&lt;img src="img/SmartR_QR.png" width = 400/&gt;]
+
+---
+
+background-image: url(img/RstudioGUI.png)
+background-size: 95%
+class: inverse
+
+.pull-left[
+&lt;br/&gt;
+&lt;br/&gt;
+## Editor
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+## Console
+]
+.pull-right[
+&lt;br/&gt;
+## &lt;nbsp/&gt;Environment
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+## Output
+]
+
+
+---
+class: inverse, middle, center
+
+.center[ &lt;img src="https://media.giphy.com/media/xUOxf7XfmpxuSode1O/giphy.gif" alt="dancing gif" width="800"/&gt;]
+
+---
+
+class: inverse, middle, center
+
+# The Basics
+
+---
+
+# Getting Started
+.footnote[https://posit.cloud/content/4956373]
+
+To start a new script in the .bolder[Editor] window press this button and select *R Script* &lt;br/&gt;&lt;img src="img/start_script.png" width=300&gt;
+&lt;br/&gt;
+
+--
+
+We write our code in script windows and send them to the **Console** by highlighting our code and using this button &lt;br/&gt;&lt;img src="img/run.png", alt = "run", width=150&gt; &lt;br/&gt; Or we can press Ctrl + Enter (&amp;#8984; + Enter on Mac)
+&lt;br/&gt;
+
+--
+
+*NB Enter just adds new lines to the script editor, but in the console it will run what you have entered *
+
+Errors show up as .red[red text] in the **Console**
+
+.footnote[https://posit.cloud/content/4956373]
+
+---
+
+class: show-only-last-code-result
+
+# Setting off...
+.footnote[https://posit.cloud/content/4956373]
+
+.left-column[
+
+Mathematical operations
+
+]
+
+--
+
+
+.right-column[
+
+``` r
+1+2
+```
+
+```
+## [1] 3
+```
+{{content}}
+
+]
+--
+The other operators are **+   -   &amp;#42;   /** 
+
+
+``` r
+10-3
+```
+
+```
+## [1] 7
+```
+{{content}}
+--
+
+
+``` r
+2*3
+```
+
+```
+## [1] 6
+```
+{{content}}
+--
+
+
+``` r
+4/5
+```
+
+```
+## [1] 0.8
+```
+
+{{content}}
+
+---
+
+class: show-only-last-code-result
+
+# What happened to your results?
+.footnote[https://posit.cloud/content/4956373]
+.left-column[
+Variables and assignment
+
+]
+
+--
+
+.right-column[ 
+To store values we need to **assign** our results or data to a **variable**
+
+{{content}}
+]
+
+--
+
+We do **assignment** with either `&lt;-` or `=`
+{{content}}
+--
+
+
+``` r
+a &lt;- 1
+```
+{{content}}
+--
+
+Asking the computer to re*call* this variable will return the stored information
+
+
+``` r
+a
+```
+
+```
+## [1] 1
+```
+{{content}}
+--
+We can store different types of data in a variable
+
+
+``` r
+day &lt;- "Monday"
+day
+```
+
+
+---
+
+# Variable conventions
+.left-column[
+
+Naming variables
+]
+
+.footnote[ `==` means *equivalence* and returns either `TRUE` or `FALSE` based on a comparison of the left and right sides]
+
+--
+
+.right-column[
+
+Use any text but you cant use spaces or a number of special characters:
+
+      ^*%$@#!|/~()[]{}\
+{{content}}
+]
+--
+Variable names are case sensitive
+
+
+``` r
+a &lt;- 1
+A &lt;- 2
+a == A
+```
+
+```
+## [1] FALSE
+```
+
+{{content}}
+--
+
+You can use `_` or `.` in variable names to make them easier to read: &lt;br/&gt; &lt;br/&gt;
+`magic_number &lt;- 7`
+
+{{content}}
+
+---
+
+# Variable types
+
+.left-column[
+Strings
+]
+
+--
+.right-column[
+This is computer jargon for text as when you type normal words into the R console it will  refer look for functions or variables by that name.
+{{content}}
+]
+--
+
+We tell the computer that we are inputting text by wrapping quotation marks around our text. We can use either `" "` or `' '`, as long they are paired.
+
+{{content}}
+
+--
+
+
+``` r
+text_variable &lt;- "A single element of text, even though it contains many words"
+```
+{{content}}
+
+--
+
+
+``` r
+text_variable
+```
+
+```
+## [1] "A single element of text, even though it contains many words"
+```
+---
+
+# Variable types
+
+.left-column[
+Concatenation
+]
+
+--
+
+.right-column[
+
+If we want a variable to have multiple elements then we have to join the elements 
+together. This is called **concatenation** (or combining) and we do this by using
+the `c()` command.
+{{content}}
+]
+
+--
+
+Each element is seperated by a comma
+
+```
+some_numbers &lt;- c(1,2,3,4)
+
+weekend &lt;- c("Saturday", "Sunday")
+```
+{{content}}
+--
+
+If we mix data types, `R` converts everything to strings
+
+``` r
+mixed_data &lt;- c(1, 2, " 3", 4)
+```
+
+{{content}}
+
+--
+
+
+``` r
+mixed_data
+```
+
+```
+## [1] "1"  "2"  " 3" "4"
+```
+
+{{content}}
+
+
+---
+
+# R notation
+
+.left-column[
+Logical
+.right[`!` &lt;br/&gt;
+`==` &lt;br/&gt;
+`&amp;` &lt;br/&gt;
+`|` &lt;br/&gt;
+`&gt;` &lt;br/&gt;
+`&lt;`&lt;br/&gt;
+`&gt;=`&lt;br/&gt;
+]
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+Missing Data
+.right[`NA`&lt;br/&gt;
+`NULL/NaN`&lt;br/&gt;
+]
+]
+--
+
+.right-column[&lt;br/&gt;
+Not (the opposite of) &lt;br/&gt;
+Is equivalent / identical to &lt;br/&gt;
+Logical AND
+&lt;br/&gt;
+Logical OR
+&lt;br/&gt;
+Greater than
+&lt;br/&gt;
+Less than
+&lt;br/&gt;
+Greater than or equal to
+
+{{content}}
+]
+--
+
+``` r
+a &lt;- 1
+b &lt;- 2
+b &gt;= a
+```
+
+```
+## [1] TRUE
+```
+{{content}}
+--
+&lt;br/&gt;
+missing &lt;br/&gt;
+not a number/not defined (e.g. divide by 0)
+{{content}}
+
+---
+
+class: inverse, center, middle
+
+.center[&lt;img src="img/boris_conf.gif" alt="Baffled Boris" width="450"/&gt;]
+
+---
+
+class: inverse, center, middle
+
+#Exercise 1
+---
+
+## In Posit (R-Studio) cloud &amp;nbsp; &amp;nbsp; &amp;nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+.left-column[
+Open the `basicR.R` script 
+&lt;br/&gt;&lt;br/&gt;
+Create a &lt;br/&gt;variable
+&lt;br/&gt;
+&lt;br/&gt;
+Create another variable
+&lt;br/&gt;
+&lt;br/&gt;
+Divide your numerical variable by 2
+&lt;br/&gt;
+&lt;br/&gt;
+Add another name to your string variable
+&lt;br/&gt;
+&lt;br/&gt;
+Add a 4th number to your numerical variable
+]
+--
+
+.right-column2[
+
+&lt;br/&gt;
+using the **Files** sub-tab in the **Outputs** window
+{{content}}
+]
+&lt;br/&gt;&lt;br/&gt;
+
+--
+
+&lt;br/&gt;
+containing the strings: Anna Bob Charlie
+
+{{content}}
+
+--
+&lt;br/&gt;
+consisting of the numbers: 145 185 125
+
+{{content}}
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+store these new values as a new variable
+{{content}}
+
+--
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+use `c()` to update and store your name variable
+{{content}}
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+update and store your numerical variable
+
+<countdown-timer class="countdown" id="timer_ea212ce4" minutes="4" seconds="0" warn-when="60" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+{{content}}
+---
+
+class: inverse, center, middle
+
+&lt;img src="img/truss-bell.gif" alt="nerd_yes" width='600'/&gt;
+
+---
+
+# Error codes
+
+
+``` r
+x
+```
+
+
+``` r
+head())
+```
+
+
+``` r
+more_data &lt;- c(0, 1, 2, 
+```
+
+
+
+---
+
+
+
+
+# Data frames
+
+--
+
+In healthcare we primarily deal with tabular data
+
+--
+
+This should be organised in a .red[tidy] format with variable names as column headers and samples in rows
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Patient.ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hb &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SBP &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; WCC &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Diabetes &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; HT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 149 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 179 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 102 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 106 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 129 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Data frames
+
+This should be organised in a .red[tidy] format with variable names as column headers and samples in rows
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Patient.ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Day &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hb &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SBP &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; WCC &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Diabetes &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; HT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 149 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 179 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 102 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 106 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 129 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+.red[What's going on with Patient 1's Hypertension and Diabetes diagnosis?]
+
+---
+class: highlight-last-item
+
+# Data frames
+
+In R data frames can hold different types of data, with each column equivalent to its own variable.
+
+--
+
+We can populate the data frame with raw data from an imported file (e.g. a CSV, Excel file), 
+or using values already assigned to a variable.
+
+---
+
+class: highlight-last-item
+.footnote[https://posit.cloud/content/4956373 ]
+# Data frames
+We use the function called `data.frame()` to do this. 
+
+Each column is given a name and assigned values from a variable.
+--
+
+
+
+``` r
+some_numbers &lt;- c(2,3,4)
+some_letters &lt;- c("a", "b", "c")
+
+df &lt;- data.frame( numbers = some_numbers,
+                  letters = some_letters )
+df
+```
+
+```
+##   numbers letters
+## 1       2       a
+## 2       3       b
+## 3       4       c
+```
+
+---
+
+# Data frames  &amp;nbsp; &amp;nbsp; &amp;nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+CSV files can be imported using the `read.csv()` function. 
+
+
+``` r
+imported_df &lt;- read.csv(file = "external_data.csv", header = TRUE)
+imported_df
+```
+
+
+Spreadsheet files can be imported but require third-party packages like `readxl` and `googlesheets4`. 
+
+
+``` r
+library(readxl)
+sample_rota &lt;- read_xlsx(path = "sample_rota.xlsx")
+
+library(googlesheets4)
+path_to_google_sheet &lt;- "https://docs.google.com/spreadsheets/d/11MIsxVLAv_Nw8lVJbEUSYJ7X1bUTiGyQLA6GXzKB7v4/edit?usp=sharing"
+
+sample_nccu_rota &lt;- googlesheets4::read_sheet(path_to_google_sheet, 
+                                              na = "", 
+                                              range = "Generic pattern!A3:X93")
+```
+
+---
+
+# Data frames  &amp;nbsp; &amp;nbsp; &amp;nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+We can access different components of the data frame using special operators
+
+--
+
+To extract a named column we can use `$` operator with the column name
+
+
+
+``` r
+df$numbers
+```
+
+```
+## [1] 2 3 4
+```
+
+--
+
+We can also extract values using square bracket indexing: `[rows, columns]`
+
+
+``` r
+df[1, ]
+```
+
+```
+##   numbers letters
+## 1       2       a
+```
+--
+
+
+``` r
+df[ , 2]
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+--
+
+
+``` r
+df[1, 2]
+```
+
+```
+## [1] "a"
+```
+
+
+---
+class:show-only-last-code-result  
+
+# Data frames  &amp;nbsp; &amp;nbsp; &amp;nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+We can access the top 5 or bottom 5 rows by using the `head()` and `tail()` functions. 
+
+
+``` r
+head(df)
+```
+
+```
+##   numbers letters
+## 1       2       a
+## 2       3       b
+## 3       4       c
+```
+
+--
+
+The `summary()` function gives us a glimpse of a data frame and some statistics associated with each variable.
+
+
+``` r
+summary(df)
+```
+
+```
+##     numbers         letters 
+##  Min.   :2.0   Length   :3  
+##  1st Qu.:2.5   N.unique :3  
+##  Median :3.0   N.blank  :0  
+##  Mean   :3.0   Min.nchar:1  
+##  3rd Qu.:3.5   Max.nchar:1  
+##  Max.   :4.0
+```
+--
+
+The `str()` function gives us a glimpse of the structure, but without the stats. 
+
+``` r
+str(df)
+```
+
+```
+## 'data.frame':	3 obs. of  2 variables:
+##  $ numbers: num  2 3 4
+##  $ letters: chr  "a" "b" "c"
+```
+We can view this information in the **Environment** window.
+
+---
+class:show-only-last-code-result  
+
+ # Data frames  &amp;nbsp; &amp;nbsp; &amp;nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+If we want to observe all the data at once (like in Excel), then we can use the `View()` command 
+
+
+``` r
+View(df)
+```
+
+---
+
+# Anatomy of a function
+
+If data frames are 'objects/nouns' in R, then functions are the verbs that manipulate them
+
+.center[&lt;img src="img/anatomy.png" alt="functional anatomy" width="600"&gt;]
+--
+
+Functions can be built in, from packages or user-defined
+
+
+---
+# Anatomy of a function
+
+.left-column[
+nesting functions
+
+]
+
+.right-column[
+Functions can be nested within each other, but you have to read them inside-out:
+
+
+``` r
+round(log10(x), 2)
+```
+
+This function take the log of *x*, before rounding the result to 2 decimal points. 
+
+Be sure to have the correct number of  **.red[)]** s
+
+&lt;br/&gt;
+Provides the help documentation for the given function
+{{content}}
+]
+
+---
+# Anatomy of a function
+
+.left-column[
+
+?function.name
+
+]
+
+.right-column[
+
+At the end of the documentation there are usually examples
+{{content}}
+
+
+If you are still stuck then Google / StackOverflow / ChatGPT are your friends
+{{content}}
+]
+---
+
+class: inverse, middle, center
+
+# Exercise 2
+
+---
+
+.left-column[
+Create a data frame
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;View the data frame 
+&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;
+Extract data from a data frame
+
+&lt;br/&gt;&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;
+&lt;br/&gt;
+Assign new data to a specified location in a data frame
+]
+
+.right-column[
+.footnote[https://posit.cloud/content/4956373]
+Create a data frame using the two variables (one with character strings, the other containing some numbers) into a **data frame**
+{{content}}
+]
+
+--
+&lt;br/&gt;&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+Call the first row of the data frame
+{{content}}
+
+--
+
+&lt;br/&gt;
+Call the second column of the data frame
+{{content}}
+
+--
+
+&lt;br/&gt;
+Call the third value in the first column of the data frame
+{{content}}
+
+--
+
+&lt;br/&gt;&lt;br/&gt;
+Change the value at this location to 50
+<countdown-timer class="countdown" id="timer_e97bbeb6" minutes="5" seconds="0" warn-when="60" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+
+{{content}}
+
+
+
+&lt;!--class: inverse, middle, center
+
+.center[&lt;img src="img/easy_truss.gif" alt="Matt sitting" width="600"/&gt;]
+--&gt;
+---
+
+## The data science circle of life
+
+.center[&lt;img src="img/tidy_circle.png" alt="Tidy workflow" width="600"/&gt;]
+
+&lt;br/&gt;
+--
+
+`R` is particularly adept at **exploratory data analysis** 
+
+--
+
+This involves rapid iterations of the above cycle, which is facilitated by easy to read code and high quality plots.
+
+--
+
+The goal of data science work is to tell a story and easy to interpret visualisation of the data is a good way to achieve this. 
+
+
+---
+# ggplot2: A grammar of graphics
+
+`ggplot2` is a **package** for `R` which takes a data frame and first defines the 
+plotting parameters before it draws anything
+
+These parameters are referred to as **aesthetics**
+
+--
+
+Different plots are then added, using the given aesthetics
+
+These are referred to as **geometries**
+
+--
+.pull-left[
+
+
+``` r
+library(ggplot2)
+
+ggplot(data = iris, 
+       aes( x = Species, 
+          y = Sepal.Length, 
+          colour = Species) ) +
+       geom_boxplot() + 
+       geom_jitter() + 
+       theme_bw()
+```
+]
+
+.pull-right[
+&lt;img src="xaringan-slides-2026_files/figure-html/unnamed-chunk-35-1.png" alt="" width="504" height="290" /&gt;
+]
+---
+class: inverse, center, middle
+
+.center[&lt;img src="img/remi_fent2.png" width="800"/&gt;]
+
+---
+class: center, middle, inverse
+
+.center[&lt;img src="img/tv.png" width="800"/&gt;]
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/ferritin_log_odds.png" width="600"/&gt;]
+&lt;br/&gt;
+Mehta P, Samanta R et al *Thorax* 2024
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/tbi3.png" width="800"/&gt;]
+&lt;br/&gt;
+Samanta R, Chiollaz AC, Needham E et al *eBiomed* 2024
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/infection_to_slide.png" width="1000"/&gt;]
+
+
+---
+
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/NCCU_weekly_rota_algorithm.png" width="550"/&gt;]
+
+
+---
+
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/bbc_ggplot.jpg" width="1000"/&gt;]
+
+https://bbc.github.io/rcookbook/
+
+---
+
+# Can I just do all this with AI?
+
+
+--
+
+
+.center[&lt;img src="https://us.utah.edu/learning-outcomes-assessment/_resources/images/blooms-pyramid.jpeg"/&gt;]
+
+
+---
+
+.center[&lt;img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaq4t3Ji7Iu4Pp11djkTGutvBTp8Ax6HcKLpYS3B1cEB5BG4CtWLnzGEo&amp;s=10"/&gt;]
+
+---
+
+# Know the limitations of prompting
+
+
+Hallucinations
+
+
+Context windows
+
+
+Memory
+
+
+Recapitulation of biases
+
+
+Regression to the mean (AI Slop)
+
+
+.center[&lt;img src="https://preview.redd.it/llms-still-cant-generate-good-text-consistently-v0-ocqxj0j0gpzh1.jpeg?width=1187&amp;format=pjpg&amp;auto=webp&amp;s=2ffa70c5de38a6fbe0a99351bc88d4c6133ef301" height="200"/&gt;]
+
+
+---
+
+# The `medicaldata` package
+.footnote[https://posit.cloud/content/4956373]
+This is package that contains some curated medical data which we can use to practice with
+
+--
+
+Load the laryngoscopy data and inspect the data frame
+
+
+``` r
+library(medicaldata)
+larynx_df &lt;- laryngoscope
+head(larynx_df)
+str(larynx_df)
+summary(larynx_df)
+```
+
+
+Use `?laryngoscope` to read the documentation and better appreciate the contents of this data frame.
+
+---
+
+# The `medicaldata` package
+.footnote[https://posit.cloud/content/4956373]
+####How many female patients are there?
+
+####How many patients have an ASA score of 3?
+
+--
+
+**.red[Tip 1:]** You can use a function called `which()` to find values in a vector that satisfy a logical condition
+
+
+**.red[Tip 2:]** The `table()` function will generate a table from unique values in a vector
+
+**.red[Tip 3:]** There is a `count()` function in the `dplyr` package
+
+
+Think of what additional, clinically important, questions you could answer using this data.
+
+<countdown-timer class="countdown" id="timer_f46ff46d" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+
+
+
+---
+#Recap
+
+####You now understand the following terms
+
+.pull-left[
+
+&lt;br/&gt;
+Variable
+&lt;br/&gt;&lt;br/&gt;
+String
+&lt;br/&gt;&lt;br/&gt;
+Data frame
+&lt;br/&gt;&lt;br/&gt;
+Concatenate
+&lt;br/&gt;&lt;br/&gt;
+Function
+&lt;br/&gt;&lt;br/&gt;
+
+]
+
+--
+
+.pull-right[
+
+&lt;img src="img/data_scienctist.jpg" alt="" width="450px" /&gt;
+]
+
+---
+#Recap
+
+####You can
+.right-column[
+  Assign variables&lt;br/&gt;&lt;br/&gt;
+  Manipulate the values in a variable using functions and operations&lt;br/&gt;&lt;br/&gt;
+
+  Access values contained in data frames&lt;br/&gt;&lt;br/&gt;
+  Quickly obtain insights into the structure and nature of values in a data frame
+]
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="img/vibe_coder.png" width="1000"/&gt;]
+
+
+---
+
+# Importing and exporting data
+
+We usually import delimited files into `R`: CSV, tab delimited
+
+--
+
+The `read.csv()` and `read.delim()` commands do this
+
+
+``` r
+new_df &lt;- read.csv("path/to/file.csv",
+                   header = TRUE)
+```
+
+--
+
+Excel files can also be read and imported, using the `readxl` package
+
+Google sheets can be read using the `googlesheets` package. 
+
+--
+
+Data frames can be stored as `.csv` files using `write.csv()`, &lt;br/&gt; or as `.Rdata` objects using the `save()` function.
+
+--
+
+`.Rdata` files can contain multiple objects &lt;br/&gt; e.g. variables, data frames, models, plots.
+
+
+---
+
+class: center, middle, inverse
+
+.center[&lt;img src="https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/85520b8f-4629-4763-8a2a-9ceff27458bf_rw_1920.jpg?h=21007b20ac00cf37318dca645c215453" width="1000"/&gt;]
+
+Openscapes blog (c) Julia Lowndes &amp; Allison Horst
+
+---
+
+class: inverse, middle, center
+
+# Exercise 3
+
+---
+## Tidy data exercise  &amp;nbsp; &amp;nbsp; &amp;nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+.left-column[
+Create a new &lt;br/&gt; script file 
+&lt;br/&gt;&lt;br/&gt;
+Load the `dplyr` &lt;br/&gt; package
+&lt;br/&gt;
+&lt;br/&gt;
+Load the `readxl` &lt;br/&gt; package
+&lt;br/&gt;
+&lt;br/&gt;
+Import the `sample_rota.xlsx` file
+&lt;br/&gt;
+&lt;br/&gt;
+`View()` the imported &lt;br/&gt; object
+
+]
+
+
+.right-column2[
+
+&lt;br/&gt;
+Use the `New File` button above the script pane
+{{content}}
+]
+&lt;br/&gt;&lt;br/&gt;
+
+--
+
+&lt;br/&gt;
+Use the `library()` function
+
+{{content}}
+
+--
+&lt;br/&gt;
+
+
+{{content}}
+
+--
+
+
+&lt;br/&gt;&lt;br/&gt;
+Use the `readxlsx()` function from the `readxl` package
+{{content}}
+
+--
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+Are there any issues?
+{{content}}
+
+--
+
+&lt;br/&gt;
+&lt;br/&gt;
+We want to work out who is on shift next Monday.
+
+<countdown-timer class="countdown" id="timer_d9510307" minutes="3" seconds="0" warn-when="60" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+{{content}}
+
+---
+## Tidy data exercise  &amp;nbsp; &amp;nbsp; &amp;nbsp; .tiny[       https://posit.cloud/content/4956373 ] 
+
+We want to work out who is on shift .red[next Monday].
+
+--
+
+We need to create two objects: 
+
+- One with the dates and shifts
+- One with the doctor names
+- They need to have a common element
+
+--
+
+We are going to `filter` the rota table
+
+--
+
+We are going to `join` the doctor table to it
+
+--
+
+We may need to .red[pivot] our tables to get them into the correct, .red[tidy] shape to do this. 
+
+.center[&lt;img src="img/tidyr_spread_gather_updated.png" alt="gather gif" height="200"/&gt; ]
+
+
+<countdown-timer class="countdown" id="timer_f5351f45" minutes="6" seconds="0" warn-when="60" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+
+---
+
+
+
+# Outputs 
+
+Plots can be saved in a number of formats
+
+.purple[.png] and .purple[.pdf] are good for cross-platform sharing
+
+Some journals request high resolution .purple[.tiff] files
+
+
+---
+#The next step: R-Markdown
+
+This is a combination of `R` code and text that can be used to generate:
+
+- reports
+
+- papers
+
+- presentations  (like these slides)
+
+- dashboards
+
+--
+
+Code can be run in chunks, which helps to breakdown your workflow, reduce cognitive overload and steadily build a narrative.
+
+
+---
+class: highlight-last-item
+#Finally
+
+One of the main advantages of `R`, for beginner programmers, is that objects and concepts are generally consistent across most packages. 
+--
+
+.pull-left[
+&lt;br/&gt;
+&lt;br/&gt;
+- Lists
+&lt;br/&gt;&lt;br/&gt;
+- Models
+&lt;br/&gt;&lt;br/&gt;
+- Functions
+]
+
+--
+
+.pull-right[
+
+&lt;img src="img/mistype.jpg" alt="" width="450px" /&gt;
+]
+---
+background-image: url(img/where_to.png)
+background-size: cover
+
+# Where to go next
+
+
+Obtain **some data** 
+
+--
+
+**Clean** it and **plot** it using `R`
+
+Write a report using `R Markdown` 
+
+--
+
+Use AI to help you when stuck
+
+--
+
+A **support community **
+
+- NHS-R, Stack Overflow 
+
+- Blue Sky `#TidyTuesday`
+
+
+--
+
+**Enjoy the experience!**
+
+---
+
+class: inverse, center, middle
+
+&lt;img src="img/hearing.png" alt="tidy Tuesday" width="500"/&gt;
+
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>  `#TidyTuesday` [week of 23 October 2023](https://x.com/samiasab90/status/1720490541442355452?s=20)
+
+---
+class: inverse, center, middle
+
+&lt;img src="img/truss2.gif" alt="truss gif" width="600"/&gt;
+
+---
+
+
+# My rabbit hole:
+
+.center[&lt;img src="img/CL projects.png" alt="CL projects" width=650/&gt;]
+
+---
+
+# What do I get out of it?
+
+--
+
+Problem solving
+
+
+Using a different part of my brain
+
+
+Genuine "Eureka!" moments
+
+
+Collaboration
+
+
+Contributing to some of the most important questions in my field
+
+
+Less exhausted by clinical workload
+
+
+---
+
+class: 
+# You are not committing to this journey
+
+&lt;center&gt;
+<div class="grViz html-widget html-fill-item" id="htmlwidget-2a7602a85362491bb9f0" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-2a7602a85362491bb9f0">{"x":{"diagram":"digraph flowchart  {\n      graph[layout = dot, rankdir = LR]\n      # node definitions with substituted label text\n      node [fontname = Courier, shape = oval, style = filled, fillcolor = Linen, width=3.4, height = 2.5, fixedsize = false, fontsize = 45]        \n      tab1 [label = \"Naive\"]\n      tab2 [label = \"Familiar\"]\n      tab3 [label = \"Proficient\"]\n      tab4 [label = \"Developer\"]\n      node [fontname = Courier, shape = rectangle, style = filled, fillcolor = white, fontsize = 45,\n      style = dashed, fontcolor = darkslategray, width = 3, height = 3 fixedsize = false]        \n      tab5 [label = \"Audits \n QI \n Papers\"]\n      tab6 [label = \"Statistics \n New ad-hoc\n methods\"]\n      tab7 [label = \"New packages / \n methods for\n publication \n Software engineer\"]\n      \n      # edge definitions with the node IDs\n      tab1 -> tab2 ->tab3 -> tab4 [minlen=2.5, penwidth = 5, color = grey2]\n      tab1 -> tab5  [style=invis, minlen=2.5]\n      tab2 -> tab6  [style=invis, minlen=2.5]\n      tab3 -> tab7  [style=invis, minlen=2.5]\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+&lt;br/&gt;&lt;br/&gt;
+&lt;/center&gt;
+---
+
+
+background-image: url(img/rabbit-hole.png)
+background-size: cover
+class: inverse
+
+# In Summary 
+
+--
+
+
+Data science is an accessible way to do research &lt;br/&gt; compared with experimental work &lt;br/&gt;(which it does not replace).
+
+--
+
+Data science is not a life-sentence.
+
+
+Explore for yourself how far you can &lt;br/&gt; go down the rabbit hole...
+
+
+---
+class: inverse, center, middle, bg_xari
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+# Thank you!
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M121 32C91.6 32 66 52 58.9 80.5L1.9 308.4C.6 313.5 0 318.7 0 323.9V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V323.9c0-5.2-.6-10.4-1.9-15.5l-57-227.9C446 52 420.4 32 391 32H121zm0 64H391l48 192H387.8c-12.1 0-23.2 6.8-28.6 17.7l-14.3 28.6c-5.4 10.8-16.5 17.7-28.6 17.7H195.8c-12.1 0-23.2-6.8-28.6-17.7l-14.3-28.6c-5.4-10.8-16.5-17.7-28.6-17.7H73L121 96z"/></svg> rs307@cam.ac.uk
+&lt;br/&gt;
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> dr-romster
+&lt;br/&gt;
+<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+&lt;!-- https://rstudio.github.io/fontawesome/articles/icon-reference.html --&gt;
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "foundation",
+  "highlightLines": true,
+  "countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
